@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
-
+import { NgFlashMessagesModule } from 'ng-flash-messages';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -34,7 +35,9 @@ const appRoutes: Routes =  [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
+    NgFlashMessagesModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
