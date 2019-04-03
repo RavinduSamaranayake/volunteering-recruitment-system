@@ -4,6 +4,11 @@ import { NgFlashMessageService } from 'ng-flash-messages';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 
+
+//first get the form data using two way data binding
+//validation that data before post it server using validateService functions
+//then post the data to server using post req
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -24,6 +29,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  //get submitting data and validation
   onRegisterSubmit(){
     const user = {
       name: this.name,
@@ -54,9 +60,12 @@ export class RegisterComponent implements OnInit {
       return false;
     }
 
-    // Register user
+    // Register user with server
+    //call the auth service and pass the user to registerUser function
+    //get the responce json object from server using subscribe method. the data isa responce json
     this.authService.registerUser(user).subscribe(data => {
-      if(data){
+      console.log("...............",data['msg'],".........",data,".........."); //check the responce json 
+      if(data['success']){ //check the responce json value's success key and navigate login page
          
         this.flashMessage.showFlashMessage({messages: ["You are now registered and can log in"],  dismissible: true,timeout: 3000,type:'success' });
         this.router.navigate(['/login']);
