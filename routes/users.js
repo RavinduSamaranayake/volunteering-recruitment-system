@@ -38,10 +38,12 @@ router.post('/authenticate', (req, res, next) => {
       if(err) throw err;
       if(isMatch){
         console.log("User is found.............password match......................................")
+
+        //genare the token and pass it with responce json
         const token = jwt.sign(user.toJSON(), config.secret, {  //jwt.sign(payload, secretOrPrivateKey, [options, callback])
                                                                 //payload could be an object literal, buffer or string representing valid JSON.
-                                                                //payload cannot be a plain string
-          expiresIn: 604800 // 1 week
+                                                                //payload cannot be a plain string but it can 
+          expiresIn: 604800 //this token is expires after 1 week
         });
 
         res.json({
