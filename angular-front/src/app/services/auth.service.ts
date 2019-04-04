@@ -33,6 +33,23 @@ export class AuthService {
     this.authToken = token;                             //see this local storage in application console in chrome
     this.user = user;
   }
+  
+  //get data to profile page
+  getProfile() {
+    let headers = new HttpHeaders();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('users/profile', {headers: headers})
+       
+  }
+
+  loadToken() {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
+  }
+
+
  
   logout(){
     

@@ -9,7 +9,8 @@ module.exports = function(passport){
   opts.secretOrKey = config.secret; //this is a secret key.. you can use any key you want
   
   passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-    User.findOne({id: jwt_payload.sub}, function(err, user) {
+    console.log("...........",jwt_payload,"...........");
+    User.findOne({id: jwt_payload._doc._id}, function(err, user) {
         if (err) {
             return done(err, false);
         }
