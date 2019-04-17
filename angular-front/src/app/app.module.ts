@@ -9,15 +9,19 @@ import { FormsModule } from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
- 
+import { UserdashboardComponent } from './components/userdashboard/userdashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+
 import { AuthGuard } from './guards/auth.guard';
+
+
  
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
@@ -25,8 +29,8 @@ const appRoutes: Routes =  [
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent},
   {path:'profile', component: ProfileComponent},
-  {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
+  {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},//when we use canActivate:[AuthGuard] we can't go to this component using url
+  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]} //active only if user is logged in
 ]
 
 @NgModule({
@@ -37,7 +41,9 @@ const appRoutes: Routes =  [
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserdashboardComponent,
+  
   ],
   imports: [
     BrowserModule,

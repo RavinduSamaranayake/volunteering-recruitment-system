@@ -53,14 +53,13 @@ export class AuthService {
   }
 
   loggedIn() {
-    //return tokenNotExpired('id_token');
-  
+    //to check the user is login or not using token..
     const helper = new JwtHelperService();
     const isExpired = helper.isTokenExpired(localStorage.getItem('id_token'));
     console.log(".....token.........",isExpired,"....ddd.....");
 
     return !isExpired;
-   //return true;
+   
   }
 
 

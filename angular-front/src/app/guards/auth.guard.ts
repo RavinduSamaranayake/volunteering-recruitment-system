@@ -7,7 +7,7 @@ export class AuthGuard implements CanActivate {
   constructor (private authService:AuthService, private router:Router){
 
   }
-
+  //this function use to active to the nav bar elements
   canActivate() {
     if(this.authService.loggedIn()) {
       return true;
