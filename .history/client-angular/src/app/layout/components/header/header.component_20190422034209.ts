@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import {AuthService} from '../../../myservices/auth.service';
+
 
 @Component({
     selector: 'app-header',
@@ -11,7 +11,7 @@ import {AuthService} from '../../../myservices/auth.service';
 export class HeaderComponent implements OnInit {
     public pushRightClass: string;
 
-    constructor( private authService: AuthService, private translate: TranslateService, public router: Router) {
+    constructor(private translate: TranslateService, public router: Router) {
 
         this.router.events.subscribe(val => {
             if (
@@ -45,8 +45,8 @@ export class HeaderComponent implements OnInit {
 
     onLoggedout() {
         this.authService.logout();
-        console.log('...successfully logout......');
-        this.router.navigate(['main']);
+        console.log('...successfully logout......')
+        this.router.navigate(['/login']);
         return false;
     }
 

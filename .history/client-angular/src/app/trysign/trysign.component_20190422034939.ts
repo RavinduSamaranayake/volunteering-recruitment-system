@@ -18,7 +18,7 @@ export class TrysignComponent implements OnInit {
   rpassword: String;
 
   constructor(
-      private validateService: ValidateService,
+      private validateService: ValidateService, 
       private authService: AuthService,
       private router: Router
   ) {}
@@ -41,7 +41,7 @@ export class TrysignComponent implements OnInit {
       return false;
     }
     // Validate Email
-    if (!this.validateService.validateEmail(user.email)) {
+    if (!this.validateService.validateEmail(user.email)){
       console.log('...invalid email....');
       return false;
     }
