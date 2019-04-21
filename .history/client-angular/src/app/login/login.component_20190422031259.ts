@@ -14,29 +14,31 @@ export class LoginComponent implements OnInit {
   password: String;
 
   constructor(
-    private authService: AuthService,
+    private authService:AuthService,
     private router: Router,
   ) { }
 
   ngOnInit() {
   }
 
-  onLoggedin() {
+  onLoginSubmit(){
     const user = {
       username: this.username,
-      password: this.password,
-    };
+      password: this.password
+    }
 
     this.authService.authenticateUser(user).subscribe(data => {
-      console.log('.......................', data, '..........................');
-      if (data['success']) {
+      console.log('.......................',data,"..........................");
+      if (data['success']){
         this.authService.storeUserData(data['token'], data['user']);
+         
+        this.flashMessage.showFlashMessage({messages: ["You are now logged in"],  dismissible: true,timeout: 5000,type:'success' });
+
+        
         this.router.navigate(['dashboard']);
-        console.log('......................login sucess.........................');
       } else {
+        this.flashMessage.showFlashMessage({messages: [data['msg']],  dismissible: true,timeout: 5000,type:'danger' });
         this.router.navigate(['login']);
-        console.log('......................login fail.........................');
       }
     });
   }
-}

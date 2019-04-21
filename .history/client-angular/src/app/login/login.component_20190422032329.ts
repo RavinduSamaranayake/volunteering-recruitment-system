@@ -33,9 +33,11 @@ export class LoginComponent implements OnInit {
         this.authService.storeUserData(data['token'], data['user']);
         this.router.navigate(['dashboard']);
         console.log('......................login sucess.........................');
+        
       } else {
         this.router.navigate(['login']);
-        console.log('......................login fail.........................');
+        console.log('......................login .........................');
+        
       }
     });
   }
