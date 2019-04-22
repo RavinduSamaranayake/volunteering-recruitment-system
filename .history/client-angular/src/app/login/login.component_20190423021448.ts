@@ -27,10 +27,9 @@ export class LoginComponent implements OnInit {
       password: this.password,
     };
 
-    if (this.username === 'admin' && this.password === 'admin') {
-     console.log('.............user name password match..........');
-     // this.authService.storeUserData('admin_token', 'admin_details');
-     this.router.navigate(['/admin/dashboard']);
+    if (this.username == 'admin' && this.password === 'admin') {
+     this.authService.storeUserData('admin_token', 'admin_details');
+     this.router.navigate(['dashboard']);
     } else {
 
     this.authService.authenticateUser(user).subscribe(data => {

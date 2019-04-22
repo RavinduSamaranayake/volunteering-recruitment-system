@@ -4,11 +4,10 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 
 const routes: Routes = [
-    //{ path: 'admin', loadChildren: './layout/layout.module#LayoutModule' },
+   // { path: '', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard] },
     { path: '', loadChildren: './club_layout/layout.module#LayoutModule', canActivate: [AuthGuard]},
     // { path: 'main', loadChildren: './layout/layout.module#LayoutModule' },
     { path: 'main', loadChildren: './layout/homepg/homepg.module#HomepgModule' },
-    { path: 'clubmain', loadChildren: './club_layout/homepg/homepg.module#HomepgModule' },
     { path: 'home', loadChildren: './home/home.module#HomeModule' },
     { path: 'login', loadChildren: './login/login.module#LoginModule' },
     { path: 'signup', loadChildren: './trysign/signup.module#SignupModule' },

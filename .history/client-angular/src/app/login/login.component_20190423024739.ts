@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit {
     if (this.username === 'admin' && this.password === 'admin') {
      console.log('.............user name password match..........');
      // this.authService.storeUserData('admin_token', 'admin_details');
-     this.router.navigate(['/admin/dashboard']);
+     this.router.navigate(['dashboard']);
     } else {
 
     this.authService.authenticateUser(user).subscribe(data => {
       console.log('.......................', data, '..........................');
       if (data['success']) {
         this.authService.storeUserData(data['token'], data['user']);
-        this.router.navigate(['clubdashboard']);
+        this.router.navigate(['/club/clubdashboard']);
         // alert('login sucess');
       } else {
         this.router.navigate(['login']);
