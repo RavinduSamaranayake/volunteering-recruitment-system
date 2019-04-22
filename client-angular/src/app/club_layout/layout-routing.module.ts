@@ -8,7 +8,7 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: 'clubdashboard', pathMatch: 'prefix' },
-            { path: 'clubdashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+            { path: 'clubdashboard', loadChildren: './club-dashbord/club-dashboard.module#ClubDashboardModule' },
             { path: 'homepg', loadChildren: './homepg/homepg.module#HomepgModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
