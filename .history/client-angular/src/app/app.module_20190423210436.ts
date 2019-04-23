@@ -30,7 +30,7 @@ import {AuthService} from './myservices/auth.service';
         FormsModule,
         AlertsModule.forRoot()
     ],
-    declarations: [AppComponent ],
+    declarations: [AppCompone ],
     providers: [AuthGuard, ValidateService, AuthService],
     bootstrap: [AppComponent]
 })
