@@ -13,8 +13,6 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import {ValidateService} from './myservices/validate.service';
 import {AuthService} from './myservices/auth.service';
-import { TrysignComponent } from './trysign/trysign.component';
-import {RouterModule, Routes} from '@angular/router';
 // import { HeaderComponent } from './layout/components/header/header.component';
 
 // const appRoutes: Routes =  [
@@ -31,7 +29,7 @@ import {RouterModule, Routes} from '@angular/router';
         FormsModule,
         AlertsModule.forRoot()
     ],
-    declarations: [AppComponent],
+    declarations: [AppComponent ],
     providers: [AuthGuard, ValidateService, AuthService],
     bootstrap: [AppComponent]
 })
