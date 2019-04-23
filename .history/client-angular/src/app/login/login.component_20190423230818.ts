@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         console.log('.......................', data, '..........................');
         if (data['success']) {
           this.authService.storeUserData(data['token'], data['user']);
-          console.log('.......................success login.........................');
+          console.log('.......................', data, '..........................');
           this.router.navigate(['/club/clubdashboard']);
           // alert('login sucess');
         } else {

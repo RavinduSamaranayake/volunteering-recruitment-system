@@ -54,7 +54,7 @@ export class HeaderComponent implements OnInit {
     onLoggedout() {
         this.authService.logout();
         console.log('...successfully logout......');
-        this.router.navigate(['main']);
+        this.router.navigate(['clubmain']);
         return false;
     }
 

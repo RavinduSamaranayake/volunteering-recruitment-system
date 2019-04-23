@@ -6,7 +6,7 @@ import { AuthGuard } from './shared';
 const routes: Routes = [
     { path: 'admin', loadChildren: './admin-layout/admin-layout.module#AdminLayoutModule'  },
     { path: 'user', loadChildren: './user-layout/user-layout.module#UserLayoutModule', canActivate: [AuthGuard]},
-    { path: 'club', loadChildren: './club_layout/layout.module#LayoutModule', canActivate: [AuthGuard]},
+ 
     // { path: 'main', loadChildren: './layout/layout.module#LayoutModule' },
     { path: 'main', loadChildren: './admin-layout/adminhomepg/adminhomepg.module#AdminhomepgModule' },
     { path: 'clubmain', loadChildren: './club_layout/homepg/homepg.module#HomepgModule' },

@@ -33,13 +33,12 @@ export class LoginComponent implements OnInit {
      this.router.navigate(['/admin/dashboard']);
     }
     else if (this.username === 'club') {
-      //the user is club
+      //user is
       this.authService.authenticateUser(user).subscribe(data => {
         console.log('.......................', data, '..........................');
         if (data['success']) {
           this.authService.storeUserData(data['token'], data['user']);
-          console.log('.......................success login.........................');
-          this.router.navigate(['/club/clubdashboard']);
+          this.router.navigate(['/user/userdashboard']);
           // alert('login sucess');
         } else {
           this.router.navigate(['login']);

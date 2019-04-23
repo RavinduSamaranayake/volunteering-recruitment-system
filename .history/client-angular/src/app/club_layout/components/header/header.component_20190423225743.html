@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg fixed-top">
-    <a class="navbar-brand" [routerLink]="['/user/userdashboard']">iVolunteer</a>
+    <a class="navbar-brand" href="#">iVolunteer</a>
     <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
         <!-- <span class="navbar-toggler-icon"></span> -->
         <i class="fa fa-bars text-muted" aria-hidden="true"></i>
@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-right">
                     <li class="nav-item" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions] = "{exact:true}">
-                        <a class="nav-link mt-1" [routerLink]="['/user/userhomepg']" >Home</a>
+                        <a class="nav-link mt-1" [routerLink]="['/club/homepg']" >Home</a>
                     </li>
             </ul>
      
