@@ -35,9 +35,9 @@ export class SidebarComponent implements OnInit {
         this.showMenu = '';
         this.pushRightClass = 'push-right';
         // get user full name to display
-        // const data = localStorage.getItem('user');
-        // const value = JSON.parse(data);
-        // this.fullname = value.name;
+        const data = localStorage.getItem('user');
+        const value = JSON.parse(data);
+        this.fullname = value.name;
     }
 
 
@@ -78,9 +78,9 @@ export class SidebarComponent implements OnInit {
     }
 
     onLoggedout() {
-       // this.authService.logout();
+        this.authService.logout();
         console.log('...successfully logout......');
-        this.router.navigate(['main']);
-      //  return false;
+        this.router.navigate(['clubmain']);
+        return false;
     }
 }
