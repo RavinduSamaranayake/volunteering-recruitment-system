@@ -1,16 +1,17 @@
 <nav class="navbar navbar-expand-lg fixed-top">
-    <a class="navbar-brand" [routerLink]="['/admin/dashboard']">iVolunteer</a>
+    <a class="navbar-brand" [routerLink]="['/userdashboard']">iVolunteer</a>
     <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
         <!-- <span class="navbar-toggler-icon"></span> -->
         <i class="fa fa-bars text-muted" aria-hidden="true"></i>
     </button>
     <div class="collapse navbar-collapse">
-            <!-- <ul class="navbar-nav ml-right">
+            <ul class="navbar-nav ml-right">
                     <li class="nav-item" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions] = "{exact:true}">
-                        <a class="nav-link mt-1" [routerLink]="['/homepg']" >Home</a>
+                        <a class="nav-link mt-1" [routerLink]="['/user/userhomepg']" >Home</a>
                     </li>
-            </ul> -->
-    
+            </ul>
+     
+        
                  
         <!-- <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="{{ 'Search' | translate }}" >
@@ -126,7 +127,7 @@
             </li> -->
             <li class="nav-item dropdown" ngbDropdown>
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-                    <i class="fa fa-user"></i> admin profile <b class="caret"></b>
+                    <i class="fa fa-user"></i> {{fullname}} <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu-right" ngbDropdownMenu>
                     <a class="dropdown-item" href="javascript:void(0)">

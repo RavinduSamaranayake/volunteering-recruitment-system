@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 
 const routes: Routes = [
-    { path: '', loadChildren: './user-layout/user-layout.module#UserLayoutModule', canActivate: [AuthGuard]},
+    { path: 'user', loadChildren: './user-layout/user-layout.module#UserLayoutModule', canActivate: [AuthGuard]},
     { path: 'admin', loadChildren: './admin-layout/admin-layout.module#AdminLayoutModule'  },
     { path: 'club', loadChildren: './club_layout/layout.module#LayoutModule', canActivate: [AuthGuard]},
     // { path: 'main', loadChildren: './layout/layout.module#LayoutModule' },
