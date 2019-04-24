@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import {ValidateService} from './myservices/validate.service';
 import {AuthService} from './myservices/auth.service';
+
 // import { HeaderComponent } from './layout/components/header/header.component';
 
 // const appRoutes: Routes =  [
@@ -29,7 +30,7 @@ import {AuthService} from './myservices/auth.service';
         FormsModule,
         AlertsModule.forRoot()
     ],
-    declarations: [AppComponent ],
+    declarations: [AppComponent, ],
     providers: [AuthGuard, ValidateService, AuthService],
     bootstrap: [AppComponent]
 })
