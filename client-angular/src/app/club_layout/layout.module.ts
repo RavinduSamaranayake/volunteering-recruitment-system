@@ -7,6 +7,10 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
+import { NewProjectComponent } from '../club_layout/projects/new-project/new-project.component';
+import { ViewProjectsComponent } from '../club_layout/projects/view-projects/view-projects.component';
+import { CurrentVolunteersComponent } from '../club_layout/volunteers/current-volunteers/current-volunteers.component';
+import { AllVolunteersComponent } from '../club_layout/volunteers/all-volunteers/all-volunteers.component';
 
 
 @NgModule({
@@ -16,6 +20,6 @@ import { HeaderComponent } from './components/header/header.component';
         TranslateModule,
         NgbDropdownModule
     ],
-    declarations: [LayoutComponent, SidebarComponent , HeaderComponent]
+    declarations: [LayoutComponent, SidebarComponent , NewProjectComponent, HeaderComponent, ViewProjectsComponent, CurrentVolunteersComponent, AllVolunteersComponent],
 })
 export class LayoutModule {}
