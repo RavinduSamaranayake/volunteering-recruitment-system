@@ -61,7 +61,7 @@ export class UserdashboardComponent implements OnInit {
     }
 
     public dispval() {
-       console.log('.............clicked it.........');
+       cons
     }
 
 }

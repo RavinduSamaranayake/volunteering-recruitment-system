@@ -60,8 +60,6 @@ export class UserdashboardComponent implements OnInit {
         this.alerts.splice(index, 1);
     }
 
-    public dispval() {
-       console.log('.............clicked it.........');
-    }
+    
 
 }
