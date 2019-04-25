@@ -10,6 +10,7 @@ import {
     ChatComponent
 } from './components';
 import { StatModule } from '../../shared';
+ 
 
 @NgModule({
     imports: [
@@ -24,6 +25,7 @@ import { StatModule } from '../../shared';
         TimelineComponent,
         NotificationComponent,
         ChatComponent,
+         ProjectsComponent
     ]
 })
 export class UserdashboardModule {}

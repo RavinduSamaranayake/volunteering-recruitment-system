@@ -13,9 +13,7 @@ export class UserdashboardComponent implements OnInit {
   public alerts: Array<any> = [];
     public sliders: Array<any> = [];
 
-    constructor(
-        private router: Router
-        ) {
+    constructor(priv) {
         this.sliders.push(
             {
                 imagePath: 'assets/images/slider1.jpg',

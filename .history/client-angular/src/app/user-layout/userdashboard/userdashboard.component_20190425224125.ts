@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,9 +12,7 @@ export class UserdashboardComponent implements OnInit {
   public alerts: Array<any> = [];
     public sliders: Array<any> = [];
 
-    constructor(
-        private router: Router
-        ) {
+    constructor() {
         this.sliders.push(
             {
                 imagePath: 'assets/images/slider1.jpg',
@@ -65,7 +62,7 @@ export class UserdashboardComponent implements OnInit {
 
     public dispval() {
        console.log('.............clicked it.........');
-       this.router.navigate(['projects']);
+       this.router.navigate(['login']);
 
     }
 

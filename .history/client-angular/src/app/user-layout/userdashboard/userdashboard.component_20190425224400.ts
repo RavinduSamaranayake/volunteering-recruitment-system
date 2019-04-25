@@ -13,8 +13,7 @@ export class UserdashboardComponent implements OnInit {
   public alerts: Array<any> = [];
     public sliders: Array<any> = [];
 
-    constructor(
-        private router: Router
+    constructor(private route: Router
         ) {
         this.sliders.push(
             {

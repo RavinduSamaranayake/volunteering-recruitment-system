@@ -4,11 +4,7 @@ import { UserdashboardComponent } from './userdashboard.component';
 
 const routes: Routes = [
     {
-        path: '', component: UserdashboardComponent,
-        children: [
-            // { path: '', redirectTo: 'projects', pathMatch: 'prefix' },
-            { path: 'projects', loadChildren: './components/projects/projects.module#ProjectsModule' },
-        ]
+        path: '', component: UserdashboardComponent
     }
 ];
 

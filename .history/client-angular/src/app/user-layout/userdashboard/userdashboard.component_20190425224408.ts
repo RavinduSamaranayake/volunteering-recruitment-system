@@ -14,7 +14,7 @@ export class UserdashboardComponent implements OnInit {
     public sliders: Array<any> = [];
 
     constructor(
-        private router: Router
+        private route: Router
         ) {
         this.sliders.push(
             {
