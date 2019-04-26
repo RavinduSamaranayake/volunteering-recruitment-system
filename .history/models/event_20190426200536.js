@@ -39,14 +39,25 @@ const EventSchema = mongoose.Schema({
 
 const Event = module.exports = mongoose.model('Event', EventSchema);
 
- 
+module.exports.getAllEvents = function(callback){
+  Event.find(callback);
+}
+
 module.exports.getEventById = function(id, callback){
   Event.findById(id, callback);
 }
 
 module.exports.getEventByEventname = function(eventname, callback){
   const query = {eventname: eventname}
-  Event.findOne(query, callback);
+  User.findOne(query, callback);
 }
+
+module.exports.addEvent = function(newEvent, callback){
+   
+      if(err) throw err;
+      newEvent.save(callback);
  
+
+}
+
  

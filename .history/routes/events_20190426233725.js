@@ -3,11 +3,7 @@ const router = express.Router();
 const Event = require('../models/event');
 const config = require('../config/keys');
 
-
-
-//@route POST events/addevent
-//@desc create a Event
-//@access public
+// Add event
 router.post('/addevent', (req, res, next) => {
   let newEvent = new Event({
     name: req.body.name,  //req.body mean the value is post using text field or other

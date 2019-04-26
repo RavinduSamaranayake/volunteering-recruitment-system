@@ -3,11 +3,7 @@ const router = express.Router();
 const Event = require('../models/event');
 const config = require('../config/keys');
 
-
-
-//@route POST events/addevent
-//@desc create a Event
-//@access public
+// Add event
 router.post('/addevent', (req, res, next) => {
   let newEvent = new Event({
     name: req.body.name,  //req.body mean the value is post using text field or other
@@ -20,9 +16,15 @@ router.post('/addevent', (req, res, next) => {
     organization: req.body.organization
   });
 
-  newEvent.save().then(event => res.json({success: true, msg:'Event added' ,event: event}))
-                 .catch(err => res.status(404).json({success: false, msg:'Add event fail'}));
- 
+  newEvent.save().then(event => res.json({success: true, msg:'Event added' ,event: event})).catch(err => res.status(404).json());;
+
+//   Event.addEvent(newEvent, (err, event) => {  //call the addUser function in User model
+//     if(err){
+//       res.json({success: false, msg:'Add event fail'});
+//     } else {
+//       res.json({success: true, msg:'Event added'});
+//     }
+//   });
 
 });
  

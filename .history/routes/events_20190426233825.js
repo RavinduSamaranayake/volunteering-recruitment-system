@@ -5,8 +5,8 @@ const config = require('../config/keys');
 
 
 
-//@route POST events/addevent
-//@desc create a Event
+//@route POST events/items
+//@desc create a Item
 //@access public
 router.post('/addevent', (req, res, next) => {
   let newEvent = new Event({

@@ -48,5 +48,13 @@ module.exports.getEventByEventname = function(eventname, callback){
   const query = {eventname: eventname}
   Event.findOne(query, callback);
 }
+
+module.exports.addEvent = function(newEvent, callback){
+   
+      if(err) throw err;
+      newEvent.save(callback);
  
+
+}
+
  
