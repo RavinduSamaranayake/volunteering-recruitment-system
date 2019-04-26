@@ -40,7 +40,7 @@ router.get('/allevents',(req,res) => {
 //@desc Delete a Item
 //@access public
 
-router.delete('/delevent/:id',(req,res) => {
+router.delete('//:id',(req,res) => {
     Event.findById(req.params.id)
        .then(event => event.remove().then(()=>res.json({sucess: true})))
        .catch(err => res.status(404).json({sucess:false}));

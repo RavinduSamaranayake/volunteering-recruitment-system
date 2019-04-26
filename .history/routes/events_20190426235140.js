@@ -41,7 +41,7 @@ router.get('/allevents',(req,res) => {
 //@access public
 
 router.delete('/delevent/:id',(req,res) => {
-    Event.findById(req.params.id)
+    Item.findById(req.params.id)
        .then(event => event.remove().then(()=>res.json({sucess: true})))
        .catch(err => res.status(404).json({sucess:false}));
   });
