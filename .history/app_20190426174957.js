@@ -21,10 +21,7 @@ mongoose.connect(db,{ useNewUrlParser:true})
 
 const app = express();
 
-
-//routing paths
 const users = require('./routes/users');
-const events = require('./routes/events');
 
 // Port Number
 const port = 3000;

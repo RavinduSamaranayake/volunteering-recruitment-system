@@ -39,8 +39,8 @@ const EventSchema = mongoose.Schema({
 
 const Event = module.exports = mongoose.model('Event', EventSchema);
 
-module.exports.getAllEvents = function(callback){
-  Event.find(callback);
+module.exports.getEventById = function(id, callback){
+  Event.findById(id, callback);
 }
 
 module.exports.getEventById = function(id, callback){

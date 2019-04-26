@@ -22,7 +22,7 @@ mongoose.connect(db,{ useNewUrlParser:true})
 const app = express();
 
 
-//routing paths
+//routing p
 const users = require('./routes/users');
 const events = require('./routes/events');
 
