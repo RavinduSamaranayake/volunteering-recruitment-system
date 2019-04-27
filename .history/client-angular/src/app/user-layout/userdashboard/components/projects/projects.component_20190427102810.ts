@@ -7,16 +7,13 @@ import {EventService} from '../../../../myservices/event.service';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  private allevents: [];
+
   constructor(
     private eventservice: EventService,
+    private allevents: [],
     ) { }
 
   ngOnInit() {
-    this.eventservice.getAllEvent().subscribe((res : any[])=>{
-      console.log(res);
-     // this.allevents = res;
-  });
   }
 
 }

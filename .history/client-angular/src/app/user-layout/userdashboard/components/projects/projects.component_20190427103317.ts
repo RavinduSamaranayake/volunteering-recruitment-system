@@ -13,9 +13,9 @@ export class ProjectsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.eventservice.getAllEvent().subscribe((res : any[])=>{
+    this.eventservice.get_locations().subscribe((res : any[])=>{
       console.log(res);
-     // this.allevents = res;
+      this.locations = res;
   });
   }
 

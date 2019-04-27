@@ -31,7 +31,7 @@ import {EventService} from './myservices/event.service';
         AlertsModule.forRoot()
     ],
     declarations: [AppComponent ],
-    providers: [AuthGuard, ValidateService, AuthService, EventService],
+    providers: [AuthGuard, ValidateService, AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

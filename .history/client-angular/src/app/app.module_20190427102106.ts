@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import {ValidateService} from './myservices/validate.service';
 import {AuthService} from './myservices/auth.service';
-import {EventService} from './myservices/event.service';
+import {EService} from './myservices/auth.service';
 // import { HeaderComponent } from './layout/components/header/header.component';
 
 // const appRoutes: Routes =  [
@@ -31,7 +31,7 @@ import {EventService} from './myservices/event.service';
         AlertsModule.forRoot()
     ],
     declarations: [AppComponent ],
-    providers: [AuthGuard, ValidateService, AuthService, EventService],
+    providers: [AuthGuard, ValidateService, AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

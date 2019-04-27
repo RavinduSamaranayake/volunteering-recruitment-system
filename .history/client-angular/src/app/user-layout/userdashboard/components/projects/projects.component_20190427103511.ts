@@ -15,7 +15,7 @@ export class ProjectsComponent implements OnInit {
   ngOnInit() {
     this.eventservice.getAllEvent().subscribe((res : any[])=>{
       console.log(res);
-     // this.allevents = res;
+      this.allevents = res;
   });
   }
 
