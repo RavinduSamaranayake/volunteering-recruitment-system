@@ -45,14 +45,6 @@ export class SidebarComponent implements OnInit {
         this.isActive = !this.isActive;
     }
 
-    addExpandClass(element: any) {
-        if (element === this.showMenu) {
-            this.showMenu = '0';
-        } else {
-            this.showMenu = element;
-        }
-    }
-
     toggleCollapsed() {
         this.collapsed = !this.collapsed;
         this.collapsedEvent.emit(this.collapsed);
