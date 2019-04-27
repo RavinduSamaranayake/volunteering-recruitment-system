@@ -14,6 +14,8 @@ import { AuthGuard } from './shared';
 import {ValidateService} from './myservices/validate.service';
 import {AuthService} from './myservices/auth.service';
 
+
+
 // import { HeaderComponent } from './layout/components/header/header.component';
 
 // const appRoutes: Routes =  [
@@ -28,6 +30,8 @@ import {AuthService} from './myservices/auth.service';
         LanguageTranslationModule,
         AppRoutingModule,
         FormsModule,
+
+
         AlertsModule.forRoot()
     ],
     declarations: [AppComponent, ],

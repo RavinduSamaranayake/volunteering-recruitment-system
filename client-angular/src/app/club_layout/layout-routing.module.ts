@@ -6,6 +6,8 @@ import { ViewProjectsComponent } from '../club_layout/projects/view-projects/vie
 import { CurrentVolunteersComponent } from '../club_layout/volunteers/current-volunteers/current-volunteers.component';
 import { AllVolunteersComponent } from '../club_layout/volunteers/all-volunteers/all-volunteers.component';
 
+
+
 const routes: Routes = [
     {
         path: '',
@@ -23,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forChild(routes) ],
     exports: [RouterModule]
 })
 export class LayoutRoutingModule {}

@@ -9,8 +9,10 @@
       "projectType": "application",
       "architect": {
         "build": {
+     
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -26,6 +28,8 @@
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.js"
+    
+
             ]
           },
           "configurations": {
