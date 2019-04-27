@@ -14,18 +14,12 @@ export class ProjectsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-  //   this.eventservice.getAllEvent().subscribe((res : any[])=>{
-  //     console.log(res);
-  //     console.log('.......the first row..', res[0].title , '  ' , res[0].description);
-  //     console.log('.......the second row..', res[1]);
-  //     // this.allevents = res;
-  // });
-
-  this.eventservice.getAllEvent().subscribe((data: Table[])=>{
-    this.allevents = data;
-    console.log(this.allevents[1].organization);
-    // this.allevents = res;
-});
+    this.eventservice.getAllEvent().subscribe((res : any[])=>{
+      console.log(res);
+      console.log('.......the first row..', res[0].title , '  ' , res[0].description);
+      console.log('.......the second row..', res[1]);
+      // this.allevents = res;
+  });
   }
 
 }

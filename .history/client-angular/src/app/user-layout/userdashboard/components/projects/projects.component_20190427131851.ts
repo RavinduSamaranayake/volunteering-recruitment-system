@@ -22,8 +22,6 @@ export class ProjectsComponent implements OnInit {
   // });
 
   this.eventservice.getAllEvent().subscribe((data: Table[])=>{
-    this.allevents = data;
-    console.log(this.allevents[1].organization);
     // this.allevents = res;
 });
   }
