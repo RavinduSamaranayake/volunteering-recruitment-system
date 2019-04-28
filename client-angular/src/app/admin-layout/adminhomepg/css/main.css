@@ -4,7 +4,7 @@
 /* Mobile Layout: 320px */
 /* Wide Mobile Layout: 480px */
 /* =================================== */
-/*  Basic Style 
+/*  Basic Style
 /* =================================== */
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700');
 
@@ -61,10 +61,21 @@ p{
   position: relative;
 }
 
+.navButtons{
+  width:100px;
+  margin-left:5px;
+  border: 1px solid #fab700;
+  background-color: white;
+  color:#fab700;
+}
+
+.navButtons:hover{
+  background-color:#fdfbf3;
+}
+
 .logo{
   height: 60px;
-  /* width:100px; */
-  padding: 5px 0 5px 0;
+  width:150px;
 }
 
 ol, ul {
@@ -145,7 +156,7 @@ h4, h5, h6 {
 }
 
 header a{
-  font-family: "Poppins", sans-serif; 
+  font-family: "Poppins", sans-serif;
   font-size: 15px !important;
 }
 
@@ -2344,13 +2355,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-area {
-  /* background: url(https://www.bhgre.com/bhgrelife/wp-content/uploads/2018/06/shutterstock_605300333_2014x628-1764x700_c.jpg) center; */
- background: url(http://www.asiabayrestaurants.com/wp-content/themes/AsiaBay/js/fullscreen/images/Universe_and_planets_digital_art_wallpaper_albireo.jpg);
- background-size: 100%
+  background: url(https://www.bhgre.com/bhgrelife/wp-content/uploads/2018/06/shutterstock_605300333_2014x628-1764x700_c.jpg) center;
+ background-size: 100%;
+ height:600px;
+ object-fit: cover;
 }
 
 
- 
+
 
 .banner-area .overlay {
   background: #000;
