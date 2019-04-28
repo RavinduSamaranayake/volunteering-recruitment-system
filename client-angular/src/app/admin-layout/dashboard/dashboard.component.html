@@ -2,37 +2,40 @@
   <div class="row">
     <div class="col-xl-3 col-lg-6">
       <app-stat
-        [bgClass]="'primary'"
-        [icon]="'fa-comments'"
+        [bgClass]="'primary blue'"
+        [icon]="'fa-university'"
         [count]="26"
-        [label]="'New Comments!'"
+        [label]="'Organizations'"
+        [link]="'admin/organizations/edit'"
       ></app-stat>
     </div>
     <div class="col-xl-3 col-lg-6">
       <app-stat
-        [bgClass]="'warning'"
-        [icon]="'fa-tasks'"
-        [count]="12"
-        [label]="'New task!'"
+        [bgClass]="'warning yellow'"
+        [icon]="'fa-users'"
+        [count]="240"
+        [label]="'Volunteers'"
+        [link]="'admin/volunteers/edit'"
       ></app-stat>
     </div>
     <div class="col-xl-3 col-lg-6">
       <app-stat
-        [bgClass]="'success'"
-        [icon]="'fa-shopping-cart'"
-        [count]="124"
-        [label]="'New Orders!'"
+        [bgClass]="'success green'"
+        [icon]="'fa-calendar'"
+        [count]="35"
+        [label]="'Past Events'"
+        [link]="'admin/events/edit'"
       ></app-stat>
     </div>
     <div class="col-xl-3 col-lg-6">
       <app-stat
-        [bgClass]="'danger'"
+        [bgClass]="'danger red'"
         [icon]="'fa-support'"
-        [count]="13"
-        [label]="'New Tickets!'"
+        [count]="5"
+        [label]="'Underrates'"
+        [link]="'admin/organizations/edit'"
       ></app-stat>
     </div>
   </div>
   <hr />
-
 </div>

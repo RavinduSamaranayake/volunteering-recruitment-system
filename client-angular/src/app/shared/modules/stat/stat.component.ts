@@ -10,6 +10,7 @@ export class StatComponent implements OnInit {
     @Input() icon: string;
     @Input() count: number;
     @Input() label: string;
+    @Input() link: string;
     @Input() data: number;
     @Output() event: EventEmitter<any> = new EventEmitter();
 
