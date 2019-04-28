@@ -11,22 +11,29 @@
       <i class="fa fa-fw fa-dashboard"></i>&nbsp;
       <span>{{ "Dashboard" | translate }}</span>
     </a>
+    <br />
     <div class="nested-menu">
       <a class="list-group-item">
-        <i class="fa fa-plus"></i>&nbsp;
+        <i class="fa fa-university"></i>&nbsp;
         <span>{{ "Organizations" | translate }}</span>
       </a>
       <li class="nested" [class.expand]="true">
         <ul class="submenu">
           <li>
-            <a href="javascript:void(0)">
-              <i class="fa fa-monument"></i>&nbsp;
+            <a
+              routerLink="/admin/organizations/add"
+              [routerLinkActive]="['router-link-active']"
+            >
+              <i class="fa fa-plus"></i>&nbsp;
               <span>{{ "Add New" | translate }}</span>
             </a>
           </li>
           <li>
-            <a href="javascript:void(0)">
-              <i class="fa fa-monument"></i>&nbsp;
+            <a
+              routerLink="/admin/organizations/edit"
+              [routerLinkActive]="['router-link-active']"
+            >
+              <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
               <span>{{ "Edit Existing" | translate }}</span>
             </a>
           </li>
@@ -35,15 +42,37 @@
     </div>
     <div class="nested-menu">
       <a class="list-group-item">
-        <i class="fa fa-plus"></i>&nbsp;
+        <i class="fa fa-users"></i>&nbsp;
         <span>{{ "Volunteers" | translate }}</span>
       </a>
       <li class="nested" [class.expand]="true">
         <ul class="submenu">
           <li>
-            <a href="javascript:void(0)">
-              <i class="fa fa-monument"></i>&nbsp;
-              <span>{{ "Edit Existing" | translate }}</span>
+            <a
+              routerLink="/admin/volunteers/edit"
+              [routerLinkActive]="['router-link-active']"
+            >
+              <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
+              <span>{{ "View and Edit" | translate }}</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </div>
+    <div class="nested-menu">
+      <a class="list-group-item">
+        <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;
+        <span>{{ "Events" | translate }}</span>
+      </a>
+      <li class="nested" [class.expand]="true">
+        <ul class="submenu">
+          <li>
+            <a
+              routerLink="/admin/events/edit"
+              [routerLinkActive]="['router-link-active']"
+            >
+              <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
+              <span>{{ "View and Edit" | translate }}</span>
             </a>
           </li>
         </ul>
