@@ -38,12 +38,9 @@ const UserSchema = mongoose.Schema({
   cntctfix: {
     type: String,
   },
-  age: {
+  address: {
     type: String,
     required: true
-  },
-  gender: {
-    type: String,
   },
 });
 

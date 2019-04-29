@@ -68,7 +68,7 @@ router.post('/authenticate', (req, res, next) => {
             cntctmob: user.cntctmob,
             cntctfix: user.cntctfix,
             age: user.age,
-            
+            gender: req.body.gender,
           }
         });
       } else {

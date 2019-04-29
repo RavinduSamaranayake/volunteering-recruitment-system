@@ -64,11 +64,11 @@ router.post('/authenticate', (req, res, next) => {
             email: user.email,
             password: user.password,
             address: user.address,
-            address2: user.address2,
-            cntctmob: user.cntctmob,
-            cntctfix: user.cntctfix,
-            age: user.age,
-            
+            address2: address2,
+            cntctmob: req.body.cntctmob,
+            cntctfix: req.body.cntctfix,
+            age: req.body.age,
+            gender: req.body.gender,
           }
         });
       } else {

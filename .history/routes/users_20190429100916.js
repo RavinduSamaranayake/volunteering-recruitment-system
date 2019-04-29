@@ -17,8 +17,8 @@ router.post('/register', (req, res, next) => {
     address2: req.body.address2,
     cntctmob: req.body.cntctmob,
     cntctfix: req.body.cntctfix,
-    age: req.body.age,
-    gender: req.body.gender,
+    age: req.body.username,
+    password: req.body.password,
   });
 
   User.addUser(newUser, (err, user) => {  //call the addUser function in User model
@@ -58,17 +58,9 @@ router.post('/authenticate', (req, res, next) => {
           token: 'JWT '+token,
           user: {
             id: user._id,
-            firstname: user.firstname,
-            lastname: user.lasttname,
+            name: user.name,
             username: user.username,
-            email: user.email,
-            password: user.password,
-            address: user.address,
-            address2: user.address2,
-            cntctmob: user.cntctmob,
-            cntctfix: user.cntctfix,
-            age: user.age,
-            
+            email: user.email
           }
         });
       } else {

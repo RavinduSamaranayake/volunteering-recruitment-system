@@ -66,9 +66,9 @@ router.post('/authenticate', (req, res, next) => {
             address: user.address,
             address2: user.address2,
             cntctmob: user.cntctmob,
-            cntctfix: user.cntctfix,
-            age: user.age,
-            
+            cntctfix: .cntctfix,
+            age: req.body.age,
+            gender: req.body.gender,
           }
         });
       } else {

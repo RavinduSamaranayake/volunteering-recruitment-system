@@ -14,7 +14,7 @@ const UserSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true  
+    
   },
   username: {
     type: String,
@@ -30,21 +30,16 @@ const UserSchema = mongoose.Schema({
     required: true
   },
   address2: {
-    type: String, 
+    type: String,
+    
   },
   cntctmob: {
-    type: String, 
+    type: String,
+    
   },
   cntctfix: {
     type: String,
-  },
-  age: {
-    type: String,
-    required: true
-  },
-  gender: {
-    type: String,
-  },
+  }
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);

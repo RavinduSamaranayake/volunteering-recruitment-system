@@ -62,13 +62,13 @@ router.post('/authenticate', (req, res, next) => {
             lastname: user.lasttname,
             username: user.username,
             email: user.email,
-            password: user.password,
-            address: user.address,
-            address2: user.address2,
-            cntctmob: user.cntctmob,
-            cntctfix: user.cntctfix,
-            age: user.age,
-            
+            password: req.body.password,
+            address: req.body.address,
+            address2: req.body.address2,
+            cntctmob: req.body.cntctmob,
+            cntctfix: req.body.cntctfix,
+            age: req.body.age,
+            gender: req.body.gender,
           }
         });
       } else {

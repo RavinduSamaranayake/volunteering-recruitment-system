@@ -8,17 +8,10 @@ const config = require('../config/keys');
 // Register
 router.post('/register', (req, res, next) => {
   let newUser = new User({
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,  //req.body mean the value is post using text field or other
+    name: req.body.name,  //req.body mean the value is post using text field or other
     email: req.body.email,
     username: req.body.username,
-    password: req.body.password,
-    address: req.body.address,
-    address2: req.body.address2,
-    cntctmob: req.body.cntctmob,
-    cntctfix: req.body.cntctfix,
-    age: req.body.age,
-    gender: req.body.gender,
+    password: req.body.password
   });
 
   User.addUser(newUser, (err, user) => {  //call the addUser function in User model
@@ -58,17 +51,9 @@ router.post('/authenticate', (req, res, next) => {
           token: 'JWT '+token,
           user: {
             id: user._id,
-            firstname: user.firstname,
-            lastname: user.lasttname,
+            name: user.name,
             username: user.username,
-            email: user.email,
-            password: user.password,
-            address: user.address,
-            address2: user.address2,
-            cntctmob: user.cntctmob,
-            cntctfix: user.cntctfix,
-            age: user.age,
-            
+            email: user.email
           }
         });
       } else {

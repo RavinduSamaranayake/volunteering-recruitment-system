@@ -58,17 +58,9 @@ router.post('/authenticate', (req, res, next) => {
           token: 'JWT '+token,
           user: {
             id: user._id,
-            firstname: user.firstname,
-            lastname: user.lasttname,
+            fname: user.name,
             username: user.username,
-            email: user.email,
-            password: user.password,
-            address: user.address,
-            address2: user.address2,
-            cntctmob: user.cntctmob,
-            cntctfix: user.cntctfix,
-            age: user.age,
-            
+            email: user.email
           }
         });
       } else {

@@ -14,15 +14,14 @@ const UserSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true  
+    
   },
   username: {
     type: String,
     required: true
   },
   password: {
-    type: String,
-    required: true,
+    type: String, required: true,
    
   },
   address: {
@@ -30,21 +29,17 @@ const UserSchema = mongoose.Schema({
     required: true
   },
   address2: {
-    type: String, 
-  },
-  cntctmob: {
-    type: String, 
-  },
-  cntctfix: {
-    type: String,
-  },
-  age: {
     type: String,
     required: true
   },
-  gender: {
+  username: {
     type: String,
+    required: true
   },
+  password: {
+    type: String,
+    required: true
+  }
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
