@@ -48,7 +48,7 @@
     <div class="container">
 
           <h4 class="mb-3">Enter Your details and Register</h4>
-          <form (ngSubmit)="onRegisterSubmit()" class="needs-validation" novalidate>
+          <form class="needs-validation" novalidate>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">First name</label>
@@ -140,7 +140,7 @@
             <div class="row">
                     <div class="col-md-1 mb-3">
                       <label for="cc-expiration">Age<span class="text-muted">(Years)</span></label>
-                      <input type="text" [(ngModel)]="age" name="age" class="form-control" id="cc-expiration" placeholder="21" required>
+                      <input type="text" class="form-control" id="cc-expiration" placeholder="21" required>
                       <div class="invalid-feedback">
                         Expiration date required
                       </div>

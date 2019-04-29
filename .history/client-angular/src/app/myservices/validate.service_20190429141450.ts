@@ -9,7 +9,7 @@ export class ValidateService {
 
   validateRegister(user) {
     // tslint:disable-next-line:max-line-length
-    if (user.firstname === undefined || user.lastname === undefined || user.email === undefined || user.username === undefined || user.password === undefined || user.age === undefined || user.address === undefined) {
+    if (user.firstname === undefined || user.email === undefined || user.username === undefined || user.password === undefined || user.age === undefined || user.address === undefined) {
       alert('All the required fields are required');
       return false;
     } else if (user.password !== user.rpassword) {

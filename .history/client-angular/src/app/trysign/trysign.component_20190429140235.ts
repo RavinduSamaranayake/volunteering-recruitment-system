@@ -41,7 +41,7 @@ export class TrysignComponent implements OnInit {
         email: this.email,
         username: this.username,
         password: this.password,
-        rpassword: this.conpassword,
+        rpassword: this.rpassword,
         address: this.address,
         address2: this.address2,
         cntctmob: this.cntctmob,

@@ -17,12 +17,12 @@ export class TrysignComponent implements OnInit {
   username: String;
   email: String;
   password: String;
-  conpassword: String;
+  rpassword: String;
   address: String;
   address2: String;
   cntctmob: String;
   cntctfix: String;
-  age: String;
+  age
 
   constructor(
       private validateService: ValidateService,
@@ -41,15 +41,10 @@ export class TrysignComponent implements OnInit {
         email: this.email,
         username: this.username,
         password: this.password,
-        rpassword: this.conpassword,
-        address: this.address,
-        address2: this.address2,
-        cntctmob: this.cntctmob,
-        cntctfix: this.cntctfix,
-        age: this.age,
+        rpassword: this.rpassword
       };
 
-  console.log('...user..is..', user.firstname);
+  console.log('...user..is..', user.name);
        // Required Fields
    if (!this.validateService.validateRegister(user)) {
      // this.alerts.setMessage('All the fields are required', 'error');
