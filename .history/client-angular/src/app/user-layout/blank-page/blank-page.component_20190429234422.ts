@@ -66,7 +66,7 @@ export class BlankPageComponent implements OnInit {
             } else {
               alert('Please signup again');
             }
-        }
+        };
     }
 }
 

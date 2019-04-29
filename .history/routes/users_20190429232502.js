@@ -88,7 +88,7 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
 router.put('/changepro/:id', function(req, res, next) {
   User.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if(err){
-      res.json({success: false, msg:'Failed to change profile'});
+      res.json({success: false, msg:'Failed to register user'});
     } else {
       res.json({success: true, msg:'Profile changed'});
     }

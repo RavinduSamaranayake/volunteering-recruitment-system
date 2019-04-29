@@ -27,6 +27,7 @@ export class BlankPageComponent implements OnInit {
         private authService: AuthService,
         private router: Router,
     ) {}
+  
     ngOnInit() {
         const data = localStorage.getItem('user');
         console.log('the user is --->>>>', data , '>>>>>');
@@ -58,16 +59,18 @@ export class BlankPageComponent implements OnInit {
           cntctfix: this.cntctfix,
           age: this.age,
         };
-        console.log('the current user id is --->>>>', this.userid , '>>>>>');
+
         this.authService.changeProfile(user, this.userid).subscribe(data => {
             console.log('...............', data['msg'], '.........', data, '..........'); // check the responce json 
-            if (data['success']) { // check the responce json value's success key
-              alert('Profile change successfully!');
+            if (data['success']) { // check the responce json value's success key and navigate login page
+              this.router.navigate(['login']);
+              alert('Registration successfully! now you can login');
+              // this.alerts.setMessage('Registration successfully! now you can login', 'success');
             } else {
+              this.router.navigate(['signup']);
               alert('Please signup again');
+              // this.alerts.setMessage('Please signup again', 'warn');
             }
-        }
     }
+
 }
-
-

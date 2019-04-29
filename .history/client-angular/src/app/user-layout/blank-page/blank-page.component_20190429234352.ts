@@ -27,7 +27,7 @@ export class BlankPageComponent implements OnInit {
         private authService: AuthService,
         private router: Router,
     ) {}
-    ngOnInit() {
+  ngOnInit() {
         const data = localStorage.getItem('user');
         console.log('the user is --->>>>', data , '>>>>>');
         const value = JSON.parse(data); // the data is always a string.Parse the data with JSON.parse(), 

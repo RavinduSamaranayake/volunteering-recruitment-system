@@ -40,13 +40,7 @@ export class AuthService {
     return this.http.get('users/profile', {headers: headers});
   }
 
-  // change profile
-  changeProfile(user , userid) {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    // post the user data to the server in json object
-    return this.http.put('http://localhost:3000/users/changepro/' + userid, user, {headers: headers});
-  }
+  //
 
   loadToken() {
     const token = localStorage.getItem('id_token');

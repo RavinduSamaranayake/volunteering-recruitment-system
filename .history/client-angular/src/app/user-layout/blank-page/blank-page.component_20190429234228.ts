@@ -27,6 +27,7 @@ export class BlankPageComponent implements OnInit {
         private authService: AuthService,
         private router: Router,
     ) {}
+  
     ngOnInit() {
         const data = localStorage.getItem('user');
         console.log('the user is --->>>>', data , '>>>>>');
@@ -68,6 +69,5 @@ export class BlankPageComponent implements OnInit {
             }
         }
     }
+
 }
-
-
