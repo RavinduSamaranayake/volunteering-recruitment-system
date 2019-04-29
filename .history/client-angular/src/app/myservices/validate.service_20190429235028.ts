@@ -24,15 +24,6 @@ export class ValidateService {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   }
-
-  validateProfile(user) {
-    // tslint:disable-next-line:max-line-length
-    if (user.firstname === '' || user.lastname === '' || user.email === '' || user.username === ''  || user.age === '' || user.address === '') {
-      alert('All the required fields are required');
-      return false;
-    } else {
-      return true;
-    }
-  }
+  
  }
 

@@ -64,12 +64,7 @@ export class BlankPageComponent implements OnInit {
              return false;
         }
 
-        if (!this.validateService.validateEmail(user.email)) {
-            // this.alerts.setMessage('Email is not valid', 'error');
-            alert('Email is not valid');
-            return false;
-        }
-
+        
         console.log('the current user id is --->>>>', this.userid , '>>>>>');
         this.authService.changeProfile(user, this.userid).subscribe(data => {
             console.log('...............', data['msg'], '.........', data, '..........'); // check the responce json 

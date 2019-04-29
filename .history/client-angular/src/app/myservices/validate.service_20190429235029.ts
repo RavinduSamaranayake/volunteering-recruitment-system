@@ -25,14 +25,6 @@ export class ValidateService {
     return re.test(email);
   }
 
-  validateProfile(user) {
-    // tslint:disable-next-line:max-line-length
-    if (user.firstname === '' || user.lastname === '' || user.email === '' || user.username === ''  || user.age === '' || user.address === '') {
-      alert('All the required fields are required');
-      return false;
-    } else {
-      return true;
-    }
-  }
+  
  }
 

@@ -27,8 +27,11 @@ export class ValidateService {
 
   validateProfile(user) {
     // tslint:disable-next-line:max-line-length
-    if (user.firstname === '' || user.lastname === '' || user.email === '' || user.username === ''  || user.age === '' || user.address === '') {
+    if (user.firstname === undefined || user.lastname === undefined || user.email === undefined || user.username === undefined || user.password === undefined || user.age === undefined || user.address === undefined) {
       alert('All the required fields are required');
+      return false;
+    } else if (user.password !== user.rpassword) {
+      alert('passwords are mismatch');
       return false;
     } else {
       return true;
