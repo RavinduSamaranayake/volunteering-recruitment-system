@@ -14,6 +14,8 @@ import { AuthGuard } from './shared';
 import {ValidateService} from './myservices/validate.service';
 import {AuthService} from './myservices/auth.service';
 import {EventService} from './myservices/event.service';
+import {CalendarLocalModule} from './admin-layout/calendar/calendar.module';
+
 // import { HeaderComponent } from './layout/components/header/header.component';
 
 // const appRoutes: Routes =  [
@@ -28,6 +30,7 @@ import {EventService} from './myservices/event.service';
         LanguageTranslationModule,
         AppRoutingModule,
         FormsModule,
+        CalendarLocalModule,
         AlertsModule.forRoot()
     ],
     declarations: [AppComponent ],
