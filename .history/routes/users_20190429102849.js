@@ -19,7 +19,6 @@ router.post('/register', (req, res, next) => {
     cntctfix: req.body.cntctfix,
     age: req.body.age,
     gender: req.body.gender,
-    ulevel: 'user',
   });
 
   User.addUser(newUser, (err, user) => {  //call the addUser function in User model
@@ -69,7 +68,7 @@ router.post('/authenticate', (req, res, next) => {
             cntctmob: user.cntctmob,
             cntctfix: user.cntctfix,
             age: user.age,
-            ulevel: user.ulevel,
+            le
           }
         });
       } else {

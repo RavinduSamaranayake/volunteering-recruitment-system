@@ -45,9 +45,8 @@ const UserSchema = mongoose.Schema({
   gender: {
     type: String,
   },
-  ulevel: {
+  ul: {
     type: String,
-    required: true
   },
 });
 

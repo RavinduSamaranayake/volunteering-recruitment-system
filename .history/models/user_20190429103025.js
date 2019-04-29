@@ -46,8 +46,7 @@ const UserSchema = mongoose.Schema({
     type: String,
   },
   ulevel: {
-    type: String,
-    required: true
+    type: I,
   },
 });
 

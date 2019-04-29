@@ -19,7 +19,7 @@ router.post('/register', (req, res, next) => {
     cntctfix: req.body.cntctfix,
     age: req.body.age,
     gender: req.body.gender,
-    ulevel: 'user',
+    ulevel: '',
   });
 
   User.addUser(newUser, (err, user) => {  //call the addUser function in User model
