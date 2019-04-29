@@ -6,17 +6,17 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 
 import { StatModule } from '../../shared';
+import { CalendarLocalModule } from '../calendar/calendar.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        NgbCarouselModule,
-        NgbAlertModule,
-        DashboardRoutingModule,
-        StatModule,
-    ],
-    declarations: [
-        DashboardComponent,
-    ]
+  imports: [
+    CommonModule,
+    NgbCarouselModule,
+    NgbAlertModule,
+    DashboardRoutingModule,
+    StatModule,
+    CalendarLocalModule
+  ],
+  declarations: [DashboardComponent]
 })
 export class DashboardModule {}
