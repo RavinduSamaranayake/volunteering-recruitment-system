@@ -6,8 +6,7 @@ const Schema = mongoose.Schema;
 // Schema
 const EventSchema = mongoose.Schema({
   title: {
-    type: String,
-    required: true
+    type: String
   },
   description: {
     type: String,
@@ -31,7 +30,7 @@ const EventSchema = mongoose.Schema({
   },
   organization: {
     type: String,
-    required: true
+    //required: true
   }
 
   

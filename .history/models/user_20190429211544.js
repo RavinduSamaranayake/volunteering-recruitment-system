@@ -19,8 +19,7 @@ const UserSchema = mongoose.Schema({
   },
   username: {
     type: String,
-    required: true,
-    unique : true
+    required: true
   },
   password: {
     type: String,
@@ -73,12 +72,6 @@ module.exports.addUser = function(newUser, callback){
     });
   });
 }
-// User.findByIdAndUpdate(req.user._id, { $set: { surname: req.body.surname }}, { new: true }, function (err, User) {
-//   if (err) {
-//       console.log(err.toString());}
-//   res.alert('Changed surname');
-//   console.log('changed surname')
-// });
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {

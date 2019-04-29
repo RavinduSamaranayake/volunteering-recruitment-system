@@ -85,7 +85,7 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
 });
 
 // Change profile
-router.put('/changepro/:id', function(req, res, next) {
+router.put('/:id', function(req, res, next) {
   User.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);

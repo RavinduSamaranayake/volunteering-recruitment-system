@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 // Schema
 const EventSchema = mongoose.Schema({
   title: {
-    type: String,
+    type: String
     required: true
   },
   description: {
