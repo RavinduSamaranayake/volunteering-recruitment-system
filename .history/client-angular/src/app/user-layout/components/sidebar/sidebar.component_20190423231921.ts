@@ -37,7 +37,7 @@ export class SidebarComponent implements OnInit {
         // get user full name to display
         const data = localStorage.getItem('user');
         const value = JSON.parse(data);
-        this.fullname = value.firstname + ' ' + value.lastname;
+        this.fullname = value.name;
     }
 
 

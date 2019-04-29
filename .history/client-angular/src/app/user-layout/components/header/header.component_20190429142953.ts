@@ -31,8 +31,8 @@ export class HeaderComponent implements OnInit {
         console.log('the user is --->>>>', data , '>>>>>');
         const value = JSON.parse(data); // the data is always a string.Parse the data with JSON.parse(), 
                                        // and the data becomes a JavaScript object
-        this.fullname = value.firstname + ' ' + value.lastname;
-        console.log('the user first name is ------>>>>', value.lastname , '>>>>>');
+        console.log('the user first name is ------>>>>', value.name , '>>>>>');
+        let firstname = value.name;
 
     }
 

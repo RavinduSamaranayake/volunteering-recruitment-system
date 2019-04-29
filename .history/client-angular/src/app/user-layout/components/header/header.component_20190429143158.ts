@@ -1,23 +1,19 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import {AuthService} from '../../../myservices/auth.service';
 
 @Component({
-    selector: 'app-sidebar',
-    templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
-export class SidebarComponent implements OnInit {
-    isActive: boolean;
-    collapsed: boolean;
-    showMenu: string;
-    pushRightClass: string;
-    fullname: string;
+export class HeaderComponent implements OnInit {
+    public pushRightClass: string;
+    private fullname: string;
 
-    @Output() collapsedEvent = new EventEmitter<boolean>();
+    constructor( private authService: AuthService, private translate: TranslateService, public router: Router) {
 
-    constructor(private authService: AuthService, private translate: TranslateService, public router: Router) {
         this.router.events.subscribe(val => {
             if (
                 val instanceof NavigationEnd &&
@@ -30,32 +26,14 @@ export class SidebarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.isActive = false;
-        this.collapsed = false;
-        this.showMenu = '';
         this.pushRightClass = 'push-right';
-        // get user full name to display
         const data = localStorage.getItem('user');
-        const value = JSON.parse(data);
+        console.log('the user is --->>>>', data , '>>>>>');
+        const value = JSON.parse(data); // the data is always a string.Parse the data with JSON.parse(), 
+                                       // and the data becomes a JavaScript object
         this.fullname = value.firstname + ' ' + value.lastname;
-    }
+        console.log('the user first name is ------>>>>', this , '>>>>>');
 
-
-    eventCalled() {
-        this.isActive = !this.isActive;
-    }
-
-    addExpandClass(element: any) {
-        if (element === this.showMenu) {
-            this.showMenu = '0';
-        } else {
-            this.showMenu = element;
-        }
-    }
-
-    toggleCollapsed() {
-        this.collapsed = !this.collapsed;
-        this.collapsedEvent.emit(this.collapsed);
     }
 
     isToggled(): boolean {
@@ -73,14 +51,14 @@ export class SidebarComponent implements OnInit {
         dom.classList.toggle('rtl');
     }
 
-    changeLang(language: string) {
-        this.translate.use(language);
-    }
-
     onLoggedout() {
         this.authService.logout();
         console.log('...successfully logout......');
         this.router.navigate(['main']);
         return false;
+    }
+
+    changeLang(language: string) {
+        this.translate.use(language);
     }
 }
