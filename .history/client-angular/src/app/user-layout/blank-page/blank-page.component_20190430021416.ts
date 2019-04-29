@@ -74,10 +74,10 @@ export class BlankPageComponent implements OnInit {
         this.authService.changeProfile(user, this.userid).subscribe(data => {
             console.log('...............', data['msg'], '.........', data, '..........'); // check the responce json 
             if (data['success']) { // check the responce json value's success key
-                 this.authService.refreshStore(user);
+                  this.authService.refreshStore(user);
                  alert('Profile change successfully!');
             } else {
-              alert('Please logout and re login for changing your profile again');
+              alert('Please logout and login again');
             }
         }
     }

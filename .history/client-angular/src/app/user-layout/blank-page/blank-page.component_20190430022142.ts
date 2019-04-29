@@ -77,7 +77,7 @@ export class BlankPageComponent implements OnInit {
                  this.authService.refreshStore(user);
                  alert('Profile change successfully!');
             } else {
-              alert('Please logout and re login for changing your profile again');
+              alert('Please logout and login again ');
             }
         }
     }

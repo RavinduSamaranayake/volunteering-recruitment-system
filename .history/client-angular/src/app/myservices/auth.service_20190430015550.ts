@@ -66,8 +66,5 @@ export class AuthService {
     localStorage.clear(); // clear storagedata
   }
 
-  refreshStore(user){
-    localStorage.removeItem('user');
-    localStorage.setItem('user', JSON.stringify(user));
-  }
+  refres
 }
