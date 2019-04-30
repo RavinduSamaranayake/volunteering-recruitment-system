@@ -121,8 +121,8 @@ router.put('/changepass/:id', function(req, res, next) {
          } else {
               res.json({success: true, msg:'Password changed'});
          }
-       });
-    } else { res.json({success: false, msg:'Please enter your correct password first'});}
+  });
+}
 });
 }
 });

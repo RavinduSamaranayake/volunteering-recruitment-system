@@ -119,10 +119,10 @@ router.put('/changepass/:id', function(req, res, next) {
          if(err){
               res.json({success: false, msg:'Failed to change password'});
          } else {
-              res.json({success: true, msg:'Password changed'});
-         }
-       });
-    } else { res.json({success: false, msg:'Please enter your correct password first'});}
+      res.json({success: true, msg:'Password changed'});
+    }
+  });
+}
 });
 }
 });

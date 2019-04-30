@@ -118,11 +118,11 @@ router.put('/changepass/:id', function(req, res, next) {
          User.changePassword(req.params.id , newpaswrd , (err) => {
          if(err){
               res.json({success: false, msg:'Failed to change password'});
-         } else {
-              res.json({success: true, msg:'Password changed'});
-         }
-       });
-    } else { res.json({success: false, msg:'Please enter your correct password first'});}
+    } else {
+      res.json({success: true, msg:'Password changed'});
+    }
+  });
+}
 });
 }
 });
