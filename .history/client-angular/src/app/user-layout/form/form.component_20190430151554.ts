@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 
 export class FormComponent implements OnInit {
-    userid: any;
+    user
     password: String;
     newpaswrd: String;
     connewpaswrd: String;
@@ -23,12 +23,7 @@ export class FormComponent implements OnInit {
         private router: Router,
     ) {}
 
-    ngOnInit() {
-        const data = localStorage.getItem('user');
-        const value = JSON.parse(data); // the data is always a string.Parse the data with JSON.parse(), 
-                                       // and the data becomes a JavaScript object
-        this.userid = value.id;
-    }
+    ngOnInit() {}
 
     onChangePassword() {
         const user = {
@@ -41,14 +36,14 @@ export class FormComponent implements OnInit {
              return false;
         }
         console.log('the current user id is --->>>>', this.userid , '>>>>>');
-        this.authService.changePassword(user, this.userid).subscribe(data => {
+        this.authService.changeProfile(user, this.userid).subscribe(data => {
             console.log('...............', data['msg'], '.........', data, '..........'); // check the responce json 
             if (data['success']) { // check the responce json value's success key
                  this.authService.refreshStore(user);
-                 alert(data['msg']);
+                 alert('Profile change successfully!');
                  this.router.navigate(['userdashboard']);
             } else {
-              alert(data['msg']);
+              alert('Please logout and re login for changing your profile again');
             }
         });
     }

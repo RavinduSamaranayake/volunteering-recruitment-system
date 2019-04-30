@@ -41,7 +41,7 @@ export class FormComponent implements OnInit {
              return false;
         }
         console.log('the current user id is --->>>>', this.userid , '>>>>>');
-        this.authService.changePassword(user, this.userid).subscribe(data => {
+        this.authService.change(user, this.userid).subscribe(data => {
             console.log('...............', data['msg'], '.........', data, '..........'); // check the responce json 
             if (data['success']) { // check the responce json value's success key
                  this.authService.refreshStore(user);
