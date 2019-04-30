@@ -1,5 +1,5 @@
 const express =require("express");
-const Post =require('../models/posts');
+const Event =require('../models/Events');
 const multer=require("multer");
 
 const router =express.Router();
@@ -31,17 +31,17 @@ router.post("",
 checkauth,
 multer({storage:storage}).single("image"),(req,res,next)=>{
     const url=req.protocol+'://'+req.get("host");
-    const post=new Post({
+    const event=new Event({
         title:req.body.title,
         content:req.body.content,
         imagePath:url+"/images/"+ req.file.filename, 
         creator:req.userData.userId
     });
 
-    post.save().then(createdPost=>{
+    event.save().then(createdEvent=>{
         res.status(201).json({
-            message:'Post added Successfully',
-            post:{
+            message:'Event added Successfully',
+            event:{
                 ...createdPost,
                 id:createdPost._id,
             }

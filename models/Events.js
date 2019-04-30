@@ -10,4 +10,4 @@ const EventSchema =mongoose.Schema({
 });
 
 
-module.exports=mongoose.model('Post',EventSchema);
+module.exports=mongoose.model('event',EventSchema);
