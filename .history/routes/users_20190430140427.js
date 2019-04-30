@@ -104,18 +104,16 @@ router.put('/changepass/:id', function(req, res, next) {
 
   User.findById(req.params.id, function (err, user) {
     if(err){
-      res.json({success: false, msg:'error'});
-    }else if(!user){
       res.json({success: false, msg:'User not found'});
-    }else {
+    } else {
 
-  User.comparePassword(password, user.password, (err, isMatch) => {
+  User.comparePassword(newpaswrd, user.password, (err, isMatch) => {
     if(err){
       res.json({success: false, msg:'Please enter your correct password first'});
     }
     if(isMatch){
     console.log(".........new password match with current......................................")
-    User.changePassword(req.params.id , newpaswrd , (err) => {
+    User.Update( req.body, function (err, post) {
     if(err){
       res.json({success: false, msg:'Failed to change password'});
     } else {

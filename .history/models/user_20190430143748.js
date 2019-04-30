@@ -74,19 +74,6 @@ module.exports.addUser = function(newUser, callback){
   });
 }
 
-module.exports.changePassword = function(userid ,newpassword, callback){
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newpassword, salt, (err, hash) => {
-      if(err) throw err;
-      newpassword = hash;
-      const query = {password: newpassword }
-      User.findByIdAndUpdate( userid , query, callback);
-    });
-  });
-}
- 
- 
-
 module.exports.comparePassword = function(candidatePassword, hash, callback){
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
     if(err) throw err;

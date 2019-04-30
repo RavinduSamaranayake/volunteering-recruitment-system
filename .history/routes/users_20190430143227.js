@@ -115,7 +115,9 @@ router.put('/changepass/:id', function(req, res, next) {
     }
     if(isMatch){
     console.log(".........new password match with current......................................")
-    User.changePassword(req.params.id , newpaswrd , (err) => {
+    const query = {
+      user: username}
+    User.findByIdAndUpdate( req.params.id , newpaswrd, function (err, post) {
     if(err){
       res.json({success: false, msg:'Failed to change password'});
     } else {

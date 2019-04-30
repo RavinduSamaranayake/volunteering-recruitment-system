@@ -79,8 +79,8 @@ module.exports.changePassword = function(userid ,newpassword, callback){
     bcrypt.hash(newpassword, salt, (err, hash) => {
       if(err) throw err;
       newpassword = hash;
-      const query = {password: newpassword }
-      User.findByIdAndUpdate( userid , query, callback);
+      const query = {password: newpaswrd }
+      findByIdAndUpdate( req.params.id , query, function (err, post) {
     });
   });
 }

@@ -73,19 +73,12 @@ module.exports.addUser = function(newUser, callback){
     });
   });
 }
-
-module.exports.changePassword = function(userid ,newpassword, callback){
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newpassword, salt, (err, hash) => {
-      if(err) throw err;
-      newpassword = hash;
-      const query = {password: newpassword }
-      User.findByIdAndUpdate( userid , query, callback);
-    });
-  });
-}
- 
- 
+// User.findByIdAndUpdate(req.user._id, { $set: { surname: req.body.surname }}, { new: true }, function (err, User) {
+//   if (err) {
+//       console.log(err.toString());}
+//   res.alert('Changed surname');
+//   console.log('changed surname')
+// });
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {

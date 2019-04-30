@@ -74,13 +74,12 @@ module.exports.addUser = function(newUser, callback){
   });
 }
 
-module.exports.changePassword = function(userid ,newpassword, callback){
+module.exports.changePassword = function(password, callback){
   bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newpassword, salt, (err, hash) => {
+    bcrypt.hash(newUser.password, salt, (err, hash) => {
       if(err) throw err;
-      newpassword = hash;
-      const query = {password: newpassword }
-      User.findByIdAndUpdate( userid , query, callback);
+      newUser.password = hash;
+      newUser.save(callback);
     });
   });
 }
