@@ -28,9 +28,16 @@
     "@ngx-translate/core": "11.0.0",
     "@ngx-translate/http-loader": "4.0.0",
     "angular-alert-module": "^2.0.3",
+<<<<<<< HEAD
     "angular-ui-bootstrap": "^2.5.6",
+=======
+    "angular-calendar": "^0.27.7",
+    "angularx-flatpickr": "^6.1.0",
+>>>>>>> bc1f72ce0858aabd831f5fd8c1f8b45d3acb3ff4
     "chart.js": "2.7.3",
     "core-js": "2.5.7",
+    "date-fns": "^1.30.1",
+    "flatpickr": "^4.5.7",
     "font-awesome": "4.7.0",
     "ng2-charts": "1.6.0",
     "ng2-datetime": "^1.4.0",

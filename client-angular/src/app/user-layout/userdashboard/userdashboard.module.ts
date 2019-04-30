@@ -23,7 +23,7 @@ import { StatModule } from '../../shared';
         UserdashboardComponent,
         TimelineComponent,
         NotificationComponent,
-        ChatComponent
+        ChatComponent,
     ]
 })
 export class UserdashboardModule {}
