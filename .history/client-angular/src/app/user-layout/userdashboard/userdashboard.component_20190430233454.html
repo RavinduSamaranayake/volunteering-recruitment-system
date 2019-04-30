@@ -1,6 +1,6 @@
 <div [@routerTransition]>
   <!-- <h2 class="text-muted">User Dashboard <small>We are volunteers</small></h2> -->
-  <!-- <div class="row">
+  <div class="row">
       <div class="col-md-12">
           <ngb-carousel>
               <ng-template ngbSlide *ngFor="let slider of sliders">
@@ -12,14 +12,14 @@
               </ng-template>
           </ngb-carousel>
       </div>
-  </div> -->
+  </div>
   <hr>
   <div class="row">
       <div class="col-xl-3 col-lg-6">
-          <app-stat [bgClass]="'primary'" [icon]="'fa-tasks'" [count]="26" [label]="'Available!'" (click)="dispval()" ></app-stat>
+          <app-stat [bgClass]="'primary'" [icon]="'fa-tasks'" [count]="26" [label]="'Available events!'" (click)="dispval()" ></app-stat>
       </div>
       <div class="col-xl-3 col-lg-6">
-          <app-stat [bgClass]="'warning'" [icon]="'fa-tasks'" [count]="12" [label]="'Upcomming!'" ></app-stat>
+          <app-stat [bgClass]="'warning'" [icon]="'fa-tasks'" [count]="12" [label]="'Upcomming events!'" ></app-stat>
       </div>
       <div class="col-xl-3 col-lg-6">
           <app-stat [bgClass]="'success'" [icon]="'fa-save'" [count]="124" [label]="'History!'" ></app-stat>
