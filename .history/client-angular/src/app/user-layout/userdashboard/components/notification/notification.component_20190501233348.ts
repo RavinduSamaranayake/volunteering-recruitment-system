@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EventService} from '../../../../myservices/event.service';
+import {ProjectsComponent} from '../projects/projects.component';
 @Component({
     selector: 'app-notification',
     templateUrl: './notification.component.html',
@@ -18,6 +19,7 @@ export class NotificationComponent implements OnInit {
         private eventservice: EventService,
     ) { }
     ngOnInit() {
+        
        this.eventservice.$eventdetails
 
      // get the event id from event service 

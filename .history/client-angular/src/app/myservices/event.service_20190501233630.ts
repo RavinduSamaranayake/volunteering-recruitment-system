@@ -30,6 +30,7 @@ setEvent(sevent) {
 
 getEvent() {
   return this.slctevent;
+ 
 }
 
 }

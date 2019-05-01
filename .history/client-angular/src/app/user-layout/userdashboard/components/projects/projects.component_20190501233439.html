@@ -5,6 +5,7 @@
           <thead>
           <tr>
               <th>Title</th>
+              <!-- <th>Description</th> -->
               <th>Date</th>
               <th>Organization</th>
           </tr>
@@ -12,6 +13,7 @@
           <tbody>
           <tr *ngFor="let event of allevents" (click)="cellClicked(event)">
               <td>{{event.title}}</td>
+              <!-- <td>{{event.description}}</td> -->
               <td>{{event.date}}</td>
               <td>{{event.organization}}</td>
                
