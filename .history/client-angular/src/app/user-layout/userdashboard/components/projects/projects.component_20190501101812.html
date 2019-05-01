@@ -11,7 +11,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let event of allevents" (click)="cellClicked(event)">
+          <tr *ngFor="let event of allevents" (click)="cellClicked(e)">
               <td>{{event.title}}</td>
               <td>{{event.description}}</td>
               <td>{{event.date}}</td>

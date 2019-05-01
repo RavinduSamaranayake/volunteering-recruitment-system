@@ -27,10 +27,7 @@ export class ProjectsComponent implements OnInit {
     // this.allevents = res;
 });
   }
-
-  cellClicked(element) {
-    console.log(element.title + ' cell clicked');
-  }
+  
 
 
 }
