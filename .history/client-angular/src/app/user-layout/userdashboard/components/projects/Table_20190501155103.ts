@@ -1,5 +1,5 @@
 export interface Table {
-    _id: String;
+    
     title: String;
     description: String;
     date: String;

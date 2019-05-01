@@ -29,7 +29,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   cellClicked(element) {
-    console.log(element._id + ' cell clicked');
+    console.log(element.ra + ' cell clicked');
   }
 
 
