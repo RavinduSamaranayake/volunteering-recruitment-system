@@ -30,9 +30,9 @@ export class NotificationComponent implements OnInit {
         this.title = data.title;
         this.date = data.date;
         this.description = data.description;
-        this.attendees = data.attendees;
-        this.rating = data.rating;
-        this.organize = data.organization;
+        this.attendees = data.att;
+        this.title = data.title;
+        this.title = data.title;
       });
 
     }

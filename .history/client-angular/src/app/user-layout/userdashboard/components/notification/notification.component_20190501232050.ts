@@ -12,9 +12,7 @@ export class NotificationComponent implements OnInit {
     title: String;
     date: String;
     description: String;
-    attendees: String;
-    rating: String;
-    organize: String;
+    att: String;
     constructor(
         private eventservice: EventService,
     ) { }
@@ -28,11 +26,6 @@ export class NotificationComponent implements OnInit {
         console.log('I got data in project component', data);
         this.selectevent = data;
         this.title = data.title;
-        this.date = data.date;
-        this.description = data.description;
-        this.attendees = data.attendees;
-        this.rating = data.rating;
-        this.organize = data.organization;
       });
 
     }

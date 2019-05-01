@@ -29,10 +29,10 @@ export class NotificationComponent implements OnInit {
         this.selectevent = data;
         this.title = data.title;
         this.date = data.date;
-        this.description = data.description;
-        this.attendees = data.attendees;
-        this.rating = data.rating;
-        this.organize = data.organization;
+        this.d = data.title;
+        this.title = data.title;
+        this.title = data.title;
+        this.title = data.title;
       });
 
     }
