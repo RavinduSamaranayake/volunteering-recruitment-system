@@ -28,8 +28,8 @@ setEvent(sevent) {
    this.$eventdetails.emit(this.slctevent); // save the event value in this variable
 }
 
-getEvent() {
-  return this.slctevent;
+getEventId() {
+  return this.eventId;
  // return 'hello';
 }
 

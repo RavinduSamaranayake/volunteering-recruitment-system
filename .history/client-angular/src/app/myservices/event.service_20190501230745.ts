@@ -25,11 +25,11 @@ getAllEvent() {
 
 setEvent(sevent) {
    this.slctevent = sevent;
-   this.$eventdetails.emit(this.slctevent); // save the event value in this variable
+   this.$eventdetails.emit(this.eventId); // save the event value in this variable
 }
 
-getEvent() {
-  return this.slctevent;
+getEventId() {
+  return this.eventId;
  // return 'hello';
 }
 

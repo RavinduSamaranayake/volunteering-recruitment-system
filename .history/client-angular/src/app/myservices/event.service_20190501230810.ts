@@ -29,7 +29,7 @@ setEvent(sevent) {
 }
 
 getEvent() {
-  return this.slctevent;
+  return this.event;
  // return 'hello';
 }
 

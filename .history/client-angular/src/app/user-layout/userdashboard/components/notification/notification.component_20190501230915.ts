@@ -8,8 +8,7 @@ import {ProjectsComponent} from '../projects/projects.component';
 })
 export class NotificationComponent implements OnInit {
     eventId: String;
-    selectevent: any;
-    title: String;
+    slctevent: any
     constructor(
         private eventservice: EventService,
     ) { }
@@ -21,8 +20,7 @@ export class NotificationComponent implements OnInit {
      // (this method is very good method to transfer data between two compnents without any relation like child parents)
       .subscribe( (data) => {
         console.log('I got data in project component', data);
-        this.selectevent = data;
-        this.title = data.title;
+        this.eventId = data;
       });
 
     }

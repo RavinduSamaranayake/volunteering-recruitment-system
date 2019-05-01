@@ -38,9 +38,9 @@ export class ProjectsComponent implements OnInit {
 
   cellClicked(element) {
     console.log(element._id + ' cell clicked');
-    this.selectevent = element;
-    this.eventservice.setEvent(this.selectevent);
-    console.log(this.eventservice.getEvent().title + ' ....call');
+    this.eventid = element._id;
+    this.eventservice.setEventId(this.eventid);
+    console.log(this.eventservice.getEventId() + ' ....call');
   }
 
   getEid() {

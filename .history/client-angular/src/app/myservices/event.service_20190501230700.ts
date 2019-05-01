@@ -23,13 +23,13 @@ getAllEvent() {
   return this.http.get('http://localhost:3000/events/allevents');
 }
 
-setEvent(sevent) {
-   this.slctevent = sevent;
-   this.$eventdetails.emit(this.slctevent); // save the event value in this variable
+setEvent(eve) {
+   this.eventId = id;
+   this.$eventdetails.emit(this.eventId); // save the event value in this variable
 }
 
-getEvent() {
-  return this.slctevent;
+getEventId() {
+  return this.eventId;
  // return 'hello';
 }
 

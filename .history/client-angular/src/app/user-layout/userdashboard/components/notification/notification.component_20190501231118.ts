@@ -22,7 +22,7 @@ export class NotificationComponent implements OnInit {
       .subscribe( (data) => {
         console.log('I got data in project component', data);
         this.selectevent = data;
-        this.title = data.title;
+        this.title = data.ti
       });
 
     }

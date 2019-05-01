@@ -40,7 +40,7 @@ export class ProjectsComponent implements OnInit {
     console.log(element._id + ' cell clicked');
     this.selectevent = element;
     this.eventservice.setEvent(this.selectevent);
-    console.log(this.eventservice.getEvent().title + ' ....call');
+    console.log(this.eventservice.getEvent(). + ' ....call');
   }
 
   getEid() {

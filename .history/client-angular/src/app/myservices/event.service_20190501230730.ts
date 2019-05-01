@@ -8,7 +8,7 @@ export class EventService {
   // this is use to share the selected event data pass to the viewdata component via event service
   $eventdetails = new EventEmitter(); // this is like value saving varible
   eventId: String;
-  slctevent: any;
+  slctevslctevent
 
   constructor(private http: HttpClient) { }
 
@@ -24,12 +24,12 @@ getAllEvent() {
 }
 
 setEvent(sevent) {
-   this.slctevent = sevent;
-   this.$eventdetails.emit(this.slctevent); // save the event value in this variable
+   this.s = sevent;
+   this.$eventdetails.emit(this.eventId); // save the event value in this variable
 }
 
-getEvent() {
-  return this.slctevent;
+getEventId() {
+  return this.eventId;
  // return 'hello';
 }
 
