@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
         this.pushRightClass = 'push-right';
         const data = localStorage.getItem('user');
-        console.log('the user is --->>>>', data , '>>>>>');
+        // console.log('the user is --->>>>', data , '>>>>>');
         const value = JSON.parse(data); // the data is always a string.Parse the data with JSON.parse(), 
                                        // and the data becomes a JavaScript object
         console.log('the user name is ------>>>>', value.name , '>>>>>');

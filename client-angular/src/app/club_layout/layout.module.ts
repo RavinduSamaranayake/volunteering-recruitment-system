@@ -14,6 +14,7 @@ import { AllVolunteersComponent } from '../club_layout/volunteers/all-volunteers
 import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 
 
@@ -27,7 +28,8 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
         ReactiveFormsModule,
         FormsModule,
         TimepickerModule.forRoot(),
-        BsDatepickerModule.forRoot()
+        BsDatepickerModule.forRoot(),
+        PopoverModule.forRoot()
 
     ],
     declarations: [LayoutComponent, SidebarComponent , NewProjectComponent, HeaderComponent, ViewProjectsComponent, CurrentVolunteersComponent, AllVolunteersComponent],

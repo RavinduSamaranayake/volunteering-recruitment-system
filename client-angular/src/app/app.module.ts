@@ -13,11 +13,12 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import {ValidateService} from './myservices/validate.service';
 import {AuthService} from './myservices/auth.service';
-<<<<<<< HEAD
-=======
 import {EventService} from './myservices/event.service';
 import {CalendarLocalModule} from './admin-layout/calendar/calendar.module';
->>>>>>> bc1f72ce0858aabd831f5fd8c1f8b45d3acb3ff4
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+
 
 // import { HeaderComponent } from './layout/components/header/header.component';
 
@@ -34,15 +35,15 @@ import {CalendarLocalModule} from './admin-layout/calendar/calendar.module';
         AppRoutingModule,
         FormsModule,
         CalendarLocalModule,
-        AlertsModule.forRoot()
+        AlertsModule.forRoot(),
+        BsDatepickerModule.forRoot(),
+        TimepickerModule.forRoot(),
+        PopoverModule.forRoot()
     ],
-<<<<<<< HEAD
-    declarations: [AppComponent, ],
-    providers: [AuthGuard, ValidateService, AuthService],
-=======
+
     declarations: [AppComponent ],
     providers: [AuthGuard, ValidateService, AuthService, EventService],
->>>>>>> bc1f72ce0858aabd831f5fd8c1f8b45d3acb3ff4
+
     bootstrap: [AppComponent]
 })
 export class AppModule {}
