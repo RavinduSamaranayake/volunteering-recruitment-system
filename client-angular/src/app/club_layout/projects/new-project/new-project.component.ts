@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { EventService } from 'src/app/myservices/event.service';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
+
 
 @Component({
   selector: 'app-new-project',
@@ -50,17 +50,19 @@ OnSaveEvent() {
       return;
   }
   const event:any={
-      id:null,
       title:this.form.value.title,
       image:this.form.value.image,
-      date:this.form.value.date,
-      time:(this.mytime).getTime(),
+      date:(this.form.value.date).toDateString(),
+      time:(this.mytime).toTimeString(),
       type:this.form.value.type,
+      attendees:null,
+      rating:null,
+      organization:null,
       description:this.form.value.description
   }
 
   console.log(event);
-      // this.eventService.addEvent(event)
+       this.eventService.addEvent(event)
 
       // this.form.reset();
   } 

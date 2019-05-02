@@ -17,6 +17,18 @@ const EventSchema = mongoose.Schema({
     type: String,
     required: true
   },
+
+  time: {
+    type: String,
+    required: true
+  },
+
+  type: {
+    type: String,
+    required: true
+  },
+
+  
   attendees: {
     type: String,
     //required: true
@@ -31,7 +43,7 @@ const EventSchema = mongoose.Schema({
   },
   organization: {
     type: String,
-    required: true
+    // required: true
   }
 
   

@@ -13,7 +13,13 @@ addEvent(event) {
   let headers = new HttpHeaders();
   headers.append('Content-Type', 'application/json');
   // post the user data to the server in json object
-  return this.http.post('http://localhost:3000/events/addevent', event, {headers: headers});
+  console.log(event);
+  this.http.post<{message:string,event:any}>('http://localhost:3000/events/addevent',event,{headers: headers})
+  .subscribe((responseData)=>{
+    console.log(responseData)
+      // this.router.navigate(["/"])
+  });
+  // return this.http.post('http://localhost:3000/events/addevent', event, {headers: headers});
 }
 getAllEvent() {
   // let headers = new HttpHeaders();
