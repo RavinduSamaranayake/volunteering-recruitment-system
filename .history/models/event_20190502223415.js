@@ -14,7 +14,7 @@ const EventSchema = mongoose.Schema({
     //required: true
   },
   date: {
-    type: Date,
+    type: D,
     required: true
   },
   attendees: {
