@@ -76,11 +76,11 @@ router.post('/addselected', (req, res, next) => {
 
 });
  
-//@route GET events/allselectevents
+//@route GET events/allevents
 //@desc Get All items
 //@access public
 
-router.get('/allselectevents',(req,res) => {
-  SelectEvent.find()
-    .then(slctevents => res.json(slctevents))
+router.get('/allevents',(req,res) => {
+  Event.find()
+    .then(events => res.json(events))
 });

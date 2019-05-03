@@ -80,7 +80,7 @@ router.post('/addselected', (req, res, next) => {
 //@desc Get All items
 //@access public
 
-router.get('/allselectevents',(req,res) => {
-  SelectEvent.find()
-    .then(slctevents => res.json(slctevents))
+router.get('/allevents',(req,res) => {
+  Event.find()
+    .then(events => res.json(events))
 });

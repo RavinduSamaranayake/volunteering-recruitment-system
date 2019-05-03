@@ -82,5 +82,5 @@ router.post('/addselected', (req, res, next) => {
 
 router.get('/allselectevents',(req,res) => {
   SelectEvent.find()
-    .then(slctevents => res.json(slctevents))
+    .then(slctevents => res.json(events))
 });
