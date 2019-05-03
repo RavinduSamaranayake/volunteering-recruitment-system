@@ -66,7 +66,7 @@ router.post('/addselected', (req, res, next) => {
     rating: req.body.rating,
     image: req.body.image,
     organization: req.body.organization,
-    status: "selected",
+    status: ""
   });
 
   newSelectEvent.save().then(event => res.json({success: true, msg:'Selected event added' ,event: event}))

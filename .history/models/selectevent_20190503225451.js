@@ -36,10 +36,9 @@ const SelectEventSchema = mongoose.Schema({
   organization: {
     type: String,
     required: true
-  },
+  }
   status: {
-    type: String,
-    required: true
+      
   }
 
   

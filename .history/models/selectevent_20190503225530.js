@@ -39,8 +39,7 @@ const SelectEventSchema = mongoose.Schema({
   },
   status: {
     type: String,
-    required: true
-  }
+    required: true}
 
   
 
