@@ -6,8 +6,7 @@ const Schema = mongoose.Schema;
 // Schema
 const SelectEventSchema = mongoose.Schema({
   _id: {
-    type: String,
-    required: true 
+      
   },
   title: {
     type: String,

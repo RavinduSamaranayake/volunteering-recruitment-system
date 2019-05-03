@@ -5,9 +5,9 @@ const Schema = mongoose.Schema;
 
 // Schema
 const SelectEventSchema = mongoose.Schema({
-  _id: {
+  slctid: {
     type: String,
-    required: true 
+    //required: true 
   },
   title: {
     type: String,

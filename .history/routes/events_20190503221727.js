@@ -59,7 +59,7 @@ module.exports = router;
 //@access public
 router.post('/addselected', (req, res, next) => {
   let newSelectEvent = new SelectEvent({
-    _id: req.body._id,
+    slctid: req.body.sid,
     name: req.body.name,  //req.body mean the value is post using text field or other
     title: req.body.title,
     description: req.body.description,

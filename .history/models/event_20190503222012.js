@@ -4,14 +4,11 @@ const Schema = mongoose.Schema;
  
 
 // Schema
-const SelectEventSchema = mongoose.Schema({
-  _id: {
-    type: String,
-    required: true 
-  },
+const EventSchema = mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
+    
   },
   description: {
     type: String,
@@ -42,16 +39,16 @@ const SelectEventSchema = mongoose.Schema({
 
 });
 
-const SelectEvent = module.exports = mongoose.model('SelectEvent', SelectEventSchema);
+const Event = module.exports = mongoose.model('Event', EventSchema);
 
  
-module.exports.getSelectEventById = function(id, callback){
-    SelectEvent.findById(id, callback);
-  }
-  
-  module.exports.getSelectEventByEventname = function(eventname, callback){
-    const query = {eventname: eventname}
-    SelectEvent.findOne(query, callback);
-  }
-   
+module.exports.getEventById = function(id, callback){
+  Event.findById(id, callback);
+}
+
+module.exports.getEventByEventname = function(eventname, callback){
+  const query = {eventname: eventname}
+  Event.findOne(query, callback);
+}
+ 
  

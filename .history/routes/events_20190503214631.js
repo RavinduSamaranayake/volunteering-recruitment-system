@@ -59,7 +59,7 @@ module.exports = router;
 //@access public
 router.post('/addselected', (req, res, next) => {
   let newSelectEvent = new SelectEvent({
-    _id: req.body._id,
+    _id: req.body.id,
     name: req.body.name,  //req.body mean the value is post using text field or other
     title: req.body.title,
     description: req.body.description,
@@ -70,7 +70,7 @@ router.post('/addselected', (req, res, next) => {
     organization: req.body.organization
   });
 
-  newSelectEvent.save().then(event => res.json({success: true, msg:'Selected event added' ,event: event}))
+  newSelectEvent.save().then(event => res.json({success: true, msg:'Selectvent added' ,event: event}))
                  .catch(err => res.status(404).json({success: false, msg:'Add event fail'}));
  
 
