@@ -30,6 +30,8 @@ setEvent(sevent) {
    this.$eventdetails.emit(this.slctevent); // save the event value in this variable
 }
 
+
+
 addSelectEvent(event) {
   let headers = new HttpHeaders();
   headers.append('Content-Type', 'application/json');

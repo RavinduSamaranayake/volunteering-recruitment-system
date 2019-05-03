@@ -23,12 +23,16 @@ getAllEvent() {
   return this.http.get('http://localhost:3000/events/allevents');
 }
 
-// after the user select a event.......................
 
 setEvent(sevent) {
    this.slctevent = sevent;
    this.$eventdetails.emit(this.slctevent); // save the event value in this variable
 }
+
+getEvent() {
+  return this.slctevent;
+}
+
 
 addSelectEvent(event) {
   let headers = new HttpHeaders();
@@ -36,7 +40,6 @@ addSelectEvent(event) {
   // post the user data to the server in json object
   return this.http.post('http://localhost:3000/events/addselected', event, {headers: headers});
 }
-
 getAllSelectEvent() {
   // let headers = new HttpHeaders();
   return this.http.get('http://localhost:3000/events/allselectevents');
