@@ -63,16 +63,10 @@ export class UserdashboardComponent implements OnInit {
         this.alerts.splice(index, 1);
     }
 
-    public viewAvailable() {
+    public viewvailable() {
        console.log('.............clicked it.........');
        this.router.navigate(['projects']);
 
     }
-
-    public viewUpcomming() {
-        console.log('.............clicked UPCOMMING.........');
-        //this.router.navigate(['projects']);
- 
-     }
 
 }
