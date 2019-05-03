@@ -44,7 +44,7 @@ export class NotificationComponent implements OnInit {
         description: this.description,
         attendees: this.attendees,
         rating: this.rating,
-        organization: this.organize,
+        organiztion: this.organize,
       };
     // get the responce json object from server using subscribe method. the data isa responce json
     this.eventservice.addSelectEvent(event).subscribe(data => {
@@ -53,7 +53,7 @@ export class NotificationComponent implements OnInit {
         alert('Thank You for join....');
         // this.alerts.setMessage('Registration successfully! now you can login', 'success');
       } else {
-        alert('Some thing went wrong');
+        alert('Please signup again');
         // this.alerts.setMessage('Please signup again', 'warn');
       }
     });

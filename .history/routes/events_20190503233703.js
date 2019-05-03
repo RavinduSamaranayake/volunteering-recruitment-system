@@ -58,7 +58,7 @@ router.delete('/delevent/:id',(req,res) => {
 router.post('/addselected', (req, res, next) => {
   let newSelectEvent = new SelectEvent({
     _id: req.body._id,
-                          //req.body mean the value is post using text field or other
+      //req.body mean the value is post using text field or other
     title: req.body.title,
     description: req.body.description,
     date: req.body.date,
@@ -70,7 +70,7 @@ router.post('/addselected', (req, res, next) => {
   });
 
   newSelectEvent.save().then(event => res.json({success: true, msg:'Selected event added' ,event: event}))
-                 .catch(err => res.json({success: false, msg:'Add event fail'}));
+                 .catch(err => res.status(404).json({success: false, msg:'Add event fail'}));
  
 
 });

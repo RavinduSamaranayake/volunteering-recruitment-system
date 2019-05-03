@@ -25,7 +25,6 @@ export class NotificationComponent implements OnInit {
       .subscribe( (data) => {
         console.log('I got data in project component', data);
         this.selectevent = data;
-        this.eventId = data._id;
         this.title = data.title;
         this.date = data.date;
         this.description = data.description;
@@ -36,28 +35,6 @@ export class NotificationComponent implements OnInit {
 
     }
 
-    addselectevent() {
-      const event = {
-        _id: this.eventId,
-        title: this.title,
-        date: this.date,
-        description: this.description,
-        attendees: this.attendees,
-        rating: this.rating,
-        organization: this.organize,
-      };
-    // get the responce json object from server using subscribe method. the data isa responce json
-    this.eventservice.addSelectEvent(event).subscribe(data => {
-      console.log('...............', data['msg'], '.........', data, '..........'); // check the responce json 
-      if (data['success']) { // check the responce json value's success key and navigate login page
-        alert('Thank You for join....');
-        // this.alerts.setMessage('Registration successfully! now you can login', 'success');
-      } else {
-        alert('Some thing went wrong');
-        // this.alerts.setMessage('Please signup again', 'warn');
-      }
-    });
-
-  }
+    
 }
 

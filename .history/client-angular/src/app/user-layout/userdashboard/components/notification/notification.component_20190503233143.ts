@@ -36,24 +36,26 @@ export class NotificationComponent implements OnInit {
 
     }
 
-    addselectevent() {
-      const event = {
+    onRegisterSubmit() {
+      const selectevent = {
         _id: this.eventId,
         title: this.title,
         date: this.date,
         description: this.description,
         attendees: this.attendees,
         rating: this.rating,
-        organization: this.organize,
+        organiztion: this.organize,
       };
     // get the responce json object from server using subscribe method. the data isa responce json
-    this.eventservice.addSelectEvent(event).subscribe(data => {
+    this.eventservice.subscribe(data => {
       console.log('...............', data['msg'], '.........', data, '..........'); // check the responce json 
       if (data['success']) { // check the responce json value's success key and navigate login page
-        alert('Thank You for join....');
+        this.router.navigate(['login']);
+        alert('Registration successfully! now you can login');
         // this.alerts.setMessage('Registration successfully! now you can login', 'success');
       } else {
-        alert('Some thing went wrong');
+        this.router.navigate(['signup']);
+        alert('Please signup again');
         // this.alerts.setMessage('Please signup again', 'warn');
       }
     });

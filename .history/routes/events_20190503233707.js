@@ -70,7 +70,7 @@ router.post('/addselected', (req, res, next) => {
   });
 
   newSelectEvent.save().then(event => res.json({success: true, msg:'Selected event added' ,event: event}))
-                 .catch(err => res.json({success: false, msg:'Add event fail'}));
+                 .catch(err => res.status(404).json({success: false, msg:'Add event fail'}));
  
 
 });

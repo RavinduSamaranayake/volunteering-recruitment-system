@@ -46,6 +46,7 @@ export class NotificationComponent implements OnInit {
         rating: this.rating,
         organization: this.organize,
       };
+      
     // get the responce json object from server using subscribe method. the data isa responce json
     this.eventservice.addSelectEvent(event).subscribe(data => {
       console.log('...............', data['msg'], '.........', data, '..........'); // check the responce json 
