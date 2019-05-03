@@ -48,6 +48,8 @@ router.delete('/delevent/:id',(req,res) => {
   });
   
 
+module.exports = router;
+
 
 //select events........................
 
@@ -92,6 +94,3 @@ router.delete('/delslctevent/:id',(req,res) => {
      .then(event => event.remove().then(()=>res.json({sucess: true})))
      .catch(err => res.status(404).json({sucess:false}));
 });
-
-
-module.exports = router;

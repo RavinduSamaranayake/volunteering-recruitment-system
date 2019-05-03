@@ -48,6 +48,8 @@ router.delete('/delevent/:id',(req,res) => {
   });
   
 
+module.exports = router;
+
 
 //select events........................
 
@@ -87,11 +89,8 @@ router.get('/allselectevents',(req,res) => {
 //@desc Delete a Item
 //@access public
 
-router.delete('/delslctevent/:id',(req,res) => {
-  SelectEvent.findById(req.params.id)
+router.delete('/delevent/:id',(req,res) => {
+  Event.findById(req.params.id)
      .then(event => event.remove().then(()=>res.json({sucess: true})))
      .catch(err => res.status(404).json({sucess:false}));
 });
-
-
-module.exports = router;
