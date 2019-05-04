@@ -12,6 +12,7 @@ const routes: Routes = [
             { path: 'homepg', loadChildren: './adminhomepg/adminhomepg.module#AdminhomepgModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
+            { path: 'organizations', loadChildren: './add-organization/add-organization.module#AddOrganizationModule' },
            // { path: 'forms', loadChildren: './form/form.module#FormModule' },
            // { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
            // { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
