@@ -7,5 +7,5 @@ export interface Table {
     rating: String;
     image: String;
     organization: String;
-    status: String;
+    stat
 }

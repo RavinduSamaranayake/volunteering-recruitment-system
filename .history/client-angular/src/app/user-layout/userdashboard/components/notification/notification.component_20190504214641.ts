@@ -14,7 +14,7 @@ export class NotificationComponent implements OnInit {
     attendees: String;
     rating: String;
     organize: String;
-    status: String;
+    status: 
     constructor(
         private eventservice: EventService,
     ) { }
@@ -33,7 +33,6 @@ export class NotificationComponent implements OnInit {
         this.attendees = data.attendees;
         this.rating = data.rating;
         this.organize = data.organization;
-        this.status = data.status;
       });
 
     }

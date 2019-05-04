@@ -39,6 +39,7 @@ export class ProjectsComponent implements OnInit {
      return this.eventid;
   }
 
+  chk
 
 
 }

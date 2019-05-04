@@ -23,7 +23,7 @@ export class ProjectsComponent implements OnInit {
   ngOnInit() {
   this.eventservice.getAllSelectEvent().subscribe((data: Table[]) => {
     this.allevents = data;
-    console.log('the status is ', this.allevents[5].status);
+    console.log("the stat"this.allevents[1].status);
 });
   }
 
@@ -38,7 +38,6 @@ export class ProjectsComponent implements OnInit {
   getEid() {
      return this.eventid;
   }
-
 
 
 }

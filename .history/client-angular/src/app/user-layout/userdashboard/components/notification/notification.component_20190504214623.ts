@@ -6,6 +6,7 @@ import {EventService} from '../../../../myservices/event.service';
     styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent implements OnInit {
+    
     eventId: String;
     selectevent: any;
     title: String;
@@ -14,7 +15,6 @@ export class NotificationComponent implements OnInit {
     attendees: String;
     rating: String;
     organize: String;
-    status: String;
     constructor(
         private eventservice: EventService,
     ) { }
@@ -33,7 +33,6 @@ export class NotificationComponent implements OnInit {
         this.attendees = data.attendees;
         this.rating = data.rating;
         this.organize = data.organization;
-        this.status = data.status;
       });
 
     }

@@ -39,6 +39,11 @@ export class ProjectsComponent implements OnInit {
      return this.eventid;
   }
 
+  isSelected(){
+    if(this.selectevent.status === 'selected'){
+      
+    }
+  }
 
 
 }
