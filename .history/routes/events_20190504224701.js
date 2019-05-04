@@ -18,8 +18,8 @@ router.post('/addevent', (req, res, next) => {
     attendees: req.body.attendees,
     rating: req.body.rating,
     image: req.body.image,
-    organization: req.body.organization,
-    status: 'notselect'
+    organization: req.body.organization
+    status
   });
 
   newEvent.save().then(event => res.json({success: true, msg:'Event added' ,event: event}))

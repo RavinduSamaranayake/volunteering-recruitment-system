@@ -18,7 +18,7 @@ router.post('/addevent', (req, res, next) => {
     attendees: req.body.attendees,
     rating: req.body.rating,
     image: req.body.image,
-    organization: req.body.organization,
+    organization: req.body.organization
     status: 'notselect'
   });
 

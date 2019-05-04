@@ -64,7 +64,7 @@ export class NotificationComponent implements OnInit {
         alert('Thank You for join with this event....');
         // this.alerts.setMessage('Registration successfully! now you can login', 'success');
       } else {
-        alert('Sorry! You are already going for this event');
+        alert('Sorry!You are already going for this event');
         // this.alerts.setMessage('Please signup again', 'warn');
       }
     });

@@ -61,10 +61,10 @@ export class NotificationComponent implements OnInit {
     this.eventservice.addSelectEvent(event).subscribe(data => {
       console.log('...............', data['msg'], '.........', data, '..........'); // check the responce json 
       if (data['success']) { // check the responce json value's success key and navigate login page
-        alert('Thank You for join with this event....');
+        alert('Thank You for join ....');
         // this.alerts.setMessage('Registration successfully! now you can login', 'success');
       } else {
-        alert('Sorry! You are already going for this event');
+        alert('You are already going for this event');
         // this.alerts.setMessage('Please signup again', 'warn');
       }
     });
