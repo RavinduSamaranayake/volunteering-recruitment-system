@@ -8,7 +8,6 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'projects', pathMatch: 'prefix' },
             { path: 'projects', loadChildren: './components/projects/projects.module#ProjectsModule' },
-            { path: 'upcomming', loadChildren: './components/selectevents/slctevent.module#SlcteventModule' },
         ]
     }
 ];

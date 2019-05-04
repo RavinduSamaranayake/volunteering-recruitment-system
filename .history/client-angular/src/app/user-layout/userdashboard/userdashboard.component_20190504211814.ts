@@ -71,7 +71,7 @@ export class UserdashboardComponent implements OnInit {
 
     public viewUpcomming() {
         console.log('.............clicked UPCOMMING.........');
-        this.router.navigate(['upcomming']);
+        this.router.navigate(['upcomm']);
         //this.router.navigate(['projects']);
  
      }
