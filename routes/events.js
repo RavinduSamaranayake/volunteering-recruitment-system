@@ -2,14 +2,41 @@ const express = require('express');
 const router = express.Router();
 const Event = require('../models/event');
 const config = require('../config/keys');
+const multer=require("multer");
+const passport = require('passport');
+const User = require('../models/user');
 
 
+
+const MIME_TYPE_MAP ={
+  'image/png':'png',
+  'image/jpeg':'jpg',
+  'image/jpg':'jpg'
+}
+
+const storage=multer.diskStorage({
+  destination:(req,file,cb)=>{
+      const isValid=MIME_TYPE_MAP[file.mimetype];
+      let error=new Error("Inavalid mime type");
+      if(isValid){
+          error=null;
+      }
+      cb(error,"images")
+  },
+  filename:(req,file,cb)=>{
+      const name=file.originalname.toLowerCase().split(' ').join('-');
+      const ext=MIME_TYPE_MAP[file.mimetype];
+      cb(null,name + '-' +Date.now() + '.' +ext);
+  }
+})
 
 //@route POST events/addevent
 //@desc create a Event
 //@access public
-router.post('/addevent', (req, res, next) => {
-  console.log("23123")
+router.post('/addevent',multer({storage:storage}).single("image"),(req, res, next) => {
+  const url=req.protocol+'://'+req.get("host");
+
+  console.log(res.user)
   let newEvent = new Event({
   //req.body mean the value is post using text field or other
     title: req.body.title,
@@ -19,7 +46,7 @@ router.post('/addevent', (req, res, next) => {
     type:req.body.type,
     attendees: req.body.attendees,
     rating: req.body.rating,
-    image: req.body.image,
+    image: url+"/images/"+req.file.filename,
     organization: req.body.organization
   });
 

@@ -18,6 +18,7 @@ import {CalendarLocalModule} from './admin-layout/calendar/calendar.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 
 // import { HeaderComponent } from './layout/components/header/header.component';
@@ -38,7 +39,8 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
         AlertsModule.forRoot(),
         BsDatepickerModule.forRoot(),
         TimepickerModule.forRoot(),
-        PopoverModule.forRoot()
+        PopoverModule.forRoot(),
+        AlertModule.forRoot()
     ],
 
     declarations: [AppComponent ],

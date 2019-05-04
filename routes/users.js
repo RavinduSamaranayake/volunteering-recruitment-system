@@ -35,7 +35,7 @@ router.post('/register', (req, res, next) => {
 router.post('/authenticate', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
-  console.log("123")
+
 
   User.getUserByUsername(username, (err, user) => {
     if(err) throw err;

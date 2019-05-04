@@ -1,9 +1,8 @@
-<ng-template #popTemplate>
-    <timepicker [(ngModel)]="mytime" [showMeridian]="false"></timepicker>
-  </ng-template>
- 
+
+
  <div class="row">
     <h1>Add Events</h1>
+   
           <form [formGroup]="form" (submit)="OnSaveEvent()" class="was-validated">
               <div class="col-lg-12">
               <fieldset class="form-group">
@@ -26,7 +25,7 @@
                   <form [formGroup]="form" (submit)="OnSaveEvent()" class="was-validated">
                 <fieldset class="form-group">
                    
-                    <input type="file" required required formControlName="image" class="form-control-file"  #filePicker (change)="onImagepicked($event)" id="exampleInputFile">
+                    <input type="file"  class="form-control-file"  #filePicker (change)="onImagepicked($event)" id="exampleInputFile">
                     <div class="invalid-feedback">Choose a picture</div>
                   </fieldset>
 
@@ -36,6 +35,8 @@
                          placeholder="Datepicker"
                          formControlName="date"
                          class="form-control"
+                         [minDate]="minDate"
+                         [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
                          required
                          bsDatepicker>
               </div>
@@ -74,6 +75,7 @@
           </div>
      
 
+          
               <div class="col-lg-12">
               <fieldset class="form-group">
                   <label>Description</label>
@@ -82,12 +84,15 @@
               </fieldset>
               </div>
               
-
-              
+              <div *ngFor="let alert of alerts"  >
+                <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+              </div>
 
               <div class="col-lg-12">
-              <button type="submit" class="btn btn-primary">Add Event</button>
+              <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Add Event</button>
               </div>
+
+
           </form>
 
         

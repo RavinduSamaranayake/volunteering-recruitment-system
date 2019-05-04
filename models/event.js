@@ -42,8 +42,8 @@ const EventSchema = mongoose.Schema({
     //required: true
   },
   organization: {
-    type: String,
-    // required: true
+    type:String,
+   required: true
   }
 
   
