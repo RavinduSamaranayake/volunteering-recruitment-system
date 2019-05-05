@@ -15,7 +15,7 @@ export class NotificationComponent implements OnInit {
     rating: String;
     organize: String;
     status: String;
-    userid: String;
+    
     constructor(
         private eventservice: EventService,
     ) { }
@@ -42,13 +42,12 @@ export class NotificationComponent implements OnInit {
       console.log('the user is --->>>>', data , '>>>>>');
       const value = JSON.parse(data); // the data is always a string.Parse the data with JSON.parse(), 
                                      // and the data becomes a JavaScript object
-      this.userid = value.id;
-      console.log('the user id is --->>>>', this.userid , '>>>>>');
+      this.fullname = value.firstname + ' ' + value.lastname;
 
     }
 
-  isSelected() {
-    if (this.status === 'selected') {
+  isSelected(){
+    if (this.status === 'selected'){
       return true;
     } else {
       return false;
@@ -58,7 +57,6 @@ export class NotificationComponent implements OnInit {
     addselectevent() {
       const event = {
         _id: this.eventId,
-        userid: this.userid,
         title: this.title,
         date: this.date,
         description: this.description,

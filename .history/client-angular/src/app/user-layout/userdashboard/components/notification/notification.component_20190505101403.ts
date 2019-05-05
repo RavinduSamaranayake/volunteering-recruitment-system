@@ -42,12 +42,12 @@ export class NotificationComponent implements OnInit {
       console.log('the user is --->>>>', data , '>>>>>');
       const value = JSON.parse(data); // the data is always a string.Parse the data with JSON.parse(), 
                                      // and the data becomes a JavaScript object
-      this.userid = value.id;
+      this.userid = value._id;
       console.log('the user id is --->>>>', this.userid , '>>>>>');
 
     }
 
-  isSelected() {
+  isSelected(){
     if (this.status === 'selected') {
       return true;
     } else {

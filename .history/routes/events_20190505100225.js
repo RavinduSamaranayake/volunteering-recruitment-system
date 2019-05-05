@@ -11,6 +11,7 @@ const config = require('../config/keys');
 //@access public
 router.post('/addevent', (req, res, next) => {
   let newEvent = new Event({
+    
     name: req.body.name,  //req.body mean the value is post using text field or other
     title: req.body.title,
     description: req.body.description,
@@ -58,7 +59,7 @@ router.delete('/delevent/:id',(req,res) => {
 router.post('/addselected', (req, res, next) => {
   let newSelectEvent = new SelectEvent({
     _id: req.body._id,
-    userid: req.body.userid,                      //req.body mean the value is post using text field or other
+                          //req.body mean the value is post using text field or other
     title: req.body.title,
     description: req.body.description,
     date: req.body.date,

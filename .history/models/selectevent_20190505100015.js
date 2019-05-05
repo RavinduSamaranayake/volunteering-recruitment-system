@@ -9,7 +9,7 @@ const SelectEventSchema = mongoose.Schema({
     type: String,
     required: true 
   },
-  userid: {
+  user: {
     type: String,
     required: true 
   },
