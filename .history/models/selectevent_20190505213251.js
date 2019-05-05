@@ -68,7 +68,7 @@ module.exports.getSelectEventById = function(id, callback){
 
   module.exports.getEventByUserid = function(userid, callback){
     const query = {userid: userid}
-    SelectEvent.find(query, callback);
+    Event.findOne(query, callback);
   }
    
  

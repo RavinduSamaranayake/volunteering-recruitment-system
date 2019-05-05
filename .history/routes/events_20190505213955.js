@@ -80,14 +80,9 @@ router.post('/addselected', (req, res, next) => {
 //@access public
 
 router.get('/allselectevents',(req,res) => {
-  const  userid = req.body.userid;
-  SelectEvent.getEventByUserid(userid , (err) => {
-    if(err) throw err;
-    else{
-      return (slctevents => res.json(slctevents));
-    }
-  })
-    
+  const  userid: req.body.userid
+  SelectEvent.getEventByUserid()
+    .then(slctevents => res.json(slctevents))
 });
 
 //@route DELETE events/delslctevent/id

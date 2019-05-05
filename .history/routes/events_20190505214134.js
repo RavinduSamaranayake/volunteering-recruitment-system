@@ -83,11 +83,9 @@ router.get('/allselectevents',(req,res) => {
   const  userid = req.body.userid;
   SelectEvent.getEventByUserid(userid , (err) => {
     if(err) throw err;
-    else{
-      return (slctevents => res.json(slctevents));
-    }
-  })
     
+  })
+    .then(slctevents => res.json(slctevents))
 });
 
 //@route DELETE events/delslctevent/id

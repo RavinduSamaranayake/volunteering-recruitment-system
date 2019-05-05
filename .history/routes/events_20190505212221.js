@@ -79,15 +79,9 @@ router.post('/addselected', (req, res, next) => {
 //@desc Get All items
 //@access public
 
-router.get('/allselectevents',(req,res) => {
-  const  userid = req.body.userid;
-  SelectEvent.getEventByUserid(userid , (err) => {
-    if(err) throw err;
-    else{
-      return (slctevents => res.json(slctevents));
-    }
-  })
-    
+router.get('/allselectevents/:u',(req,res) => {
+  SelectEvent.find()
+    .then(slctevents => res.json(slctevents))
 });
 
 //@route DELETE events/delslctevent/id
@@ -95,7 +89,6 @@ router.get('/allselectevents',(req,res) => {
 //@access public
 
 router.delete('/delslctevent/:id',(req,res) => {
-
   SelectEvent.findById(req.params.id)
      .then(event => event.remove().then(()=>res.json({sucess: true})))
      .catch(err => res.status(404).json({sucess:false}));
