@@ -37,9 +37,9 @@ addSelectEvent(event) {
   return this.http.post('http://localhost:3000/events/addselected', event, {headers: headers});
 }
 
-getAllSelectEvent(userid) {
+getAllSelectEvent(usertid) {
   // let headers = new HttpHeaders();
-  return this.http.get('http://localhost:3000/events/allselectevents/' + userid);
+  return this.http.get('http://localhost:3000/events/allselectevents');
 }
 
 

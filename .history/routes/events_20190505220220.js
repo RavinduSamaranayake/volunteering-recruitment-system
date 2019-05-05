@@ -81,9 +81,10 @@ router.post('/addselected', (req, res, next) => {
 
 router.get('/allselectevents/:userid',(req,res) => {
   const  userid = req.params.userid;
-  const query = {userid: userid}
-  SelectEvent.find(query)
-      .then(slctevents => res.json(slctevents));
+  SelectEvent.getEventByUserid(userid , (err) => {
+    if(err) throw err;
+    else{
+      then(slctevents => res.json(slctevents));
 
     
 });
