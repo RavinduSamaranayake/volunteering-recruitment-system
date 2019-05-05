@@ -18,3 +18,4 @@ import { HeaderComponent } from './components/header/header.component';
     declarations: [AdminLayoutComponent, SidebarComponent , HeaderComponent]
 })
 export class AdminLayoutModule {}
+ 
