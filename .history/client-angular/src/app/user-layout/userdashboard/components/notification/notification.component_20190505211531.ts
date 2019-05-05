@@ -59,6 +59,7 @@ export class NotificationComponent implements OnInit {
   }
 
     addselectevent() {
+     
       const event = {
         _id: this.event_id,
         userid: this.userid,

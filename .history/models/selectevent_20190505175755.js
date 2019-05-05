@@ -7,13 +7,11 @@ const Schema = mongoose.Schema;
 const SelectEventSchema = mongoose.Schema({
   _id: {
     type: String,
-    required: true,
-    //index: true 
+    required: true 
   },
   userid: {
     type: String,
-    required: true,
-    index: true  
+    required: true 
   },
   title: {
     type: String,
@@ -52,8 +50,7 @@ const SelectEventSchema = mongoose.Schema({
 
 });
 
-SelectEventSchema.index({ _id: 1, userid: 1 }, { unique: true });//set the composite primary key
-
+SelectEventSchema.index({ _id: 1, userid: 1 }, { unique: true });
 const SelectEvent = module.exports = mongoose.model('SelectEvent', SelectEventSchema);
 
  

@@ -48,6 +48,8 @@ export class NotificationComponent implements OnInit {
         this.event_id = this.eventId.concat(value.id);
         console.log('the user event id is --->>>>', this.event_id , '>>>>>');
       });
+     
+     // this.event_id = this.eventId + this.userid;
     }
 
   isSelected() {
@@ -59,6 +61,7 @@ export class NotificationComponent implements OnInit {
   }
 
     addselectevent() {
+     
       const event = {
         _id: this.event_id,
         userid: this.userid,

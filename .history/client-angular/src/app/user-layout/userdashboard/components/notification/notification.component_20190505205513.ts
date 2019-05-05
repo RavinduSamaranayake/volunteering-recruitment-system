@@ -36,18 +36,24 @@ export class NotificationComponent implements OnInit {
         this.rating = data.rating;
         this.organize = data.organization;
         this.status = data.status;
-        
-        // get the user id from local storage
-        const dataval = localStorage.getItem('user');
-        const value = JSON.parse(dataval); // the data is always a string.Parse the data with JSON.parse(), 
-                                       // and the data becomes a JavaScript object
-        this.userid = value.id;
-        console.log('the user id is --->>>>', this.userid , '>>>>>');
 
-        // concatanate the user id and selected user id and creatte the new unique selected event id
-        this.event_id = this.eventId.concat(value.id);
-        console.log('the user event id is --->>>>', this.event_id , '>>>>>');
+        
+      const dataval = localStorage.getItem('user');
+      const value = JSON.parse(dataval); // the data is always a string.Parse the data with JSON.parse(), 
+                                     // and the data becomes a JavaScript object
+      this.userid = value.id;
+      console.log('the user id is --->>>>', this.userid , '>>>>>');
+     // this.event_id = this.eventId + this.userid;
+
+     var str1 = this.eventId;
+     var str2 = value.id;
+     var str3 = str1.concat( str2 );
+     console.log('the user event id is --->>>>', str3 , '>>>>>');
+     thi
       });
+      console.log('Status : ', this.status , '.........');
+
+   
     }
 
   isSelected() {
@@ -60,7 +66,7 @@ export class NotificationComponent implements OnInit {
 
     addselectevent() {
       const event = {
-        _id: this.event_id,
+        _id: this.eventId,
         userid: this.userid,
         title: this.title,
         date: this.date,

@@ -16,7 +16,6 @@ export class NotificationComponent implements OnInit {
     organize: String;
     status: String;
     userid: String;
-    event_id: String;
     constructor(
         private eventservice: EventService,
     ) { }
@@ -25,7 +24,7 @@ export class NotificationComponent implements OnInit {
 
      // get the event id from event service 
      // (this method is very good method to transfer data between two compnents without any relation like child parents)
-      .subscribe( (data) => {
+      .subscribe( (data: { _id: String; title: String; date: String; description: String; attendees: String; rating: String; organization: String; status: String; }) => {
         console.log('I got data in project component', data);
         this.selectevent = data;
         this.eventId = data._id;
@@ -36,18 +35,16 @@ export class NotificationComponent implements OnInit {
         this.rating = data.rating;
         this.organize = data.organization;
         this.status = data.status;
-        
-        // get the user id from local storage
-        const dataval = localStorage.getItem('user');
-        const value = JSON.parse(dataval); // the data is always a string.Parse the data with JSON.parse(), 
-                                       // and the data becomes a JavaScript object
-        this.userid = value.id;
-        console.log('the user id is --->>>>', this.userid , '>>>>>');
-
-        // concatanate the user id and selected user id and creatte the new unique selected event id
-        this.event_id = this.eventId.concat(value.id);
-        console.log('the user event id is --->>>>', this.event_id , '>>>>>');
       });
+      console.log('Status : ', this.status , '.........');
+
+      const data = localStorage.getItem('user');
+      console.log('the user is --->>>>', data , '>>>>>');
+      const value = JSON.parse(data); // the data is always a string.Parse the data with JSON.parse(), 
+                                     // and the data becomes a JavaScript object
+      this.userid = value.id;
+      console.log('the user id is --->>>>', this.userid , '>>>>>');
+
     }
 
   isSelected() {
@@ -60,7 +57,7 @@ export class NotificationComponent implements OnInit {
 
     addselectevent() {
       const event = {
-        _id: this.event_id,
+        _id: this.eventId,
         userid: this.userid,
         title: this.title,
         date: this.date,
