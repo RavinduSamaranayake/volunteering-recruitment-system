@@ -72,7 +72,7 @@ export class NotificationComponent implements OnInit {
     // get the responce json object from server using subscribe method. the data isa responce json
     this.eventservice.addSelectEvent(event).subscribe(data => {
       console.log('...............', data['msg'], '.........', data, '..........');
-      if (data['success']) {
+      if (data['success']) {  
         alert('Thank You for join with this event....');
       } else {
         alert('Sorry! You are already going for this event');
