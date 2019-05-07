@@ -1,9 +1,6 @@
 <div class="row">
-  <div class="col-xl-12" style="margin-top:10px;">
-    <h3 class="page-header">
-      {{ heading }}
-    </h3>
-    <ol style="margin-top:20px;" class="breadcrumb">
+  <div class="col-xl-12">
+    <ol style="margin-top:10px;" class="breadcrumb">
       <li class="breadcrumb-item">
         <i class="fa fa-dashboard" style="margin-right:10px;"></i>
         <a href="Javascript:void(0)" [routerLink]="['/dashboard']">Dashboard</a>
@@ -12,5 +9,8 @@
         <i class="fa {{ icon }}" style="margin-right:5px;"></i> {{ heading }}
       </li>
     </ol>
+    <h3 class="page-header" style="margin-top:20px">
+      {{ heading }}
+    </h3>
   </div>
 </div>

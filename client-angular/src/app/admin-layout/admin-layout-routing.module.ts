@@ -16,7 +16,7 @@ const routes: Routes = [
             { path: 'organizations/edit', loadChildren: './organization/edit-organization/edit-organization.module#EditOrganizationModule' },
             { path: 'volunteers/edit', loadChildren: './volunteers/edit-volunteer/edit-volunteer.module#EditVolunteerModule' },
             { path: 'events/edit', loadChildren: './events/edit-events/edit-events.module#EditEventsModule' },
-           // { path: 'forms', loadChildren: './form/form.module#FormModule' },
+          //  { path: 'forms', loadChildren: './form/form.module#FormModule' },
            // { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
            // { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
            // { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
