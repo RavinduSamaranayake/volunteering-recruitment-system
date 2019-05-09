@@ -71,18 +71,16 @@ module.exports.getSelectEventById = function(id, callback){
     SelectEvent.find(query, callback);
   }
 
-  module.exports.getUpcommingevents = function(userid , callback){
+  module.exports.getUpcommingevents = unction(userid , callback){
     const query = {userid: userid,
                    date: {
-                   $gte: Date.now()
-                  // $gte: new Date(2019,05,28)
+                   //$gte: Date.now
+                   $gte: new Date(2019,061` 6 bhb,26)
                   }
 
                 }
-    //console.log('..................now date is.......',Date.now(),'...............');
 
     SelectEvent.find(query , callback);
-   
   }
    
  
