@@ -42,10 +42,7 @@ getAllSelectEvent(userid) {
   return this.http.get('http://localhost:3000/events/allselectevents/' + userid);
 }
 
-getAllUpcommingEvent(userid) {
-  // let headers = new HttpHeaders();
-  return this.http.get('http://localhost:3000/events/allselect/upcomming/' + userid);
-}
+
 
 
 }

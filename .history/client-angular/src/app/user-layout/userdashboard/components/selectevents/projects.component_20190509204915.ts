@@ -24,7 +24,7 @@ export class ProjectsComponent implements OnInit {
     const dataval = localStorage.getItem('user');
     const value = JSON.parse(dataval);
     const userid = value.id;
-    this.eventservice.getAllUpcommingEvent(userid).subscribe((data: Table[]) => {
+    this.eventservice.getAllUpEvent(userid).subscribe((data: Table[]) => {
     this.allevents = data;
     console.log('the status is ', this.allevents[5].status);
 });
