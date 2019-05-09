@@ -77,7 +77,7 @@ module.exports.getSelectEventById = function(id, callback){
                    $gte: Date.now
                   }}
 
-    SelectEvent.find(query);
+    SelectEvent.find(query, callback);
   }
    
  

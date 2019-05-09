@@ -103,7 +103,7 @@ router.delete('/delslctevent/:id',(req,res) => {
 //@desc Get All items
 //@access public
 
-router.get('/allselect/upcomming/:userid',(req,res) => {
+router.get('/allselect//:userid',(req,res) => {
   const  userid = req.params.userid;
   const query = {userid: userid}
   SelectEvent.find(query)

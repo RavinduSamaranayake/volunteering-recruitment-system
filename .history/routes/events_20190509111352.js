@@ -99,17 +99,6 @@ router.delete('/delslctevent/:id',(req,res) => {
      .catch(err => res.status(404).json({sucess:false}));
 });
 
-//@route GET events/allselectevents
-//@desc Get All items
-//@access public
 
-router.get('/allselect/upcomming/:userid',(req,res) => {
-  const  userid = req.params.userid;
-  const query = {userid: userid}
-  SelectEvent.find(query)
-      .then(slctevents => res.json(slctevents));
-
-    
-});
 
 module.exports = router;
