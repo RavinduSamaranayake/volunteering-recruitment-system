@@ -9,7 +9,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'projects', pathMatch: 'prefix' },
             { path: 'projects', loadChildren: './components/projects/projects.module#ProjectsModule' },
             { path: 'upcomming', loadChildren: './components/selectevents/slctevent.module#SlcteventModule' },
-            { path: 'history', loadChildren: './components/history/history.module#HistoryModule' },
+            { path: 'history', loadChildren: './components/history/.module#SlcteventModule' },
         ]
     }
 ];
