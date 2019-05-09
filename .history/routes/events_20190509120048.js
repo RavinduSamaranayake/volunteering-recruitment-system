@@ -111,7 +111,7 @@ router.get('/allselect/upcomming/:userid',(req,res) => {
       res.json({success: false, msg: err});
     }
     else {
-       res.json(slctevents);
+      return (slctevents => res.json(slctevents));
     }
   })
       

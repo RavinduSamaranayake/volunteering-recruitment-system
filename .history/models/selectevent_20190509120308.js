@@ -75,7 +75,6 @@ module.exports.getSelectEventById = function(id, callback){
     const query = {userid: userid,
                    date: {
                    //$gte: Date.now
-                   $gte: new Date(2019,06,26)
                   }
 
                 }

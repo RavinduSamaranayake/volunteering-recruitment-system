@@ -73,11 +73,9 @@ module.exports.getSelectEventById = function(id, callback){
 
   module.exports.getUpcommingevents = function(userid , callback){
     const query = {userid: userid,
-                   date: {
-                   //$gte: Date.now
-                   $gte: new Date(2019,06,26)
-                  }
-
+                  //  date: {
+                  //  $gte: Date.now
+                  // }
                 }
 
     SelectEvent.find(query , callback);

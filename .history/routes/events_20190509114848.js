@@ -106,15 +106,8 @@ router.delete('/delslctevent/:id',(req,res) => {
 router.get('/allselect/upcomming/:userid',(req,res) => {
   const  userid = req.params.userid;
   //const query = {userid: userid}
-  SelectEvent.getUpcommingevents(userid , (err ,slctevents) => {
-    if(err){
-      res.json({success: false, msg: err});
-    }
-    else {
-       res.json(slctevents);
-    }
-  })
-      
+  SelectEvent.getUpcommingevents(userid , (err, slctevents) =>)
+      .then(slctevents => res.json(slctevents));
 
     
 });
