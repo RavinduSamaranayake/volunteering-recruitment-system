@@ -2,55 +2,46 @@
   <app-page-header
     [heading]="'Add Organization'"
     [icon]="'fa fa-university'"
+    [image]="'https://www.ccwater.org.uk/wp-content/uploads/2017/05/business-meeting-e1509456641596.jpg'"
+    [desc]="'Enter the details of the organization in order to send login credentials'"
   ></app-page-header>
-
-  <div class="row banner">
-    <div class="outer-box">
-      <img
-        src="https://www.ccwater.org.uk/wp-content/uploads/2017/05/business-meeting-e1509456641596.jpg"
-        alt=""
-      />
-      <div class="col-lg-12 inner-box" style="margin-top:-5px; margin: 0;">
-        <div class="text">
-          <h3 class="page-header">
-            Add Organization
-          </h3>
-          <p style="font-size:13px">
-            Enter the details of the organization in order to send login
-            credentials
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="row">
     <div class="col-lg-6">
-      <form role="form">
+      <form role="form" method="post">
         <fieldset class="form-group">
           <label>Name</label>
           <input
+            type="text"
             class="form-control"
             placeholder="Name of the organization"
+            name="name"
             [(ngModel)]="name"
+            required
           />
         </fieldset>
 
         <fieldset class="form-group" style="margin-top:20px;">
           <label>Reg. No.</label>
           <input
+            type="text"
             class="form-control"
             placeholder="Registration # of the organization"
+            name="regNo"
             [(ngModel)]="regNo"
+            required
           />
         </fieldset>
 
         <fieldset class="form-group" style="margin-top:20px;">
           <label>E-Mail</label>
           <input
+            type="email"
             class="form-control"
             placeholder="Email address of the organization"
+            name="email"
             [(ngModel)]="email"
+            required
           />
         </fieldset>
         <div class="row">
