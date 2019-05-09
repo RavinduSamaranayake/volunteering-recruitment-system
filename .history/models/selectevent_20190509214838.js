@@ -92,7 +92,9 @@ module.exports.getSelectEventById = function(id, callback){
     const query = {userid: userid,
                    date: {
                     $lt: Date.now() //for get the dates which are past from today
-                    }
+                    
+                  
+                  }
 
                 }
     

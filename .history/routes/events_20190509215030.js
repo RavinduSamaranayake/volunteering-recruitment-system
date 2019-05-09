@@ -122,7 +122,7 @@ router.get('/allselect/upcomming/:userid',(req,res) => {
 router.get('/allselect/history/:userid',(req,res) => {
   const  userid = req.params.userid;
   //const query = {userid: userid}
-  SelectEvent.getEventsHistory(userid , (err ,slctevents) => {
+  SelectEvent.getUpcommingevents(userid , (err ,slctevents) => {
     if(err){
       res.json({success: false, msg: err});
     }

@@ -91,8 +91,10 @@ module.exports.getSelectEventById = function(id, callback){
   module.exports.getEventsHistory = function(userid , callback){
     const query = {userid: userid,
                    date: {
-                    $lt: Date.now() //for get the dates which are past from today
-                    }
+                    $gte: Date.now() //for get the dates which are upcomming from today
+                    $lt: Date.now()
+                  // $gte: new Date(2019,05,28)
+                  }
 
                 }
     

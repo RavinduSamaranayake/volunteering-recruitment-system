@@ -71,7 +71,7 @@ module.exports.getSelectEventById = function(id, callback){
     SelectEvent.find(query, callback);
   }
 
-  //get the upcomming events using future dates
+  //get the upcomming events using  dates
   module.exports.getUpcommingevents = function(userid , callback){
     const query = {userid: userid,
                    date: {
@@ -81,22 +81,12 @@ module.exports.getSelectEventById = function(id, callback){
                   }
 
                 }
+    //console.log('..................now date is.......',Date.now(),'...............');
 
     SelectEvent.find(query , callback);
    
   }
 
-  //get the  events history using past dates
-  
-  module.exports.getEventsHistory = function(userid , callback){
-    const query = {userid: userid,
-                   date: {
-                    $lt: Date.now() //for get the dates which are past from today
-                    }
-
-                }
-    
-    SelectEvent.find(query , callback);
+  //get the hist
    
-  }
  
