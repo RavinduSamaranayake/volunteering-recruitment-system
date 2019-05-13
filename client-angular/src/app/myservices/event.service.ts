@@ -18,7 +18,7 @@ addEvent(event) {
   // post the user data to the server in json object
   return this.http.post('http://localhost:3000/events/addevent', event, {headers: headers});
 }
-getAllEvent() {
+getAllEvent() { 
   // let headers = new HttpHeaders();
   return this.http.get('http://localhost:3000/events/allevents');
 }

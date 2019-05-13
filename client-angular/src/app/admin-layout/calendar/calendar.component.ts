@@ -2,7 +2,8 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
-  TemplateRef
+  TemplateRef,
+  OnInit
 } from '@angular/core';
 import {
   startOfDay,
@@ -22,6 +23,8 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView
 } from 'angular-calendar';
+
+import { EventService } from '../../myservices/event.service';
 
 const colors: any = {
   red: {
@@ -44,7 +47,7 @@ const colors: any = {
   styleUrls: ['calendar.component.scss'],
   templateUrl: 'calendar.component.html'
 })
-export class CalendarLocalComponent {
+export class CalendarLocalComponent implements OnInit {
   // demoComponent
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
@@ -64,63 +67,37 @@ export class CalendarLocalComponent {
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
         this.handleEvent('Edited', event);
-      }
-    },
-    {
-      label: '<i class="fa fa-fw fa-times"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter(iEvent => iEvent !== event);
-        this.handleEvent('Deleted', event);
+        console.log(event);
       }
     }
   ];
 
   refresh: Subject<any> = new Subject();
-
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
-  ];
-
+  events: CalendarEvent[] = [];
   activeDayIsOpen = true;
 
-  constructor(private modal: NgbModal) {}
+  ngOnInit() {
+    this.eventservice.getAllEvent().subscribe(data => {
+      const entries = Object.entries(data);
+      console.log(entries);
+      let event;
+      entries.forEach(instance => {
+        event = {
+          start: new Date(instance[1].date),
+          end: new Date(instance[1].date),
+          title: instance[1].title,
+          color: colors.blue,
+          actions: this.actions,
+          allDay: true,
+          id: instance[1]._id
+        };
+        this.events.push(event);
+        console.log(this.events);
+      });
+    });
+  }
+
+  constructor(private modal: NgbModal, private eventservice: EventService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -156,28 +133,7 @@ export class CalendarLocalComponent {
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
-  }
-
-  addEvent(): void {
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true
-        }
-      }
-    ];
-  }
-
-  deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter(event => event !== eventToDelete);
+    this.modal.open(this.modalContent, { size: 'sm' });
   }
 
   setView(view: CalendarView) {
@@ -188,7 +144,7 @@ export class CalendarLocalComponent {
     this.activeDayIsOpen = false;
   }
 
-  closed(){
+  closed() {
     console.log('closed');
   }
 }
