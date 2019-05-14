@@ -9,9 +9,9 @@ import { routerTransition } from '../../../router.animations';
 })
 export class EditVolunteersComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-  }
 
+  }
 }

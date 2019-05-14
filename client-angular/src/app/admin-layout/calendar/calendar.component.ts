@@ -43,7 +43,6 @@ const colors: any = {
 
 @Component({
   selector: 'app-calendar', // mwl-demo-component
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['calendar.component.scss'],
   templateUrl: 'calendar.component.html'
 })
@@ -66,8 +65,7 @@ export class CalendarLocalComponent implements OnInit {
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-        console.log(event);
+        location.href = '/admin/organizations/edit/' + event.id;
       }
     }
   ];
@@ -80,21 +78,26 @@ export class CalendarLocalComponent implements OnInit {
     this.eventservice.getAllEvent().subscribe(data => {
       const entries = Object.entries(data);
       console.log(entries);
-      let event;
       entries.forEach(instance => {
-        event = {
-          start: new Date(instance[1].date),
-          end: new Date(instance[1].date),
-          title: instance[1].title,
-          color: colors.blue,
-          actions: this.actions,
-          allDay: true,
-          id: instance[1]._id
-        };
-        this.events.push(event);
+        this.addEvent(new Date(instance[1].date), new Date(instance[1].date), instance[1].title, instance[1]._id)
         console.log(this.events);
       });
     });
+  }
+
+  addEvent(pStartDate, pEndDate, pTitle, pId): void {
+    this.events = [
+      ...this.events,
+      {
+        title: pTitle,
+        start: pStartDate,
+        end: pEndDate,
+        color: colors.blue,
+        actions: this.actions,
+        allDay: true,
+        id: pId
+      }
+    ];
   }
 
   constructor(private modal: NgbModal, private eventservice: EventService) {}

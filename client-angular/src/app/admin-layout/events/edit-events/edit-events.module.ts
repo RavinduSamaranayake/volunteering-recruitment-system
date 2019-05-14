@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import {
+  MatFormFieldModule,
+  MatInputModule,
+  MatTableModule,
+  MatPaginatorModule
+} from '@angular/material';
+
 import { EditEventsRoutingModule } from './edit-events-routing.module';
 import { PageHeaderModule } from '../../../shared';
 import { EditEventsComponent } from './edit-events.component';
@@ -8,7 +15,15 @@ import { EditEventsComponent } from './edit-events.component';
 @NgModule({
   declarations: [EditEventsComponent],
   imports: [
-    CommonModule, PageHeaderModule, EditEventsRoutingModule
+    CommonModule,
+    PageHeaderModule,
+    EditEventsRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
-export class EditEventsModule { }
+export class EditEventsModule {
+  constructor() {}
+}

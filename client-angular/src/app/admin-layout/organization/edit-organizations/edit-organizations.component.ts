@@ -8,10 +8,8 @@ import { routerTransition } from '../../../router.animations';
   animations: [routerTransition()]
 })
 export class EditOrganizationsComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }
-
 }
