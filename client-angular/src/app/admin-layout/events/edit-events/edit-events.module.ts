@@ -5,7 +5,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSortModule,
 } from '@angular/material';
 
 import { EditEventsRoutingModule } from './edit-events-routing.module';
@@ -21,7 +22,8 @@ import { EditEventsComponent } from './edit-events.component';
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule,
   ]
 })
 export class EditEventsModule {

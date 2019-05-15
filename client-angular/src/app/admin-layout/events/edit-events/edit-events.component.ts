@@ -1,31 +1,32 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { routerTransition } from "../../../router.animations";
-import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { routerTransition } from '../../../router.animations';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
-import { EventService } from "../../../myservices/event.service";
+import { EventService } from '../../../myservices/event.service';
 
 @Component({
-  selector: "app-edit-events",
-  templateUrl: "./edit-events.component.html",
-  styleUrls: ["./edit-events.component.scss"],
+  selector: 'app-edit-events',
+  templateUrl: './edit-events.component.html',
+  styleUrls: ['./edit-events.component.scss'],
   animations: [routerTransition()]
 })
-export class EditEventsComponent implements OnInit {
+export class EditEventsComponent implements AfterViewInit {
   displayedColumns = [
-    "Title",
-    "Organization",
-    "Description",
-    "Date",
-    "Options"
+    'title',
+    'organization',
+    'description',
+    'date',
+    'options'
   ];
-  dataSource: MatTableDataSource<event>;
+  dataSource: MatTableDataSource<Event>;
+  events: Event[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private eventservice: EventService) {
-    const events: event[] = [];
-    var eventInstance: event;
+    // Create Events
+    let eventInstance: Event;
 
     this.eventservice.getAllEvent().subscribe(data => {
       const entries = Object.entries(data);
@@ -37,19 +38,22 @@ export class EditEventsComponent implements OnInit {
           date: instance[1].date,
           id: instance[1]._id
         };
-        events.push(eventInstance);
+        // this.events.push(eventInstance);
+        this.dataSource.data = [...this.dataSource.data, eventInstance];
       });
     });
-
-    this.dataSource = new MatTableDataSource(events);
+    // Assign the data to the data source for the table to render
+    this.dataSource = new MatTableDataSource(this.events);
   }
 
+  /**
+   * Set the paginator and sort after the view init since this component will
+   * be able to query its view for the initialized paginator and sort.
+   */
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
-  ngOnInit() {}
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -58,7 +62,7 @@ export class EditEventsComponent implements OnInit {
   }
 }
 
-export interface event {
+export interface Event {
   title: string;
   organization: string;
   description: string;
