@@ -1,0 +1,46 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  margin:20px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-elevation-z8{
+  box-shadow: none !important;
+  border: 1px solid rgba(0,0,0,0.3)
+}
+
+.mat-column-name{
+  flex: 0 0 220px;
+}
+
+.mat-column-email{
+  flex: 0 0 250px;
+}
+
+.mat-column-age{
+  flex: 0 0 100px;
+}
+
+.mat-column-contactNo{
+  flex: 0 0 180px;
+}
+
+.mat-column-options{
+  flex: 0 0 140px;
+}

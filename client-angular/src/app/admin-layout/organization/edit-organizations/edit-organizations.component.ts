@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-edit-organizations',
@@ -7,9 +8,61 @@ import { routerTransition } from '../../../router.animations';
   styleUrls: ['./edit-organizations.component.scss'],
   animations: [routerTransition()]
 })
-export class EditOrganizationsComponent implements OnInit {
-  constructor() {}
+export class EditOrganizationsComponent implements AfterViewInit {
+  displayedColumns = [
+    // 'name',
+    // 'email',
+    // 'contactNo',
+    // 'age',
+    // 'address'
+  ];
+  dataSource: MatTableDataSource<Volunteer>;
+  volunteers: Volunteer[] = [];
 
-  ngOnInit() {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(){ //private eventservice: EventService) {
+    // // Create Events
+    // let eventInstance: Event;
+
+    // this.eventservice.getAllEvent().subscribe(data => {
+    //   const entries = Object.entries(data);
+    //   entries.forEach(instance => {
+    //     eventInstance = {
+    //       title: instance[1].title,
+    //       organization: instance[1].organization,
+    //       description: instance[1].description,
+    //       date: instance[1].date,
+    //       id: instance[1]._id
+    //     };
+    //     // this.events.push(eventInstance);
+    //     this.dataSource.data = [...this.dataSource.data, eventInstance];
+    //   });
+    // });
+    // // Assign the data to the data source for the table to render
+    // this.dataSource = new MatTableDataSource(this.events);
   }
+
+  /**
+   * Set the paginator and sort after the view init since this component will
+   * be able to query its view for the initialized paginator and sort.
+   */
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+}
+export interface Volunteer {
+  name: string;
+  email: string;
+  contact: string;
+  age: string;
+  address: string;
 }
