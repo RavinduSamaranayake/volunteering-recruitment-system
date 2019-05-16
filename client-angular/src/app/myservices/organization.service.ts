@@ -26,6 +26,15 @@ export class OrganizationService {
     return this.http.get('http://localhost:3000/organizations/getallorganizations');
   }
 
+  getOrganizationById(id: string) {
+    // let headers = new HttpHeaders();
+    return this.http.get('http://localhost:3000/organizations/getorganizationbyid/' + id);
+  }
+
+  getOrganizationEvents(id: string) {
+    // let headers = new HttpHeaders();
+    return this.http.get('http://localhost:3000/events/selecteventbyorg/' + id);
+  }
   // // after the user select a event.......................
 
   // setEvent(sevent) {

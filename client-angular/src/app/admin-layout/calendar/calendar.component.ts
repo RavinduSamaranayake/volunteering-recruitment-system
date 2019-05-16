@@ -65,7 +65,7 @@ export class CalendarLocalComponent implements OnInit {
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        location.href = '/admin/organizations/edit/' + event.id;
+        location.href = '/admin/events/edit/' + event.id;
       }
     }
   ];

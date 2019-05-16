@@ -5,11 +5,25 @@ import { EditOrganizationRoutingModule } from './edit-organization-routing.modul
 import { EditOrganizationComponent } from './edit-organization.component';
 import { PageHeaderModule } from '../../../shared';
 
+import {
+  MatFormFieldModule,
+  MatInputModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule
+} from '@angular/material';
+
 @NgModule({
   declarations: [EditOrganizationComponent],
   imports: [
-    CommonModule, PageHeaderModule, EditOrganizationRoutingModule
+    CommonModule,
+    PageHeaderModule,
+    EditOrganizationRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
-export class EditOrganizationModule { }
- 
+export class EditOrganizationModule {}

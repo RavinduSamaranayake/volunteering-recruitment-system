@@ -32,7 +32,6 @@ export class EditOrganizationsComponent implements AfterViewInit {
     this.organizationService.getAllOrganizations().subscribe(data => {
       const entries = Object.entries(data);
       entries.forEach(instance => {
-        console.log(instance);
         organizationInstance = {
           name: instance[1].name,
           email: instance[1].email,

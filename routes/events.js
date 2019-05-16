@@ -121,4 +121,9 @@ router.get("/allselect/history/:userid", (req, res) => {
   });
 });
 
+router.get("/selecteventbyorg/:id", (req, res) => {
+  const query = {orgID: req.params.id}
+  Event.find(query).then(events => res.json(events));
+});
+
 module.exports = router;

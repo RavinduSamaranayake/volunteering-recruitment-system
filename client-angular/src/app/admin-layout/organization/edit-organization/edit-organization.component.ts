@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+
 import { routerTransition } from '../../../router.animations';
+
+import { OrganizationService } from '../../../myservices/organization.service';
 
 @Component({
   selector: 'app-edit-organization',
@@ -7,11 +12,89 @@ import { routerTransition } from '../../../router.animations';
   styleUrls: ['./edit-organization.component.scss'],
   animations: [routerTransition()]
 })
-export class EditOrganizationComponent implements OnInit {
+export class EditOrganizationComponent implements AfterViewInit {
+  public orgName = '';
+  public organizationId: string = '';
+  displayedColumns = [
+    'id',
+    'title',
+    'description',
+    'date',
+    'options'
+  ];
+  dataSource: MatTableDataSource<Event>;
+  events: Event[] = [];
 
-  constructor() { }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  ngOnInit() {
+  constructor(
+    private route: ActivatedRoute,
+    private organizationService: OrganizationService
+  ) {
+    this.organizationId = this.route.snapshot.paramMap.get('id');
+    let eventInstance: Event;
+    let organizationInstance: Organization;
+
+    this.organizationService
+      .getOrganizationEvents(this.organizationId)
+      .subscribe(data => {
+        const entries = Object.entries(data);
+        entries.forEach(instance => {
+          eventInstance = {
+            title: instance[1].title,
+            organization: instance[1].organization,
+            description: instance[1].description,
+            date: instance[1].date,
+            id: instance[1]._id
+          };
+          this.dataSource.data = [...this.dataSource.data, eventInstance];
+        });
+        // // Assign the data to the data source for the table to render
+
+        this.organizationService
+          .getOrganizationById(this.organizationId)
+          .subscribe(data => {
+            const entries = Object.entries(data);
+            organizationInstance = {
+              name: entries[1][1],
+              email: entries[2][1],
+              contact: entries[3][1],
+              address: entries[4][1],
+              regNo: entries[6][1],
+              id: entries[0][1]
+            };
+            this.orgName = organizationInstance.name;
+          });
+      });
   }
 
+  ngAfterViewInit() {
+    this.dataSource = new MatTableDataSource(this.events);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+}
+
+export interface Event {
+  title: string;
+  organization: string;
+  description: string;
+  date: string;
+  id: string;
+}
+
+export interface Organization {
+  name: string;
+  email: string;
+  contact: string;
+  address: string;
+  regNo: string;
+  id: string;
 }

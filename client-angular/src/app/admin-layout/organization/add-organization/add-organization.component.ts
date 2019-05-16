@@ -9,9 +9,10 @@ import { routerTransition } from '../../../router.animations';
   animations: [routerTransition()]
 })
 export class AddOrganizationComponent implements OnInit {
-  public name='';
-  public regNo= '';
-  public email= '';
+  public name = '';
+  public regNo = '';
+  public email = '';
+  public contact = '';
   constructor() {}
 
   ngOnInit() {}

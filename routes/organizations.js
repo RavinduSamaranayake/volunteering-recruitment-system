@@ -148,4 +148,10 @@ router.get("/getallorganizations", (req, res) => {
   });
 });
 
+router.get("/getorganizationbyid/:id", (req, res) => {
+  Organization.findById(req.params.id).then(organization => {
+    res.json(organization)
+  });
+});
+
 module.exports = router;

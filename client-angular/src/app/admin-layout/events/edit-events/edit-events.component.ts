@@ -11,6 +11,7 @@ import { EventService } from '../../../myservices/event.service';
   animations: [routerTransition()]
 })
 export class EditEventsComponent implements AfterViewInit {
+  public orgName = '';
   displayedColumns = [
     'title',
     'organization',
