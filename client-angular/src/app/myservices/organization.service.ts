@@ -1,56 +1,65 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrganizationService {
   // this is use to share the selected event data pass to the viewdata component via event service
-  $eventdetails = new EventEmitter(); // this is like value saving varible
-  eventId: String;
-  slctevent: any;
+  // $eventdetails = new EventEmitter(); // this is like value saving varible
+  // eventId: String;
+  // slctevent: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-addEvent(event) {
-  let headers = new HttpHeaders();
-  headers.append('Content-Type', 'application/json');
-  // post the user data to the server in json object
-  return this.http.post('http://localhost:3000/events/addevent', event, {headers: headers});
-}
-getAllEvent() {
-  // let headers = new HttpHeaders();
-  return this.http.get('http://localhost:3000/events/allevents');
-}
+  // addEvent(event) {
+  //   let headers = new HttpHeaders();
+  //   headers.append("Content-Type", "application/json");
+  //   // post the user data to the server in json object
+  //   return this.http.post("http://localhost:3000/events/addevent", event, {
+  //     headers: headers
+  //   });
+  // }
 
-// after the user select a event.......................
+  getAllOrganizations() {
+    // let headers = new HttpHeaders();
+    return this.http.get('http://localhost:3000/organizations/getallorganizations');
+  }
 
-setEvent(sevent) {
-   this.slctevent = sevent;
-   this.$eventdetails.emit(this.slctevent); // save the event value in this variable
-}
+  // // after the user select a event.......................
 
-addSelectEvent(event) {
-  let headers = new HttpHeaders();
-  headers.append('Content-Type', 'application/json');
-  // post the user data to the server in json object
-  return this.http.post('http://localhost:3000/events/addselected', event, {headers: headers});
-}
+  // setEvent(sevent) {
+  //   this.slctevent = sevent;
+  //   this.$eventdetails.emit(this.slctevent); // save the event value in this variable
+  // }
 
-getAllSelectEvent(userid) {
-  // let headers = new HttpHeaders();
-  return this.http.get('http://localhost:3000/events/allselectevents/' + userid);
-}
+  // addSelectEvent(event) {
+  //   let headers = new HttpHeaders();
+  //   headers.append("Content-Type", "application/json");
+  //   // post the user data to the server in json object
+  //   return this.http.post("http://localhost:3000/events/addselected", event, {
+  //     headers: headers
+  //   });
+  // }
 
-getAllUpcommingEvent(userid) {
-  // let headers = new HttpHeaders();
-  return this.http.get('http://localhost:3000/events/allselect/upcomming/' + userid);
-}
+  // getAllSelectEvent(userid) {
+  //   // let headers = new HttpHeaders();
+  //   return this.http.get(
+  //     "http://localhost:3000/events/allselectevents/" + userid
+  //   );
+  // }
 
-getAllEventHistory(userid) {
-  // let headers = new HttpHeaders();
-  return this.http.get('http://localhost:3000/events/allselect/history/' + userid);
-}
+  // getAllUpcommingEvent(userid) {
+  //   // let headers = new HttpHeaders();
+  //   return this.http.get(
+  //     "http://localhost:3000/events/allselect/upcomming/" + userid
+  //   );
+  // }
 
-
+  // getAllEventHistory(userid) {
+  //   // let headers = new HttpHeaders();
+  //   return this.http.get(
+  //     "http://localhost:3000/events/allselect/history/" + userid
+  //   );
+  // }
 }

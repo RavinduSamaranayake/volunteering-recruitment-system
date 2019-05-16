@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Event = require("../models/event");
 const SelectEvent = require("../models/selectevent");
-const config = require("../config/keys");
 
 //@route POST events/addevent
 //@desc create a Event

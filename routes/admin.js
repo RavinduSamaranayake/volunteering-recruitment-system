@@ -6,7 +6,7 @@ const User = require("../models/user");
 const config = require("../config/keys");
 
 router.get("/dashboard", (req, res) => {
-  console.log("wada");
+  
 });
 
 module.exports = router;

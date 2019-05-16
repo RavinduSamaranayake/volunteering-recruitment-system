@@ -2,6 +2,8 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
+import { OrganizationService } from '../../../myservices/organization.service';
+
 @Component({
   selector: 'app-edit-organizations',
   templateUrl: './edit-organizations.component.html',
@@ -10,38 +12,41 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 })
 export class EditOrganizationsComponent implements AfterViewInit {
   displayedColumns = [
-    // 'name',
-    // 'email',
-    // 'contactNo',
-    // 'age',
-    // 'address'
+    'name',
+    'email',
+    'contact',
+    'address',
+    'regNo',
+    'options'
   ];
-  dataSource: MatTableDataSource<Volunteer>;
-  volunteers: Volunteer[] = [];
+  dataSource: MatTableDataSource<Organization>;
+  organizations: Organization[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(){ //private eventservice: EventService) {
-    // // Create Events
-    // let eventInstance: Event;
+  constructor(private organizationService: OrganizationService) {
+    // Create Events
+    let organizationInstance: Organization;
 
-    // this.eventservice.getAllEvent().subscribe(data => {
-    //   const entries = Object.entries(data);
-    //   entries.forEach(instance => {
-    //     eventInstance = {
-    //       title: instance[1].title,
-    //       organization: instance[1].organization,
-    //       description: instance[1].description,
-    //       date: instance[1].date,
-    //       id: instance[1]._id
-    //     };
-    //     // this.events.push(eventInstance);
-    //     this.dataSource.data = [...this.dataSource.data, eventInstance];
-    //   });
-    // });
-    // // Assign the data to the data source for the table to render
-    // this.dataSource = new MatTableDataSource(this.events);
+    this.organizationService.getAllOrganizations().subscribe(data => {
+      const entries = Object.entries(data);
+      entries.forEach(instance => {
+        console.log(instance);
+        organizationInstance = {
+          name: instance[1].name,
+          email: instance[1].email,
+          contact: instance[1].contact,
+          address: instance[1].address,
+          regNo: instance[1].regNo,
+          id: instance[1]._id
+        };
+        // this.organizations.push(organizationInstance);
+        this.dataSource.data = [...this.dataSource.data, organizationInstance];
+      });
+    });
+    // Assign the data to the data source for the table to render
+    this.dataSource = new MatTableDataSource(this.organizations);
   }
 
   /**
@@ -59,10 +64,11 @@ export class EditOrganizationsComponent implements AfterViewInit {
     this.dataSource.filter = filterValue;
   }
 }
-export interface Volunteer {
+export interface Organization {
   name: string;
   email: string;
   contact: string;
-  age: string;
   address: string;
+  regNo: string;
+  id: string;
 }

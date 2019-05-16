@@ -40,7 +40,7 @@ export class EditVolunteersComponent implements AfterViewInit  {
           address: instance[1].address,
           id:  instance[1]._id,
         };
-        this.volunteers.push(volunteerInstance);
+        // this.volunteers.push(volunteerInstance);
         this.dataSource.data = [...this.dataSource.data, volunteerInstance];
       });
     });

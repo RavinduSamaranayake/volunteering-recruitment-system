@@ -1,26 +1,25 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 //const bcrypt = require('bcryptjs');
- 
 
 // Schema
 const SelectEventSchema = mongoose.Schema({
   _id: {
     type: String,
-    required: true,
-    //index: true 
+    required: true
+    //index: true
   },
   userid: {
     type: String,
     required: true,
-    index: true  
+    index: true
   },
   title: {
     type: String,
     required: true
   },
   description: {
-    type: String,
+    type: String
     //required: true
   },
   date: {
@@ -28,15 +27,15 @@ const SelectEventSchema = mongoose.Schema({
     required: true
   },
   attendees: {
-    type: String,
+    type: String
     //required: true
   },
   rating: {
-    type: String,
+    type: String
     //required: true
   },
   image: {
-    type: String,
+    type: String
     //required: true
   },
   organization: {
@@ -47,56 +46,52 @@ const SelectEventSchema = mongoose.Schema({
     type: String,
     required: true
   }
-
-  
-
 });
 
-SelectEventSchema.index({ _id: 1, userid: 1 }, { unique: true });//set the composite primary key
+SelectEventSchema.index({ _id: 1, userid: 1 }, { unique: true }); //set the composite primary key
 
-const SelectEvent = module.exports = mongoose.model('SelectEvent', SelectEventSchema);
+const SelectEvent = (module.exports = mongoose.model(
+  "SelectEvent",
+  SelectEventSchema
+));
 
- 
-module.exports.getSelectEventById = function(id, callback){
-    SelectEvent.findById(id, callback);
-  }
-  
-  module.exports.getSelectEventByEventname = function(eventname, callback){
-    const query = {eventname: eventname}
-    SelectEvent.findOne(query, callback);
-  }
+module.exports.getSelectEventById = function(id, callback) {
+  SelectEvent.findById(id, callback);
+};
 
-  module.exports.getEventByUserid = function(userid, callback){
-    const query = {userid: userid}
-    SelectEvent.find(query, callback);
-  }
+module.exports.getSelectEventByEventname = function(eventname, callback) {
+  const query = { eventname: eventname };
+  SelectEvent.findOne(query, callback);
+};
 
-  //get the upcomming events using future dates
-  module.exports.getUpcommingevents = function(userid , callback){
-    const query = {userid: userid,
-                   date: {
-                    $gte: Date.now() //for get the dates which are upcomming from today
-                   // $lt: Date.now()
-                  // $gte: new Date(2019,05,28)
-                  }
+module.exports.getEventByUserid = function(userid, callback) {
+  const query = { userid: userid };
+  SelectEvent.find(query, callback);
+};
 
-                }
+//get the upcomming events using future dates
+module.exports.getUpcommingevents = function(userid, callback) {
+  const query = {
+    userid: userid,
+    date: {
+      $gte: Date.now() //for get the dates which are upcomming from today
+      // $lt: Date.now()
+      // $gte: new Date(2019,05,28)
+    }
+  };
 
-    SelectEvent.find(query , callback);
-   
-  }
+  SelectEvent.find(query, callback);
+};
 
-  //get the  events history using past dates
-  
-  module.exports.getEventsHistory = function(userid , callback){
-    const query = {userid: userid,
-                   date: {
-                    $lt: Date.now() //for get the dates which are past from today
-                    }
+//get the  events history using past dates
 
-                }
-    
-    SelectEvent.find(query , callback);
-   
-  }
- 
+module.exports.getEventsHistory = function(userid, callback) {
+  const query = {
+    userid: userid,
+    date: {
+      $lt: Date.now() //for get the dates which are past from today
+    }
+  };
+
+  SelectEvent.find(query, callback);
+};
