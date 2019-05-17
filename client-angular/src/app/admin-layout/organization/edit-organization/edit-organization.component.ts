@@ -13,7 +13,15 @@ import { OrganizationService } from '../../../myservices/organization.service';
   animations: [routerTransition()]
 })
 export class EditOrganizationComponent implements AfterViewInit {
-  public orgName = '';
+  public organizationInstance: Organization = {
+    name: '',
+    email: '',
+    contact: '',
+    address: '',
+    regNo: '',
+    id: '',
+    about: ''
+  };
   public organizationId: string = '';
   displayedColumns = [
     'id',
@@ -34,7 +42,6 @@ export class EditOrganizationComponent implements AfterViewInit {
   ) {
     this.organizationId = this.route.snapshot.paramMap.get('id');
     let eventInstance: Event;
-    let organizationInstance: Organization;
 
     this.organizationService
       .getOrganizationEvents(this.organizationId)
@@ -56,15 +63,15 @@ export class EditOrganizationComponent implements AfterViewInit {
           .getOrganizationById(this.organizationId)
           .subscribe(data => {
             const entries = Object.entries(data);
-            organizationInstance = {
+            this.organizationInstance = {
               name: entries[1][1],
               email: entries[2][1],
               contact: entries[3][1],
               address: entries[4][1],
               regNo: entries[6][1],
-              id: entries[0][1]
+              id: entries[0][1],
+              about: entries[7][1]
             };
-            this.orgName = organizationInstance.name;
           });
       });
   }
@@ -97,4 +104,5 @@ export interface Organization {
   address: string;
   regNo: string;
   id: string;
+  about: string;
 }
