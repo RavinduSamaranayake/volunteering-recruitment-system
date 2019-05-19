@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 
@@ -16,7 +16,8 @@ import { PageHeaderModule } from '../../../shared';
     AddOrganizationRoutingModule,
     FormsModule,
     MatInputModule,
-    MatFormFieldModule
-  ]
+    MatFormFieldModule,
+    ReactiveFormsModule,
+  ],
 })
 export class AddOrganizationModule {}

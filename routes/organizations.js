@@ -2,155 +2,58 @@ const express = require("express");
 const router = express.Router();
 const Organization = require("../models/organization");
 
-// Register
-// router.post("/register", (req, res, next) => {
-//   let newUser = new User({
-//     firstname: req.body.firstname,
-//     lastname: req.body.lastname, //req.body mean the value is post using text field or other
-//     email: req.body.email,
-//     username: req.body.username,
-//     password: req.body.password,
-//     address: req.body.address,
-//     address2: req.body.address2,
-//     cntctmob: req.body.cntctmob,
-//     cntctfix: req.body.cntctfix,
-//     age: req.body.age,
-//     gender: req.body.gender,
-//     ulevel: "user"
-//   });
-
-//   User.addUser(newUser, (err, user) => {
-//     //call the addUser function in User model
-//     if (err) {
-//       res.json({ success: false, msg: "Failed to register user" });
-//     } else {
-//       res.json({ success: true, msg: "User registered" });
-//     }
-//   });
-// });
-
-// // Authenticate
-// router.post("/authenticate", (req, res, next) => {
-//   const username = req.body.username;
-//   const password = req.body.password;
-
-//   User.getUserByUsername(username, (err, user) => {
-//     if (err) throw err;
-//     if (!user) {
-//       return res.json({ success: false, msg: "User not found" });
-//     }
-//     console.log(
-//       "User is found..................................................."
-//     );
-//     User.comparePassword(password, user.password, (err, isMatch) => {
-//       if (err) throw err;
-//       if (isMatch) {
-//         console.log(
-//           "User is found.............password match......................................"
-//         );
-
-//         //genare the token and pass it with responce json
-//         const token = jwt.sign(user.toJSON(), config.secret, {
-//           //jwt.sign(payload, secretOrPrivateKey, [options, callback])
-//           //payload could be an object literal, buffer or string representing valid JSON.
-//           //payload cannot be a plain string but it can
-//           expiresIn: 604800 //this token is expires after 1 week
-//         });
-
-//         res.json({
-//           success: true,
-//           token: "JWT " + token,
-//           user: {
-//             id: user._id,
-//             firstname: user.firstname,
-//             lastname: user.lastname,
-//             username: user.username,
-//             email: user.email,
-//             password: user.password,
-//             address: user.address,
-//             address2: user.address2,
-//             cntctmob: user.cntctmob,
-//             cntctfix: user.cntctfix,
-//             age: user.age,
-//             ulevel: user.ulevel
-//           }
-//         });
-//       } else {
-//         return res.json({ success: false, msg: "Wrong password" });
-//       }
-//     });
-//   });
-// });
-
-// // Profile
-// router.get(
-//   "/profile",
-//   passport.authenticate("jwt", { session: false }),
-//   (req, res, next) => {
-//     res.json({ user: req.user });
-//   }
-// );
-
-// // Change profile
-// router.put("/changepro/:id", function(req, res, next) {
-//   User.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
-//     if (err) {
-//       res.json({ success: false, msg: "Failed to change profile" });
-//     } else {
-//       res.json({ success: true, msg: "Profile changed" });
-//     }
-//   });
-// });
-
-// // Change password
-// router.put("/changepass/:id", function(req, res, next) {
-//   const password = req.body.password;
-//   const newpaswrd = req.body.newpaswrd;
-
-//   User.findById(req.params.id, function(err, user) {
-//     if (err) {
-//       res.json({ success: false, msg: "error" });
-//     } else if (!user) {
-//       res.json({ success: false, msg: "User not found" });
-//     } else {
-//       User.comparePassword(password, user.password, (err, isMatch) => {
-//         if (err) {
-//           res.json({
-//             success: false,
-//             msg: "Please enter your correct password first"
-//           });
-//         }
-//         if (isMatch) {
-//           console.log(
-//             ".........new password match with current......................................"
-//           );
-//           User.changePassword(req.params.id, newpaswrd, err => {
-//             if (err) {
-//               res.json({ success: false, msg: "Failed to change password" });
-//             } else {
-//               res.json({ success: true, msg: "Password changed" });
-//             }
-//           });
-//         } else {
-//           res.json({
-//             success: false,
-//             msg: "Please enter your correct password first"
-//           });
-//         }
-//       });
-//     }
-//   });
-// });
+const randomstring = require("randomstring");
+const nodemailer = require("nodemailer");
 
 router.get("/getallorganizations", (req, res) => {
   Organization.find().then(organizations => {
-    res.json(organizations)
+    res.json(organizations);
   });
 });
 
 router.get("/getorganizationbyid/:id", (req, res) => {
   Organization.findById(req.params.id).then(organization => {
-    res.json(organization)
+    res.json(organization);
+  });
+});
+
+router.post("/addorganization", (req, res) => {
+  const password = randomstring.generate(8);
+  let newOrg = new Organization({
+    name: req.body.name,
+    email: req.body.email,
+    contact: req.body.contact,
+    regNo: req.body.regNo,
+    password: password
+  });
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'studentenrolmentnsbm@gmail.com',
+      pass: 'studentenrolmentnsbm123'
+    }
+  });
+
+  var mailOptions = {
+    from: 'studentenrolmentnsbm@gmail.com',
+    to: req.body.email,
+    subject: 'Login Credentials - iVolunteer.com',
+    html: '<h4>Dear ' + req.body.name + '</h4><p>Please use the login credentials given below to login to our website.</p><center>Username :- '+ req.body.email +'<br>Password :- '+ password +'</center><br><p>For furhter clarification and assistance please contact us via support@ivolunteer.com</p><p>Best Regards</p><p>Team iVolunteer</p>'
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      res.send(error)
+    } 
+    else {
+      console.log('Email sent: ' + info.response);
+      Organization.addOrg(newOrg, err => {
+        if(err){
+          res.send(err)
+        }
+      });
+    }
   });
 });
 

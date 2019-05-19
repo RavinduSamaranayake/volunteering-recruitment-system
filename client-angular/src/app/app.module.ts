@@ -16,6 +16,8 @@ import {AuthService} from './myservices/auth.service';
 import {EventService} from './myservices/event.service';
 import {CalendarLocalModule} from './admin-layout/calendar/calendar.module';
 
+import { ToastrModule } from 'ngx-toastr';
+
 // import { HeaderComponent } from './layout/components/header/header.component';
 
 // const appRoutes: Routes =  [
@@ -31,7 +33,12 @@ import {CalendarLocalModule} from './admin-layout/calendar/calendar.module';
         AppRoutingModule,
         FormsModule,
         CalendarLocalModule,
-        AlertsModule.forRoot()
+        AlertsModule.forRoot(),
+        ToastrModule.forRoot({
+          timeOut: 4000,
+          positionClass: 'toast-bottom-right',
+          preventDuplicates: true,
+        })
     ],
     declarations: [AppComponent ],
     providers: [AuthGuard, ValidateService, AuthService, EventService],

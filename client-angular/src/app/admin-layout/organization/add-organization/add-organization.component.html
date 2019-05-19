@@ -12,16 +12,18 @@
 
   <div class="row">
     <div class="col-lg-6">
-      <form method="post">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <mat-form-field class="example-full-width">
           <input
             matInput
             type="text"
             placeholder="Name of the organization"
-            name="name"
-            [(ngModel)]="name"
-            required
+            [(ngModel)]="nameVal"
+            formControlName="name"
           />
+          <mat-error *ngIf="name.invalid && name.touched">
+            Please enter a name.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
@@ -29,10 +31,12 @@
             matInput
             type="text"
             placeholder="Registration # of the organization"
-            name="regNo"
-            [(ngModel)]="regNo"
-            required
+            [(ngModel)]="regNoVal"
+            formControlName="regNo"
           />
+          <mat-error *ngIf="regNo.invalid && regNo.touched">
+            Please enter a correct registration number.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
@@ -40,21 +44,25 @@
             matInput
             type="email"
             placeholder="Email address of the organization"
-            name="email"
-            [(ngModel)]="email"
-            required
+            [(ngModel)]="emailVal"
+            formControlName="email"
           />
+          <mat-error *ngIf="email.invalid && email.touched">
+            Please enter a correct email address.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <input
             matInput
-            type="text"
+            type="number"
             placeholder="Conact # of the organization"
-            name="contact"
-            [(ngModel)]="contact"
-            required
+            [(ngModel)]="contactVal"
+            formControlName="contact"
           />
+          <mat-error *ngIf="contact.invalid && contact.touched">
+            Please enter a correct contact number.
+          </mat-error>
         </mat-form-field>
 
         <div class="row">
@@ -63,6 +71,7 @@
               type="submit"
               style="width:80px"
               class="btn btn-outline-success"
+              [disabled]="myForm.invalid"
             >
               Save
             </button>
@@ -80,11 +89,11 @@
     <div class="col-lg-6" style="border-left:1px solid black; height:325px">
       <pre>
 <h5>Email Preview</h5>
-To - {{name}}
+To - {{nameVal}}
 
 Please use the login credentials given below to login to our website.
 
-Username :- {{email}}
+Username :- {{emailVal}}
 Password :- *confidential*
 
 For furhter clarification and assistance please contact us via support@ivolunteer.com

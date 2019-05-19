@@ -12,14 +12,9 @@ export class OrganizationService {
 
   constructor(private http: HttpClient) {}
 
-  // addEvent(event) {
-  //   let headers = new HttpHeaders();
-  //   headers.append("Content-Type", "application/json");
-  //   // post the user data to the server in json object
-  //   return this.http.post("http://localhost:3000/events/addevent", event, {
-  //     headers: headers
-  //   });
-  // }
+  addOrganization(org) {
+    return this.http.post('http://localhost:3000/organizations/addorganization', org);
+  }
 
   getAllOrganizations() {
     // let headers = new HttpHeaders();
