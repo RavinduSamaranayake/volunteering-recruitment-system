@@ -31,7 +31,6 @@ export class EditVolunteersComponent implements AfterViewInit  {
     this.volunteerService.getAllVolunteers().subscribe(data => {
       const entries = Object.entries(data);
       entries.forEach(instance => {
-        console.log(instance);
         volunteerInstance = {
           name: instance[1].name,
           email: instance[1].email,

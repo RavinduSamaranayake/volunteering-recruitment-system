@@ -26,6 +26,11 @@ export class VolunteerService {
     return this.http.get('http://localhost:3000/users/getallusers');
   }
 
+  getVolunteerById(id: string) {
+    // let headers = new HttpHeaders();
+    return this.http.get('http://localhost:3000/users/getvolunteerbyid/' + id);
+  }
+
   // // after the user select a event.......................
 
   // setEvent(sevent) {

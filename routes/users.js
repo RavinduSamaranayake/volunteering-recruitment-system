@@ -149,4 +149,10 @@ router.get("/getallusers", (req, res) => {
   User.find().then(events => res.json(events));
 });
 
+router.get("/getvolunteerbyid/:id", (req, res) => {
+  User.findById(req.params.id).then(user => {
+    res.json(user);
+  });
+});
+
 module.exports = router;
