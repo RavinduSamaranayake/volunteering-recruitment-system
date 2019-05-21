@@ -21,6 +21,8 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { AlertModule } from 'ngx-bootstrap/alert';
 
 
+import { ToastrModule } from 'ngx-toastr';
+
 // import { HeaderComponent } from './layout/components/header/header.component';
 
 // const appRoutes: Routes =  [
@@ -37,10 +39,18 @@ import { AlertModule } from 'ngx-bootstrap/alert';
         FormsModule,
         CalendarLocalModule,
         AlertsModule.forRoot(),
+
         BsDatepickerModule.forRoot(),
         TimepickerModule.forRoot(),
         PopoverModule.forRoot(),
-        AlertModule.forRoot()
+        AlertModule.forRoot(),
+
+        ToastrModule.forRoot({
+          timeOut: 4000,
+          positionClass: 'toast-bottom-right',
+          preventDuplicates: true,
+        })
+
     ],
 
     declarations: [AppComponent ],
