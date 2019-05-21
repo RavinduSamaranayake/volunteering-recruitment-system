@@ -2,8 +2,9 @@ export interface Event{
     id:string;
     title:String;
     description:String;
+    image:String;
     date:String;
     time:String;
-    image:String;
-    owner:string;
+    type:String;
+    organization:string;
 }

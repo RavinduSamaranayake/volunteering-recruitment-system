@@ -1,0 +1,16 @@
+<div class="card" style="width: 18rem;">
+  <img [src]="event.image" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{event.title}}</h5>
+    <p class="card-text">{{event.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>Date: </strong>{{event.date}}</li>
+    <li class="list-group-item"><strong>Time: </strong>{{event.time}}</li>
+    <li class="list-group-item"><strong>Type: </strong>{{event.type}}</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Edit</a>
+    <a href="#" class="card-link">Delete</a>
+  </div>
+</div>

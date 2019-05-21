@@ -41,6 +41,11 @@ getAllEvent() {
   return this.http.get('http://localhost:3000/events/allevents');
 }
 
+getEventbyOrganization(orgid){
+  console.log(orgid);
+  return this.http.get('http://localhost:3000/events/selecteventbyorg/' +orgid);
+}
+
 
 
 

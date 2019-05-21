@@ -11,6 +11,7 @@ import { NewProjectComponent } from '../club_layout/projects/new-project/new-pro
 import { ViewProjectsComponent } from '../club_layout/projects/view-projects/view-projects.component';
 import { CurrentVolunteersComponent } from '../club_layout/volunteers/current-volunteers/current-volunteers.component';
 import { AllVolunteersComponent } from '../club_layout/volunteers/all-volunteers/all-volunteers.component';
+import { ProjectCardComponent } from './projects/view-projects/project-card/project-card.component';
 import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
@@ -34,6 +35,6 @@ import { AlertModule } from 'ngx-bootstrap/alert';
         AlertModule.forRoot()
 
     ],
-    declarations: [LayoutComponent, SidebarComponent , NewProjectComponent, HeaderComponent, ViewProjectsComponent, CurrentVolunteersComponent, AllVolunteersComponent],
+    declarations: [LayoutComponent, SidebarComponent , NewProjectComponent, HeaderComponent, ViewProjectsComponent, CurrentVolunteersComponent, AllVolunteersComponent,ProjectCardComponent],
 })
 export class LayoutModule {}

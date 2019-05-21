@@ -23,6 +23,8 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 
 import { ToastrModule } from 'ngx-toastr';
 
+
+
 // import { HeaderComponent } from './layout/components/header/header.component';
 
 // const appRoutes: Routes =  [
@@ -53,7 +55,7 @@ import { ToastrModule } from 'ngx-toastr';
 
     ],
 
-    declarations: [AppComponent ],
+    declarations: [AppComponent],
     providers: [AuthGuard, ValidateService, AuthService, EventService],
 
     bootstrap: [AppComponent]

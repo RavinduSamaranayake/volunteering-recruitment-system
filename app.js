@@ -47,6 +47,7 @@ app.use("/users", users);
 app.use("/organizations", organizations);
 app.use("/events", events);
 app.use("/admin", admin);
+app.use("/images",express.static(path.join("images")));
 
 // Index Route
 app.get("/", (req, res) => {
