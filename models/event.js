@@ -1,20 +1,20 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 //const bcrypt = require('bcryptjs');
- 
 
 // Schema
 const EventSchema = mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   description: {
-    type: String,
+    type: String
     //required: true
   },
   date: {
-    type: String,
+    type: Date,
     required: true
   },
 
@@ -30,36 +30,30 @@ const EventSchema = mongoose.Schema({
 
   
   attendees: {
-    type: String,
+    type: String
     //required: true
   },
   rating: {
-    type: String,
+    type: String
     //required: true
   },
   image: {
-    type: String,
+    type: String
     //required: true
   },
   organization: {
     type:String,
    required: true
   }
-
-  
-
 });
 
-const Event = module.exports = mongoose.model('Event', EventSchema);
+const Event = (module.exports = mongoose.model("Event", EventSchema));
 
- 
-module.exports.getEventById = function(id, callback){
+module.exports.getEventById = function(id, callback) {
   Event.findById(id, callback);
-}
+};
 
-module.exports.getEventByEventname = function(eventname, callback){
-  const query = {eventname: eventname}
+module.exports.getEventByEventname = function(eventname, callback) {
+  const query = { eventname: eventname };
   Event.findOne(query, callback);
-}
- 
- 
+};

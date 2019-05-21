@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
- 
 
 // User Schema
 const UserSchema = mongoose.Schema({
@@ -84,8 +83,6 @@ module.exports.changePassword = function(userid ,newpassword, callback){
     });
   });
 }
- 
- 
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {

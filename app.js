@@ -19,11 +19,11 @@ mongoose
 
 const app = express();
 
-
 //routing paths
-const users = require('./routes/users');
-const events = require('./routes/events');
-  
+const users = require("./routes/users");
+const events = require("./routes/events");
+const admin = require("./routes/admin");
+const organizations = require("./routes/organizations");
 
 // Port Number
 const port = 3000;
@@ -43,8 +43,10 @@ app.use(passport.session());
 
 require("./config/passport")(passport);
 
-app.use('/users', users);
-app.use('/events', events);
+app.use("/users", users);
+app.use("/organizations", organizations);
+app.use("/events", events);
+app.use("/admin", admin);
 
 // Index Route
 app.get("/", (req, res) => {

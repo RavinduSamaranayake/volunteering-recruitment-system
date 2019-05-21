@@ -1,0 +1,49 @@
+.banner {
+  height: 150px;
+  position: relative;
+//   background-image: url("https://www.ccwater.org.uk/wp-content/uploads/2017/05/business-meeting-e1509456641596.jpg");
+//   object-fit: cover;
+  margin-right: 1px;
+  margin-left: 1px;
+  margin-bottom: 40px;
+  color:white;
+}
+
+.outer-box {
+  width:100%;
+  display: block;
+  position: relative;
+}
+/* line 9, ../sass/style.scss */
+.outer-box img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+/* line 14, ../sass/style.scss */
+.outer-box .inner-box {
+  border-radius: 4px;
+  background: black;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+  // top: 0;
+  // left: 0;
+  position: absolute;
+  padding: 0;
+  transition: opacity .5s;
+  position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
+}
+/* line 25, ../sass/style.scss */
+
+/* line 34, ../sass/style.scss */
+.outer-box:hover .inner-box {
+  opacity: .9;
+  transition: opacity .5s;
+}
+
+.text{
+  margin-top:40px;
+  opacity:1 !important;
+  text-align: center;
+}

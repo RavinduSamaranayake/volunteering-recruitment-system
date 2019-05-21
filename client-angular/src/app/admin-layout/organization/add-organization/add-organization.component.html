@@ -1,0 +1,108 @@
+<div [@routerTransition]>
+  <app-page-header
+    [heading]="'Add Organization'"
+    [icon]="'fa fa-university'"
+    [image]="
+      'https://www.ccwater.org.uk/wp-content/uploads/2017/05/business-meeting-e1509456641596.jpg'
+    "
+    [desc]="
+      'Enter the details of the organization in order to send login credentials'
+    "
+  ></app-page-header>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            type="text"
+            placeholder="Name of the organization"
+            [(ngModel)]="nameVal"
+            formControlName="name"
+          />
+          <mat-error *ngIf="name.invalid && name.touched">
+            Please enter a name.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            type="text"
+            placeholder="Registration # of the organization"
+            [(ngModel)]="regNoVal"
+            formControlName="regNo"
+          />
+          <mat-error *ngIf="regNo.invalid && regNo.touched">
+            Please enter a correct registration number.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            type="email"
+            placeholder="Email address of the organization"
+            [(ngModel)]="emailVal"
+            formControlName="email"
+          />
+          <mat-error *ngIf="email.invalid && email.touched">
+            Please enter a correct email address.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            type="number"
+            placeholder="Conact # of the organization"
+            [(ngModel)]="contactVal"
+            formControlName="contact"
+          />
+          <mat-error *ngIf="contact.invalid && contact.touched">
+            Please enter a correct contact number.
+          </mat-error>
+        </mat-form-field>
+
+        <div class="row">
+          <div class="col-lg-12" style="text-align:right; margin-top: 20px">
+            <button
+              type="submit"
+              style="width:80px"
+              class="btn btn-outline-success"
+              [disabled]="myForm.invalid"
+            >
+              Save
+            </button>
+            <button
+              type="reset"
+              style="width:80px; margin-left:20px"
+              class="btn btn-outline-danger"
+            >
+              Clear
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-6" style="border-left:1px solid black; height:335px">
+      <pre>
+<h5>Email Preview</h5>
+To - {{nameVal}}
+
+Please use the login credentials given below to login to our website.
+
+Username :- {{emailVal}}
+Password :- *confidential*
+
+For furhter clarification and assistance please contact us via support@ivolunteer.com
+
+Best Regards
+Team iVolunteer
+
+      </pre>
+    </div>
+  </div>
+  <!-- /.row -->
+</div>

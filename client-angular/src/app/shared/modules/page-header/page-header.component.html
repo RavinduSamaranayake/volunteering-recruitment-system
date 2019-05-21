@@ -1,13 +1,30 @@
 <div class="row">
-    <div class="col-xl-12">
-        <h2 class="page-header">
-            {{heading}}
-        </h2>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <i class="fa fa-dashboard"></i> <a href="Javascript:void(0)" [routerLink]="['/dashboard']">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active"><i class="fa {{icon}}"></i> {{heading}}</li>
-        </ol>
+  <div class="col-xl-12">
+    <ol style="margin-top:10px;" class="breadcrumb">
+      <li class="breadcrumb-item">
+        <i class="fa fa-dashboard" style="margin-right:10px;"></i>
+        <a href="Javascript:void(0)" [routerLink]="['/dashboard']">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <i class="fa {{ icon }}" style="margin-right:5px;"></i> {{ heading }}
+      </li>
+    </ol>
+    <div class="row banner">
+      <div class="outer-box">
+        <img
+          src={{image}}
+        />
+        <div class="col-lg-12 inner-box" style="margin-top:-5px; margin: 0;">
+          <div class="text">
+            <h3 class="page-header">
+              {{heading}}
+            </h3>
+            <p style="font-size:13px">
+              {{desc}}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
