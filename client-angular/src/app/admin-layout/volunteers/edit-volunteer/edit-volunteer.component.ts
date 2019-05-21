@@ -55,7 +55,6 @@ export class EditVolunteerComponent implements AfterViewInit {
       this.volunteerInstance.events.forEach(eventID => {
         eventService.getEventByID(eventID).subscribe(data => {
           const entries = Object.entries(data);
-          console.log(entries)
           eventInstance = {
             title: entries[1][1],
             organization: entries[9][1],

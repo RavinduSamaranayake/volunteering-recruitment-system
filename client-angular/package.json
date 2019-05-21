@@ -38,6 +38,7 @@
     "flatpickr": "^4.5.7",
     "font-awesome": "4.7.0",
     "ng2-charts": "1.6.0",
+    "ngx-bar-rating": "^1.1.0",
     "ngx-toastr": "^10.0.4",
     "rxjs": "6.3.3",
     "yarn": "1.12.1",
