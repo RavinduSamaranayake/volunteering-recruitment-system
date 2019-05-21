@@ -126,4 +126,7 @@ router.get("/selecteventbyorg/:id", (req, res) => {
   Event.find(query).then(events => res.json(events));
 });
 
+router.get("/geteventbyid/:id", (req, res) => {
+  Event.findById(req.params.id).then(events => res.json(events));
+});
 module.exports = router;

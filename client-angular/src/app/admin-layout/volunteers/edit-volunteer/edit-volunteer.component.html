@@ -19,30 +19,29 @@
               <img src="../../../../assets/images/volunteers/{{ volunteerId }}.png" alt="">
           </div>
           <div class="col-lg-1"></div>
-          <div class="col-lg-3">
-            <h5>About</h5>
-            <!-- <p align="justify">
-                {{ organizationInstance.about }}
-            </p> -->
+
+          <div class="col-lg-4" style="-webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;transform-style: preserve-3d;">
+            <div style="position: relative;top: 50%;transform: translateY(-50%);">
+              <h5>Contact No.</h5>
+              <p class="detials">- {{ volunteerInstance.contact }}</p>
+
+              <h5>E-mail</h5>
+              <p class="detials">- {{ volunteerInstance.email }}</p>
+            </div>
           </div>
-          <div class="col-lg-1"></div>
-          <div class="col-lg-4">
-            <h5>Contact No.</h5>
-            <p class="detials">- {{ volunteerInstance.contact }}</p>
 
-            <h5>E-mail</h5>
-            <p class="detials">- {{ volunteerInstance.email }}</p>
+          <div class="col-lg-4" style="-webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;transform-style: preserve-3d;">
+            <div style="position: relative;top: 50%;transform: translateY(-50%);">
+              <h5>Age</h5>
+              <p class="detials">- {{ volunteerInstance.age }}</p>
 
-            <h5>Registration No.</h5>
-            <p class="detials">- {{ volunteerInstance.age }}</p>
-
-            <h5>Address</h5>
-            <p class="detials">- {{ volunteerInstance.address }}</p>
-
+              <h5>Address</h5>
+              <p class="detials">- {{ volunteerInstance.address }}</p>
+            </div>
           </div>
         </div>
 
-        <hr>
+        <hr style="margin-top:20px">
         <h5 style="margin-top:20px; margin-left:20px;">Events {{ volunteerInstance.name }} has involved</h5>
         <div class="example-header">
           <mat-form-field>
@@ -56,11 +55,11 @@
 
         <div class="example-container mat-elevation-z8">
           <mat-table [dataSource]="dataSource" matSort>
-            <ng-container matColumnDef="id">
+            <ng-container matColumnDef="organization">
               <mat-header-cell *matHeaderCellDef mat-sort-header>
-                ID
+                organization
               </mat-header-cell>
-              <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
+              <mat-cell *matCellDef="let row"> {{ row.organization }} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="title">
