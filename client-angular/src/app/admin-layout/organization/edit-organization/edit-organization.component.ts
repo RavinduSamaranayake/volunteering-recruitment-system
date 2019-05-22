@@ -20,7 +20,8 @@ export class EditOrganizationComponent implements AfterViewInit {
     address: '',
     regNo: '',
     id: '',
-    about: ''
+    about: '',
+    blocked: false,
   };
   public organizationId: string = '';
   displayedColumns = [
@@ -63,6 +64,7 @@ export class EditOrganizationComponent implements AfterViewInit {
           .getOrganizationById(this.organizationId)
           .subscribe(data => {
             const entries = Object.entries(data);
+            console.log(entries)
             this.organizationInstance = {
               name: entries[1][1],
               email: entries[2][1],
@@ -70,7 +72,8 @@ export class EditOrganizationComponent implements AfterViewInit {
               address: entries[4][1],
               regNo: entries[6][1],
               id: entries[0][1],
-              about: entries[7][1]
+              about: entries[7][1],
+              blocked: true
             };
           });
       });
@@ -86,6 +89,11 @@ export class EditOrganizationComponent implements AfterViewInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  editAccess(){
+    this.organizationInstance.blocked = !this.organizationInstance.blocked;
+    this.organizationService.editAccessOrganization(this.organizationInstance).subscribe();
   }
 }
 
@@ -105,4 +113,5 @@ export interface Organization {
   regNo: string;
   id: string;
   about: string;
+  blocked: boolean;
 }

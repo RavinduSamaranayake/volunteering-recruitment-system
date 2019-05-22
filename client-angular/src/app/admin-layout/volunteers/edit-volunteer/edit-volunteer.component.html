@@ -5,23 +5,31 @@
     [image]="
       'https://www.ageuk.org.uk/globalassets/age-uk/media/hero/volunteering-hero-1200x383.jpg'
     "
-    [desc]="
-      'Check the history and details of the selected volunteer'
-    "
+    [desc]="'Check the history and details of the selected volunteer'"
   ></app-page-header>
 
   <div class="row" style="margin-top:-15px;">
     <div class="col-lg-12">
       <div class="card mb-3">
-        <div class="card-header"><h5>{{ volunteerInstance.name }}</h5></div>
+        <div class="card-header">
+          <h5>{{ volunteerInstance.name }}</h5>
+        </div>
         <div class="row" style="margin-top:20px">
           <div class="col-lg-2">
-              <img src="../../../../assets/images/volunteers/{{ volunteerId }}.png" alt="">
+            <img
+              src="../../../../assets/images/volunteers/{{ volunteerId }}.png"
+              alt=""
+            />
           </div>
           <div class="col-lg-1"></div>
 
-          <div class="col-lg-4" style="-webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;transform-style: preserve-3d;">
-            <div style="position: relative;top: 50%;transform: translateY(-50%);">
+          <div
+            class="col-lg-4"
+            style="-webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;transform-style: preserve-3d;"
+          >
+            <div
+              style="position: relative;top: 50%;transform: translateY(-50%);"
+            >
               <h5>Contact No.</h5>
               <p class="detials">- {{ volunteerInstance.contact }}</p>
 
@@ -30,8 +38,13 @@
             </div>
           </div>
 
-          <div class="col-lg-4" style="-webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;transform-style: preserve-3d;">
-            <div style="position: relative;top: 50%;transform: translateY(-50%);">
+          <div
+            class="col-lg-4"
+            style="-webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;transform-style: preserve-3d;"
+          >
+            <div
+              style="position: relative;top: 50%;transform: translateY(-50%);"
+            >
               <h5>Age</h5>
               <p class="detials">- {{ volunteerInstance.age }}</p>
 
@@ -41,8 +54,10 @@
           </div>
         </div>
 
-        <hr style="margin-top:20px">
-        <h5 style="margin-top:20px; margin-left:20px;">Events {{ volunteerInstance.name }} has involved</h5>
+        <hr style="margin-top:20px" />
+        <h5 style="margin-top:20px; margin-left:20px;">
+          Events {{ volunteerInstance.name }} has involved
+        </h5>
         <div class="example-header">
           <mat-form-field>
             <input
@@ -59,7 +74,9 @@
               <mat-header-cell *matHeaderCellDef mat-sort-header>
                 organization
               </mat-header-cell>
-              <mat-cell *matCellDef="let row"> {{ row.organization }} </mat-cell>
+              <mat-cell *matCellDef="let row">
+                {{ row.organization }}
+              </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="title">
@@ -116,25 +133,24 @@
           <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
         </div>
 
-        <hr>
+        <hr />
 
-          <div class="row">
-            <div class="col-lg-12" style="text-align: right">
-                <a
-                routerLink="/admin/events/edit/"
-                [routerLinkActive]="['router-link-active']"
-              >
-                <button
-                  type="submit"
-                  style="font-size:15px; margin:20px"
-                  class="btn btn-outline-danger"
-                >
-                  BLOCK ACCESS
-                </button>
-              </a>
-            </div>
+        <div class="row">
+          <div class="col-lg-12" style="text-align: right">
+            <button
+              type="submit"
+              style="font-size:15px; margin:20px"
+              class="btn {{
+                volunteerInstance.blocked
+                  ? 'btn-outline-success'
+                  : 'btn-outline-danger'
+              }}"
+              (click)="editAccess()"
+            >
+              {{ volunteerInstance.blocked ? "ALLOW ACCESS" : "BLOCK ACCESS" }}
+            </button>
           </div>
-
+        </div>
       </div>
     </div>
   </div>
