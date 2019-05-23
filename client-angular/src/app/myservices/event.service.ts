@@ -36,6 +36,38 @@ addEvent(event) {
   });
   // return this.http.post('http://localhost:3000/events/addevent', event, {headers: headers});
 }
+
+updateEvent(id,updatedevent){
+  console.log("Service");
+  let updatedeventData:any|FormData;
+
+  if(typeof(updatedevent.image)=="object"){
+    updatedeventData=new FormData();
+    updatedeventData.append("title",updatedevent.title);
+    updatedeventData.append("description",updatedevent.description);
+    updatedeventData.append("date",updatedevent.date);
+    updatedeventData.append("time",updatedevent.time);
+    updatedeventData.append("type",updatedevent.type);
+    updatedeventData.append("rating",updatedevent.rating);
+    updatedeventData.append("attendees",updatedevent.attendees);
+    updatedeventData.append("organization",updatedevent.organization);
+    updatedeventData.append("image",updatedevent.image,updatedevent.title);
+  }
+  else{
+    updatedeventData=updatedevent;
+
+  }
+  console.log(updatedevent);
+  return this.http.put('http://localhost:3000/events/updateEvent/' +id,updatedeventData).subscribe(response=>{
+
+   });
+}
+
+deleteEvent(eventId:string){
+  return  this.http.delete("http://localhost:3000/events/delevent/" +eventId).subscribe(item=>{
+    
+  })
+}
 getAllEvent() {
   // let headers = new HttpHeaders();
   return this.http.get('http://localhost:3000/events/allevents');

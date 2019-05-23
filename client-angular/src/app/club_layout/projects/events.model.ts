@@ -4,7 +4,7 @@ export interface Event{
     description:String;
     image:String;
     date:String;
-    time:String;
+    time:Date;
     type:String;
     organization:string;
 }

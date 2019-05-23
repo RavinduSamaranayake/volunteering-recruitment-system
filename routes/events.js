@@ -73,6 +73,40 @@ router.post('/addevent',multer({storage:storage}).single("image"),(req, res, nex
 
 });
 
+router.put("/updateEvent/:id",multer({storage:storage}).single("image"),(req,res)=>{
+  let imagePath=req.body.image
+  console.log(req.file); 
+
+  if(req.file){
+    console.log("empty")
+      const url=req.protocol+'://'+req.get("host");  
+      imagePath=url+"/images/"+ req.file.filename 
+ 
+  }
+
+  let updatedEvent=({
+    //req.body mean the value is post using text field or other
+      title: req.body.title,
+      description: req.body.description,
+      date: req.body.date,
+      time:req.body.time,
+      type:req.body.type,
+      attendees: req.body.attendees,
+      rating: req.body.rating,
+      image: imagePath,
+      organization: req.body.organization
+    });
+    console.log(req.params.id);
+    // Event.findById(req.params.id)
+    // .then(event => console.log(event).then(() => res.json({ sucess: true })))
+    // .catch(err => res.status(404).json({ sucess: false }));
+    
+    Event.updateOne({_id:req.params.id},updatedEvent).then(result=>{
+      if(result.nModified>0){
+          res.status(200).json({message:'Update Successful!'})
+      }
+  }).catch(err => res.status(404).json({ sucess: false }));
+})
 //@route GET events/allevents
 //@desc Get All items
 //@access public
@@ -117,6 +151,9 @@ router.post("/addselected", (req, res, next) => {
     )
     .catch(err => res.json({ success: false, msg: "Add event fail" }));
 });
+
+
+
 
 //@route GET events/allselectevents
 //@desc Get All items

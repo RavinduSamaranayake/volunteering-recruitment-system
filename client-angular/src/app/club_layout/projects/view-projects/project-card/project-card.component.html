@@ -10,7 +10,7 @@
     <li class="list-group-item"><strong>Type: </strong>{{event.type}}</li>
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Edit</a>
-    <a href="#" class="card-link">Delete</a>
+    <button  class="card-link btn btn-outline-info" [routerLink]="['/club/edit',event._id]">Edit</button>
+    <button  class="card-link btn btn-outline-danger" (click)="onDelete(event._id)">Delete</button>
   </div>
 </div>

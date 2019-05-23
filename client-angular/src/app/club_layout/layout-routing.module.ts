@@ -20,6 +20,7 @@ const routes: Routes = [
             { path: 'viewProject', component : ViewProjectsComponent },
             { path: 'currentVolunteers', component : CurrentVolunteersComponent },
             { path: 'allVolunteers', component : AllVolunteersComponent },
+            {path:  'edit/:eventId',component:NewProjectComponent},
         ]
     }
 ];
