@@ -30,6 +30,11 @@ export class OrganizationService {
     // let headers = new HttpHeaders();
     return this.http.get('http://localhost:3000/events/selecteventbyorg/' + id);
   }
+
+  editAccessOrganization(org: any) {
+    return this.http.put('http://localhost:3000/organizations/editaccess/', org);
+  }
+
   // // after the user select a event.......................
 
   // setEvent(sevent) {

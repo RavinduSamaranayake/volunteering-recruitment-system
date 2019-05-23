@@ -57,4 +57,14 @@ router.post("/addorganization", (req, res) => {
   });
 });
 
+router.put("/editaccess", function(req, res, next) {
+  Organization.findByIdAndUpdate(req.body.id, {blocked: !req.body.blocked}, function(err, post) {
+    if (err) {
+      res.json({ success: false});
+    } else {
+      res.json({ success: true});
+    }
+  });
+});
+
 module.exports = router;

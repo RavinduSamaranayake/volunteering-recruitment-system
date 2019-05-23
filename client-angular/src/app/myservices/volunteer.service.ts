@@ -31,6 +31,10 @@ export class VolunteerService {
     return this.http.get('http://localhost:3000/users/getvolunteerbyid/' + id);
   }
 
+  editAccessVolunteer(vol: any) {
+    return this.http.put('http://localhost:3000/users/editaccess/', vol);
+  }
+
   // // after the user select a event.......................
 
   // setEvent(sevent) {
