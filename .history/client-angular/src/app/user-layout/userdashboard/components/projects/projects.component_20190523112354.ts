@@ -39,15 +39,15 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { routerTransition } from '../../../../router.animations';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
-import { EventService } from '../../../../myservices/event.service';
+import { EventService } from '../../../..myservices/event.service';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss'],
+  selector: 'app-edit-events',
+  templateUrl: './edit-events.component.html',
+  styleUrls: ['./edit-events.component.scss'],
   animations: [routerTransition()]
 })
-export class ProjectsComponent implements AfterViewInit {
+export class EditEventsComponent implements AfterViewInit {
   public orgName = '';
   displayedColumns = [
     'title',

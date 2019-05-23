@@ -32,7 +32,7 @@ import { ProjectsComponent } from './projects.component';
   imports: [
     CommonModule,
     PageHeaderModule,
-    ProjectsRoutingModule,
+    EditEventsRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,

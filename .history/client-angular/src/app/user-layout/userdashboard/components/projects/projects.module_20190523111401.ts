@@ -25,14 +25,14 @@ import {
 
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { PageHeaderModule } from '../../../../shared';
-import { ProjectsComponent } from './projects.component';
+import { EditEventsComponent } from './edit-events.component';
 
 @NgModule({
-  declarations: [ProjectsComponent],
+  declarations: [EditEventsComponent],
   imports: [
     CommonModule,
     PageHeaderModule,
-    ProjectsRoutingModule,
+    EditEventsRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,

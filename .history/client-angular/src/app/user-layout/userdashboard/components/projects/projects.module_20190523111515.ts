@@ -28,11 +28,11 @@ import { PageHeaderModule } from '../../../../shared';
 import { ProjectsComponent } from './projects.component';
 
 @NgModule({
-  declarations: [ProjectsComponent],
+  declarations: [sComponent],
   imports: [
     CommonModule,
     PageHeaderModule,
-    ProjectsRoutingModule,
+    EditEventsRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,

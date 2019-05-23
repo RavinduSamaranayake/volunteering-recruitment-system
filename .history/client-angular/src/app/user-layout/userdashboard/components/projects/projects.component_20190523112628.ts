@@ -43,11 +43,11 @@ import { EventService } from '../../../../myservices/event.service';
 
 @Component({
   selector: 'app-projects',
-  templateUrl: './projects.component.html',
+  templateUrl: './p.component.html',
   styleUrls: ['./projects.component.scss'],
   animations: [routerTransition()]
 })
-export class ProjectsComponent implements AfterViewInit {
+export class EditEventsComponent implements AfterViewInit {
   public orgName = '';
   displayedColumns = [
     'title',

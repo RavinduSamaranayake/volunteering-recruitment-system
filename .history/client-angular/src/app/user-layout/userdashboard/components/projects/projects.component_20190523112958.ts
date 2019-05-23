@@ -47,7 +47,7 @@ import { EventService } from '../../../../myservices/event.service';
   styleUrls: ['./projects.component.scss'],
   animations: [routerTransition()]
 })
-export class ProjectsComponent implements AfterViewInit {
+export class PrComponent implements AfterViewInit {
   public orgName = '';
   displayedColumns = [
     'title',

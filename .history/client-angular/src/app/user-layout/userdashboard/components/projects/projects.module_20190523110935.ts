@@ -23,16 +23,16 @@ import {
   MatSortModule,
 } from '@angular/material';
 
-import { ProjectsRoutingModule } from './projects-routing.module';
-import { PageHeaderModule } from '../../../../shared';
-import { ProjectsComponent } from './projects.component';
+import { EditEventsRoutingModule } from './edit-events-routing.module';
+import { PageHeaderModule } from '../../../shared';
+import { EditEventsComponent } from './edit-events.component';
 
 @NgModule({
-  declarations: [ProjectsComponent],
+  declarations: [EditEventsComponent],
   imports: [
     CommonModule,
     PageHeaderModule,
-    ProjectsRoutingModule,
+    EditEventsRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
@@ -40,6 +40,6 @@ import { ProjectsComponent } from './projects.component';
     MatSortModule,
   ]
 })
-export class ProjectsModule {
+export class PModule {
   constructor() {}
 }
