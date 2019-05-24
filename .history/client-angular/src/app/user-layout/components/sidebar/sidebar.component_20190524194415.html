@@ -56,7 +56,7 @@
                     </li>
                     <li>
                       <a
-                        routerLink="/userdashboard/upcomming"
+                        routerLink="/userdashboard/projects"
                         [routerLinkActive]="['router-link-active']"
                       >
                         <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
@@ -65,7 +65,7 @@
                     </li>
                     <li>
                         <a
-                          routerLink="/userdashboard/history"
+                          routerLink="/userdashboard/projects"
                           [routerLinkActive]="['router-link-active']"
                         >
                           <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
@@ -130,7 +130,7 @@
             </a>
             <li class="nested" [class.expand]="showMenu === 'pages'">
                 <ul class="submenu">
-                    <!-- <li>
+                    <li>
                         <a (click)="loadProfile()">
                             <i class="fa fa-fw fa-edit"></i>&nbsp;
                             <span>{{ 'Change Account' | translate }}</span>
@@ -141,25 +141,7 @@
                             <i class="fa fa-fw fa-edit"></i>&nbsp;
                             <span>{{ 'Change Password' | translate }}</span>
                         </a>
-                    </li> -->
-                    <li>
-                         <a
-                              routerLink="/profile-page"
-                              [routerLinkActive]="['router-link-active']"
-                            >
-                              <i class="fa fa-fw fa-edit"></i>&nbsp;
-                              <span>{{ "Edit Profile" | translate }}</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              routerLink="/change-password"
-                              [routerLinkActive]="['router-link-active']"
-                            >
-                              <i class="fa fa-fw fa-edit" aria-hidden="true"></i>&nbsp;
-                              <span>{{ "Change Password" | translate }}</span>
-                            </a>
-                          </li>
+                    </li>
                     <!-- <li>
                         <a href="javascript:void(0)">
                             <i class="fa fa-monument"></i>&nbsp;

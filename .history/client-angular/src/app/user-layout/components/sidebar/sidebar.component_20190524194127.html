@@ -40,14 +40,14 @@
             <br />
             <div class="nested-menu">
                 <a class="list-group-item">
-                  <i class="fa fa-calendar"></i>&nbsp;
+                  <i class="fa fa-university"></i>&nbsp;
                   <span>{{ "Events" | translate }}</span>
                 </a>
                 <li class="nested" [class.expand]="true">
                   <ul class="submenu">
                     <li>
                       <a
-                        routerLink="/userdashboard/projects"
+                        routerLink="/admin/organizations/add"
                         [routerLinkActive]="['router-link-active']"
                       >
                         <i class="fa fa-eye"></i>&nbsp;
@@ -56,20 +56,20 @@
                     </li>
                     <li>
                       <a
-                        routerLink="/userdashboard/upcomming"
+                        routerLink="/admin/organizations/edit"
                         [routerLinkActive]="['router-link-active']"
                       >
                         <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
-                        <span>{{ "Upcomming Events" | translate }}</span>
+                        <span>{{ "" | translate }}</span>
                       </a>
                     </li>
                     <li>
                         <a
-                          routerLink="/userdashboard/history"
+                          routerLink="/admin/organizations/edit"
                           [routerLinkActive]="['router-link-active']"
                         >
                           <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
-                          <span>{{ "Events History" | translate }}</span>
+                          <span>{{ "View Organizations" | translate }}</span>
                         </a>
                       </li>
                   </ul>
@@ -82,7 +82,7 @@
               </a>
               <li class="nested" [class.expand]="true">
                 <ul class="submenu">
-                  <!-- <li>
+                  <li>
                     <a
                       routerLink="/admin/organizations/add"
                       [routerLinkActive]="['router-link-active']"
@@ -90,7 +90,7 @@
                       <i class="fa fa-plus"></i>&nbsp;
                       <span>{{ "Add New" | translate }}</span>
                     </a>
-                  </li> -->
+                  </li>
                   <li>
                     <a
                       routerLink="/admin/organizations/edit"
@@ -122,7 +122,43 @@
                 </ul>
               </li>
             </div> -->
-            
+            <div class="nested-menu">
+              <a class="list-group-item">
+                <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;
+                <span>{{ "Events" | translate }}</span>
+              </a>
+              <li class="nested" [class.expand]="true">
+                <ul class="submenu">
+                  <li>
+                    <a
+                      routerLink="/userdashboard/projects"
+                      [routerLinkActive]="['router-link-active']"
+                    >
+                      <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
+                      <span>{{ "Available Events" | translate }}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      routerLink="/userdashboard/projects"
+                      [routerLinkActive]="['router-link-active']"
+                    >
+                      <i class="fa fa-eye" ></i>&nbsp;
+                      <span>{{ "Upcomming Events" | translate }}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      routerLink="/userdashboard/projects"
+                      [routerLinkActive]="['router-link-active']"
+                    >
+                      <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
+                      <span>{{ "Event History" | translate }}</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </div>
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('pages')">
                 <i class="fa fa-fw fa-gear"></i>&nbsp;
@@ -130,7 +166,7 @@
             </a>
             <li class="nested" [class.expand]="showMenu === 'pages'">
                 <ul class="submenu">
-                    <!-- <li>
+                    <li>
                         <a (click)="loadProfile()">
                             <i class="fa fa-fw fa-edit"></i>&nbsp;
                             <span>{{ 'Change Account' | translate }}</span>
@@ -141,25 +177,7 @@
                             <i class="fa fa-fw fa-edit"></i>&nbsp;
                             <span>{{ 'Change Password' | translate }}</span>
                         </a>
-                    </li> -->
-                    <li>
-                         <a
-                              routerLink="/profile-page"
-                              [routerLinkActive]="['router-link-active']"
-                            >
-                              <i class="fa fa-fw fa-edit"></i>&nbsp;
-                              <span>{{ "Edit Profile" | translate }}</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              routerLink="/change-password"
-                              [routerLinkActive]="['router-link-active']"
-                            >
-                              <i class="fa fa-fw fa-edit" aria-hidden="true"></i>&nbsp;
-                              <span>{{ "Change Password" | translate }}</span>
-                            </a>
-                          </li>
+                    </li>
                     <!-- <li>
                         <a href="javascript:void(0)">
                             <i class="fa fa-monument"></i>&nbsp;
