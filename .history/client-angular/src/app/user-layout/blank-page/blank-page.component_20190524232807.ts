@@ -8,7 +8,7 @@ import { routerTransition } from '../../router.animations';
     selector: 'app-blank-page',
     templateUrl: './blank-page.component.html',
     styleUrls: ['./blank-page.component.scss'],
-    animations: [routerTransition()]
+    
 })
 export class BlankPageComponent implements OnInit {
     userid: any;
