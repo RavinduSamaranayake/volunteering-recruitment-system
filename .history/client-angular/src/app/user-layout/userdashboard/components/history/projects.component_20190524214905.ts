@@ -30,7 +30,7 @@ export class ProjectsComponent implements AfterViewInit {
     const value = JSON.parse(dataval);
     const userid = value.id;
 
-    this.eventservice.getAllEventHistory(userid).subscribe(data => {
+    this.eventservice.getAllEventH(userid).subscribe(data => {
       const entries = Object.entries(data);
       entries.forEach(instance => {
         eventInstance = {

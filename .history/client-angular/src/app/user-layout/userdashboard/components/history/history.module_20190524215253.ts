@@ -23,4 +23,4 @@ import { ProjectsComponent } from './projects.component';
     declarations: [ProjectsComponent]
 })
 
-export class HistoryModule {}
+export class SlcteventModule {}

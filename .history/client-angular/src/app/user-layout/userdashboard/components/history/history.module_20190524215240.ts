@@ -7,13 +7,13 @@ import {
     MatPaginatorModule,
     MatSortModule,
   } from '@angular/material';
-import { HistoryRoutingModule } from './history-routing.module';
+import { HisRoutingModule } from './history-routing.module';
 import { ProjectsComponent } from './projects.component';
 // import { PageHeaderModule } from './../../shared';
 
 @NgModule({
     imports: [CommonModule,
-             HistoryRoutingModule,
+             SlcteventRoutingModule,
              MatFormFieldModule,
              MatInputModule,
              MatTableModule,
@@ -23,4 +23,4 @@ import { ProjectsComponent } from './projects.component';
     declarations: [ProjectsComponent]
 })
 
-export class HistoryModule {}
+export class SlcteventModule {}
