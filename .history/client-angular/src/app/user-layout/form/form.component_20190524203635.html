@@ -1,10 +1,12 @@
 <body class="bg-light">
     <div [@routerTransition]>
         <app-page-header
-          [heading]="'Change Password'"
-          [icon]="'fa fa-fw fa-edit'"
+          [heading]="'Change password'"
+          [icon]="'fa fa-university'"
           [image]="'https://assets.nst.com.my/images/articles/29_seas_1527437746.jpg'"
-          [desc]=""
+          [desc]="
+            'Select the event that needs to be suspended or restricted from taking place'
+          "
         ></app-page-header>
 
     <div class="container">
@@ -13,7 +15,7 @@
           
       <div class="container">
     
-            <!-- <h4 class="mb-3">Change Your password</h4> -->
+            <h4 class="mb-3">Change Your password</h4>
             <form (ngSubmit)="onChangePassword()" class="needs-validation" novalidate>
     
               <div class="mb-3">
