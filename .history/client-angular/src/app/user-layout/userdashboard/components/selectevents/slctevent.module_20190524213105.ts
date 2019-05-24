@@ -14,11 +14,6 @@ import { ProjectsComponent } from './projects.component';
 @NgModule({
     imports: [CommonModule,
              SlcteventRoutingModule,
-             MatFormFieldModule,
-             MatInputModule,
-             MatTableModule,
-             MatPaginatorModule,
-             MatSortModule
             ],
     declarations: [ProjectsComponent]
 })

@@ -17,9 +17,8 @@ import { ProjectsComponent } from './projects.component';
              MatFormFieldModule,
              MatInputModule,
              MatTableModule,
-             MatPaginatorModule,
-             MatSortModule
-            ],
+    MatPaginatorModule,
+    MatSortModule,],
     declarations: [ProjectsComponent]
 })
 

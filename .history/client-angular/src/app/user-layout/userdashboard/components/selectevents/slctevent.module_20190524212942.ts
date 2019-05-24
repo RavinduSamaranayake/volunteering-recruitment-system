@@ -7,19 +7,14 @@ import {
     MatPaginatorModule,
     MatSortModule,
   } from '@angular/material';
+  
+
 import { SlcteventRoutingModule } from './slctevent-routing.module';
 import { ProjectsComponent } from './projects.component';
 // import { PageHeaderModule } from './../../shared';
 
 @NgModule({
-    imports: [CommonModule,
-             SlcteventRoutingModule,
-             MatFormFieldModule,
-             MatInputModule,
-             MatTableModule,
-             MatPaginatorModule,
-             MatSortModule
-            ],
+    imports: [CommonModule, SlcteventRoutingModule],
     declarations: [ProjectsComponent]
 })
 

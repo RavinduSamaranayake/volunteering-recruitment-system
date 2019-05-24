@@ -2,6 +2,7 @@ import { Component, OnInit,  Output, EventEmitter, AfterViewInit, ViewChild } fr
 import { routerTransition } from '../../../../router.animations';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import {EventService} from '../../../../myservices/event.service';
+import { Table } from './Table'; // import the table interface
 
 @Component({
   selector: 'app-projects',

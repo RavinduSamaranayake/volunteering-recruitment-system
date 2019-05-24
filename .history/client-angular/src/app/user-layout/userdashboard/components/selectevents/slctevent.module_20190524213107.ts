@@ -15,11 +15,10 @@ import { ProjectsComponent } from './projects.component';
     imports: [CommonModule,
              SlcteventRoutingModule,
              MatFormFieldModule,
-             MatInputModule,
-             MatTableModule,
-             MatPaginatorModule,
-             MatSortModule
-            ],
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,],
     declarations: [ProjectsComponent]
 })
 

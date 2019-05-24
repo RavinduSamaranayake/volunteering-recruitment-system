@@ -16,10 +16,9 @@ import { ProjectsComponent } from './projects.component';
              SlcteventRoutingModule,
              MatFormFieldModule,
              MatInputModule,
-             MatTableModule,
-             MatPaginatorModule,
-             MatSortModule
-            ],
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,],
     declarations: [ProjectsComponent]
 })
 

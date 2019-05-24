@@ -12,14 +12,7 @@ import { ProjectsComponent } from './projects.component';
 // import { PageHeaderModule } from './../../shared';
 
 @NgModule({
-    imports: [CommonModule,
-             SlcteventRoutingModule,
-             MatFormFieldModule,
-             MatInputModule,
-             MatTableModule,
-             MatPaginatorModule,
-             MatSortModule
-            ],
+    imports: [CommonModule, SlcteventRoutingModule,],
     declarations: [ProjectsComponent]
 })
 
