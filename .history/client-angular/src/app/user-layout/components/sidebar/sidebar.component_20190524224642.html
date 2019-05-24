@@ -39,11 +39,11 @@
             </a>
             <br />
             <div class="nested-menu">
-                <a class="list-group-item" (click)="addExpandClass('pag')">
+                <a class="list-group-item">
                   <i class="fa fa-calendar"></i>&nbsp;
                   <span>{{ "Events" | translate }}</span>
                 </a>
-                <li class="nested" [class.expand]="showMenu === 'pag'">
+                <li class="nested" [class.expand]="true">
                   <ul class="submenu">
                     <li>
                       <a
@@ -76,11 +76,11 @@
                 </li>
               </div>
             <div class="nested-menu">
-              <a class="list-group-item"  (click)="addExpandClass('page')">
+              <a class="list-group-item"  (click)="addExpandClass('pages')">
                 <i class="fa fa-university"></i>&nbsp;
                 <span>{{ "Organizations" | translate }}</span>
               </a>
-              <li class="nested" [class.expand]="showMenu === 'page'">
+              <li class="nested" [class.expand]="true">
                 <ul class="submenu">
                   <!-- <li>
                     <a
