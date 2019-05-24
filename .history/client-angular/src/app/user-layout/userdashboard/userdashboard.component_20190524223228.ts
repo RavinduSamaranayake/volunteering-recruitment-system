@@ -78,8 +78,9 @@ export class UserdashboardComponent implements OnInit {
         console.log('.............clicked HISTORY.........');
         this.router.navigate(['history']);
      }
-     public viewOrganization() {
-        this.router.navigate(['organizations']);
+     public view() {
+        console.log('.............clicked HISTORY.........');
+        this.router.navigate(['history']);
      }
 
 }

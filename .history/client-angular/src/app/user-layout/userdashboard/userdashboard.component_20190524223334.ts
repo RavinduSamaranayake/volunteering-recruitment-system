@@ -79,6 +79,7 @@ export class UserdashboardComponent implements OnInit {
         this.router.navigate(['history']);
      }
      public viewOrganization() {
+        
         this.router.navigate(['organizations']);
      }
 

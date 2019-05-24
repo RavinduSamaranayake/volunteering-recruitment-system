@@ -10,7 +10,7 @@ const routes: Routes = [
             { path: 'projects', loadChildren: './components/projects/projects.module#ProjectsModule' },
             { path: 'upcomming', loadChildren: './components/selectevents/slctevent.module#SlcteventModule' },
             { path: 'history', loadChildren: './components/history/history.module#HistoryModule' },
-            { path: 'organizations', loadChildren: './components/organizations/organization.module#OrganizationModule' },
+            { path: 'organizations', loadChildren: './components/organizations/organization.module#OrgaModule' },
         ]
     }
 ];
