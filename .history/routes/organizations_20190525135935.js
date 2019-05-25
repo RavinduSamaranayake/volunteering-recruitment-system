@@ -11,12 +11,7 @@ router.get("/getallorganizations", (req, res) => {
   });
 });
 
-//count of organizations
-router.get("/organizationcount", (req, res) => {
-  Organization.find().count().then(organizations => {
-    res.json(organizations);
-  });
-});
+//
 
 router.get("/getorganizationbyid/:id", (req, res) => {
   Organization.findById(req.params.id).then(organization => {
