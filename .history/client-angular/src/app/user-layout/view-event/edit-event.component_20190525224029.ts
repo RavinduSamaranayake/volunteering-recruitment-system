@@ -32,7 +32,7 @@ export class EditEventComponent implements AfterViewInit {
     id: ''
   };
 
-  ngAfterViewInit(){}
+  nG
 
   constructor(
     private route: ActivatedRoute,

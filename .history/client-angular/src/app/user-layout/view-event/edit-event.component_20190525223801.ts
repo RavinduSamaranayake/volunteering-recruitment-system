@@ -14,7 +14,7 @@ import { DecimalPipe } from '@angular/common';
   styleUrls: ['./edit-event.component.scss'],
   animations: [routerTransition()]
 })
-export class EditEventComponent implements AfterViewInit {
+export class EditEventComponent implements AfterViewInit 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -29,10 +29,9 @@ export class EditEventComponent implements AfterViewInit {
     time: '',
     type: '',
     rating: 0,
+    volunteers: [],
     id: ''
   };
-
-  ngAfterViewInit(){}
 
   constructor(
     private route: ActivatedRoute,
@@ -48,6 +47,7 @@ export class EditEventComponent implements AfterViewInit {
         date: entries[3][1],
         time: entries[4][1],
         type: entries[5][1],
+        volunteers: entries[6][1],
         rating: parseFloat(entries[7][1]),
         id: entries[0][1]
       };
@@ -64,5 +64,6 @@ export interface Event {
   time: string;
   type: string;
   rating: Number;
+  volunteers: any;
   id: string;
 }

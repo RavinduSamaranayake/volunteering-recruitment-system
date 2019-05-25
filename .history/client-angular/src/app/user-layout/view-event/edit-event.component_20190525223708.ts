@@ -32,8 +32,6 @@ export class EditEventComponent implements AfterViewInit {
     id: ''
   };
 
-  ngAfterViewInit(){}
-
   constructor(
     private route: ActivatedRoute,
     private eventService: EventService
@@ -64,5 +62,6 @@ export interface Event {
   time: string;
   type: string;
   rating: Number;
+  volunteers: any;
   id: string;
 }

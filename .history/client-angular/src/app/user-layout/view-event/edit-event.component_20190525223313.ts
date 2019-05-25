@@ -15,6 +15,16 @@ import { DecimalPipe } from '@angular/common';
   animations: [routerTransition()]
 })
 export class EditEventComponent implements AfterViewInit {
+  displayedColumns = [
+    'name',
+    'email',
+    'contactNo',
+    'age',
+    'address',
+    'options'
+  ];
+  dataSource: MatTableDataSource<Volunteer>;
+  volunteers: Volunteer[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -29,16 +39,18 @@ export class EditEventComponent implements AfterViewInit {
     time: '',
     type: '',
     rating: 0,
+    volunteers: [],
     id: ''
   };
 
-  ngAfterViewInit(){}
-
   constructor(
     private route: ActivatedRoute,
+    private volunteerService: VolunteerService,
     private eventService: EventService
   ) {
     this.eventId = this.route.snapshot.paramMap.get('id');
+    let volunteerInstance: Volunteer;
+
     this.eventService.getEventByID(this.eventId).subscribe(data => {
       const entries = Object.entries(data);
       this.eventInstance = {
@@ -48,12 +60,24 @@ export class EditEventComponent implements AfterViewInit {
         date: entries[3][1],
         time: entries[4][1],
         type: entries[5][1],
+        volunteers: entries[6][1],
         rating: parseFloat(entries[7][1]),
         id: entries[0][1]
       };
     });
 }
 
+  ngAfterViewInit() {
+    this.dataSource = new MatTableDataSource(this.volunteers);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
 }
 
 export interface Event {
@@ -64,5 +88,15 @@ export interface Event {
   time: string;
   type: string;
   rating: Number;
+  volunteers: any;
+  id: string;
+}
+
+export interface Volunteer {
+  name: string;
+  email: string;
+  contact: string;
+  age: string;
+  address: string;
   id: string;
 }
