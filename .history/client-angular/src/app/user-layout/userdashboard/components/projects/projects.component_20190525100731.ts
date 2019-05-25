@@ -85,8 +85,8 @@ export class ProjectsComponent implements AfterViewInit {
         this.dataSource.data = [...this.dataSource.data, eventInstance];
       });
        
-      this.eventcount = numrows;
-      console.log('the number of rows........:::::::::::::::: ', this.eventcount);
+      this.eventcount = numrows
+      console.log('the number of rows........:::::::::::::::: ', numrows);
     });
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.events);

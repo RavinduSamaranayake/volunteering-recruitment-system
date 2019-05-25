@@ -69,9 +69,7 @@ export class ProjectsComponent implements AfterViewInit {
 
     this.eventservice.getAllEvent().subscribe(data => {
       const entries = Object.entries(data);
-      
-      let numrows = 0; // for get the event count using for each loop
-
+      let numrows = 0; 
       entries.forEach(instance => {
         numrows = numrows+ 1;
         eventInstance = {
@@ -84,9 +82,8 @@ export class ProjectsComponent implements AfterViewInit {
         // this.events.push(eventInstance);
         this.dataSource.data = [...this.dataSource.data, eventInstance];
       });
-       
-      this.eventcount = numrows;
-      console.log('the number of rows........:::::::::::::::: ', this.eventcount);
+
+      console.log('the number of rows........:::::::::::::::: ', numrows);
     });
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.events);
