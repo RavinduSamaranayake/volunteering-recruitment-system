@@ -15,7 +15,6 @@ import { DecimalPipe } from '@angular/common';
   animations: [routerTransition()]
 })
 export class EditEventComponent implements AfterViewInit {
- 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

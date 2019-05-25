@@ -15,23 +15,17 @@ import { DecimalPipe } from '@angular/common';
   animations: [routerTransition()]
 })
 export class EditEventComponent implements AfterViewInit {
- 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   eventId: String;
-
-  public eventInstance: Event = {
-    title: '',
-    organization: '',
-    description: '',
-    date: '',
-    time: '',
-    type: '',
-    rating: 0,
-    id: ''
-  };
+  title: any;
+  date: String;
+  description: String;
+  attendees: String;
+  rating: String;
+  organize: String;
 
   ngAfterViewInit(){}
 
@@ -41,17 +35,13 @@ export class EditEventComponent implements AfterViewInit {
   ) {
     this.eventId = this.route.snapshot.paramMap.get('id');
     this.eventService.getEventByID(this.eventId).subscribe(data => {
-      const entries = Object.entries(data);
-      this.eventInstance = {
-        title: entries[1][1],
-        organization: entries[9][1],
-        description: entries[2][1],
-        date: entries[3][1],
-        time: entries[4][1],
-        type: entries[5][1],
-        rating: parseFloat(entries[7][1]),
-        id: entries[0][1]
-      };
+    //  this.eventId = data._id;
+      this.title = data.title;
+      this.date = data.date;
+      this.description = data.description;
+      this.attendees = data.attendees;
+      this.rating = data.rating;
+      this.organize = data.organization;
     });
 }
 

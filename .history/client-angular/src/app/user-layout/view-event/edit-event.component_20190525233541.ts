@@ -15,7 +15,6 @@ import { DecimalPipe } from '@angular/common';
   animations: [routerTransition()]
 })
 export class EditEventComponent implements AfterViewInit {
- 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -41,7 +40,7 @@ export class EditEventComponent implements AfterViewInit {
   ) {
     this.eventId = this.route.snapshot.paramMap.get('id');
     this.eventService.getEventByID(this.eventId).subscribe(data => {
-      const entries = Object.entries(data);
+    //  const entries = Object.entries(data);
       this.eventInstance = {
         title: entries[1][1],
         organization: entries[9][1],
