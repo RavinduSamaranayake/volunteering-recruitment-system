@@ -50,8 +50,8 @@ export class EditEventComponent implements AfterViewInit {
         date: data.date,
         time: data.time,
         type: data.type,
-        rating: parseFloat(data.rating),
-        id: data._id
+        rating: parseFloat(data.ratin),
+        id: entries[0][1]
       };
     });
 }
