@@ -36,11 +36,7 @@ router.get("/allevents", (req, res) => {
   Event.find().then(events => res.json(events));
 });
 
-//get events count
-router.get("/alleventcount", (req, res) => {
-  Event.find().count().then(eventscount => res.json(eventscount));
-});
-
+//
 
 //@route DELETE events/delevent/id
 //@desc Delete a Item
@@ -99,12 +95,13 @@ router.delete("/delslctevent/:id", (req, res) => {
     .catch(err => res.status(404).json({ sucess: false }));
 });
 
-//@route GET events/upcommingevents
+//@route GET events/allselectevents
 //@desc Get All items
 //@access public
 
 router.get("/allselect/upcomming/:userid", (req, res) => {
   const userid = req.params.userid;
+  //const query = {userid: userid}
   SelectEvent.getUpcommingevents(userid, (err, slctevents) => {
     if (err) {
       res.json({ success: false, msg: err });
@@ -114,26 +111,9 @@ router.get("/allselect/upcomming/:userid", (req, res) => {
   });
 });
 
-//get upcomming events count
-router.get("/allselect/upcommingcount/:userid", (req, res) => {
-  const userid = req.params.userid;
-  const query = {
-    userid: userid,
-    date: {
-      $gte: Date.now() //for get the dates which are upcomming from today
-       
-    }
-  };
-
-  SelectEvent.find(query).count().then(eventscount => res.json(eventscount));
-});
-
-//@route GET events/history
-//@desc Get All items
-//@access public
-
 router.get("/allselect/history/:userid", (req, res) => {
   const userid = req.params.userid;
+  //const query = {userid: userid}
   SelectEvent.getEventsHistory(userid, (err, slctevents) => {
     if (err) {
       res.json({ success: false, msg: err });
@@ -141,21 +121,6 @@ router.get("/allselect/history/:userid", (req, res) => {
       res.json(slctevents);
     }
   });
-});
-
-
-//get event history count
-router.get("/allselect/historycount/:userid", (req, res) => {
-  const userid = req.params.userid;
-  const query = {
-    userid: userid,
-    date: {
-      $lt: Date.now() //for get the dates which are past from today
-    }
-  };
-
-  SelectEvent.find(query).count().then(eventscount => res.json(eventscount));
-  
 });
 
 router.get("/selecteventbyorg/:id", (req, res) => {

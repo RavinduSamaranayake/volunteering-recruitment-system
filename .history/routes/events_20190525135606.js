@@ -145,7 +145,7 @@ router.get("/allselect/history/:userid", (req, res) => {
 
 
 //get event history count
-router.get("/allselect/historycount/:userid", (req, res) => {
+router.get("/allselect/history/:userid", (req, res) => {
   const userid = req.params.userid;
   const query = {
     userid: userid,

@@ -125,7 +125,7 @@ router.get("/allselect/upcommingcount/:userid", (req, res) => {
     }
   };
 
-  SelectEvent.find(query).count().then(eventscount => res.json(eventscount));
+  SelectEvent.find(query).count().then(eventscount => res.json(eventscount));;
 });
 
 //@route GET events/history
@@ -144,18 +144,16 @@ router.get("/allselect/history/:userid", (req, res) => {
 });
 
 
-//get event history count
-router.get("/allselect/historycount/:userid", (req, res) => {
+//get event 
+router.get("/allselect/history/:userid", (req, res) => {
   const userid = req.params.userid;
-  const query = {
-    userid: userid,
-    date: {
-      $lt: Date.now() //for get the dates which are past from today
+  SelectEvent.getEventsHistory(userid, (err, slctevents) => {
+    if (err) {
+      res.json({ success: false, msg: err });
+    } else {
+      res.json(slctevents);
     }
-  };
-
-  SelectEvent.find(query).count().then(eventscount => res.json(eventscount));
-  
+  });
 });
 
 router.get("/selecteventbyorg/:id", (req, res) => {
