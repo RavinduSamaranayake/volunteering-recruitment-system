@@ -60,7 +60,7 @@ router.delete("/delevent/:id", (req, res) => {
 router.post("/addselected", (req, res, next) => {
   let newSelectEvent = new SelectEvent({
     _id: req.body._id,
-    eventid: req.body.eventid, //req.body mean the value is post using text field or other
+    id: req.body.userid, //req.body mean the value is post using text field or other
     userid: req.body.userid,
     title: req.body.title,
     description: req.body.description,

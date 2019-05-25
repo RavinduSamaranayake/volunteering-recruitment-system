@@ -12,12 +12,11 @@ const routes: Routes = [
             { path: 'userhomepg', loadChildren: './userhomepg/userhomepg.module#UserhomepgModule' },
             // { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             // { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
-            { path: 'change-password', loadChildren: './change-password/form.module#FormModule' },
+            { path: 'change-password', loadChildren: './change/form.module#FormModule' },
             { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
             { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
-            { path: 'profile-page', loadChildren: './change-profile/blank-page.module#BlankPageModule' },
-            { path: 'view-event/:id', loadChildren: './view-event/view-event.module#ViewEventModule' }
+            { path: 'profile-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' }
         ]
     }
 ];

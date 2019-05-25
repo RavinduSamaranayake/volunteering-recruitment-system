@@ -16,8 +16,7 @@ const routes: Routes = [
             { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
             { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
-            { path: 'profile-page', loadChildren: './change-profile/blank-page.module#BlankPageModule' },
-            { path: 'view-event/:id', loadChildren: './view-event/view-event.module#ViewEventModule' }
+            { path: 'profile-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' }
         ]
     }
 ];

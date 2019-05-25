@@ -81,6 +81,7 @@ export class ProjectsComponent implements AfterViewInit {
         // this.events.push(eventInstance);
         this.dataSource.data = [...this.dataSource.data, eventInstance];
       });
+      
     });
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.events);
