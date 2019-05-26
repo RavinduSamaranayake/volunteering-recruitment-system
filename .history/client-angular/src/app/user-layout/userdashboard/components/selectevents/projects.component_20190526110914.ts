@@ -30,7 +30,7 @@ export class ProjectsComponent implements AfterViewInit {
     const value = JSON.parse(dataval);
     const userid = value.id;
 
-    this.eventservice.getAllEventHistory(userid).subscribe(data => {
+    this.eventservice.getAllUpcommingEvent(userid).subscribe(data => {
       const entries = Object.entries(data);
       entries.forEach(instance => {
         eventInstance = {
@@ -38,7 +38,8 @@ export class ProjectsComponent implements AfterViewInit {
           organization: instance[1].organization,
           description: instance[1].description,
           date: instance[1].date,
-          id: instance[1].eventid
+          id: instance[1]._id,
+          eventid: instance[1].event_id
         };
         // this.events.push(eventInstance);
         this.dataSource.data = [...this.dataSource.data, eventInstance];

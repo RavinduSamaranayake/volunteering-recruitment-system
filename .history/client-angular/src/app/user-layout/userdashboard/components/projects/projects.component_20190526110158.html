@@ -51,13 +51,10 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header>
                   Title
                 </mat-header-cell>
-                <mat-cell *matCellDef="let row"> 
-                <a
+                <mat-cell *matCellDef="let row">  <a
                   routerLink="/view-event/{{ row.id }}"
                   [routerLinkActive]="['router-link-active']"
-                > {{ row.title }} 
-                </a>
-              </mat-cell>
+                > {{ row.title }} </mat-cell>
               </ng-container>
   
               <ng-container matColumnDef="organization">
