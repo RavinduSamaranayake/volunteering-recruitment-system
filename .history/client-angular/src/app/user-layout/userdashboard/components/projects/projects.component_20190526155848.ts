@@ -139,7 +139,7 @@ export class ProjectsComponent implements AfterViewInit {
     
   }
 
-  selectTheEvent(eventid){
+  selectTheEvent(eve){
 
     // add the selected event to collection
     const event = {
@@ -162,10 +162,10 @@ export class ProjectsComponent implements AfterViewInit {
     console.log('...............', data['msg'], '.........', data, '..........');
     if (data['success']) {
       alert('Thank You for join with this event....');
-      this.router.navigate(['/view-event/'+eventid]);
+      this.router.navigate(['/']);
     } else {
       alert('Sorry! You are already going for this event');
-      
+      this.router.navigate(['/userdashboard']);
     }
   });
   }

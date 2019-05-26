@@ -40,7 +40,6 @@ import { routerTransition } from '../../../../router.animations';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { EventService } from '../../../../myservices/event.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -75,8 +74,7 @@ export class ProjectsComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private eventservice: EventService,
-              private router: Router) {
+  constructor(private eventservice: EventService) {
     // Create Events
     let eventInstance: Event;
 
@@ -135,11 +133,11 @@ export class ProjectsComponent implements AfterViewInit {
       this.organize = data['organization'];
      });
 
-     this.selectTheEvent(eventid);
+     this.selectEvent()
     
   }
 
-  selectTheEvent(eventid){
+  selectTheEvent(){
 
     // add the selected event to collection
     const event = {
@@ -162,10 +160,8 @@ export class ProjectsComponent implements AfterViewInit {
     console.log('...............', data['msg'], '.........', data, '..........');
     if (data['success']) {
       alert('Thank You for join with this event....');
-      this.router.navigate(['/view-event/'+eventid]);
     } else {
       alert('Sorry! You are already going for this event');
-      
     }
   });
   }
