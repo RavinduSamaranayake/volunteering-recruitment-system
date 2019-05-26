@@ -66,7 +66,7 @@ export class ProjectsComponent implements AfterViewInit {
   }
 
   notGoing(eventid){
-    console.log('not going......',eventid);
+    console.log('not going'eventid)
   }
 
 }

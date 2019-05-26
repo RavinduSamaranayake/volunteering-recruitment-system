@@ -171,16 +171,11 @@ router.get("/geteventbyid/:id", (req, res) => {
 // check the user event select or not
 router.post("/checkgoing", (req, res, next) => {
   const eventid = req.body.eventid;
-  const userid = req.body.userid;
+  const userid = req.body.;
 
-  SelectEvent.getEventByIdUid(eventid, userid, (err, event) => {
+  User.getUserByUsername(username, (err, user) => {
     if (err) throw err;
-    if (!event) {
-      return res.json({ success: false, msg: "event not found" });
-    }else{
-      return res.json({ success: true, msg: "event found" });
+    if (!user) {
+      return res.json({ success: false, msg: "User not found" });
     }
-  });
-});
-
 module.exports = router;

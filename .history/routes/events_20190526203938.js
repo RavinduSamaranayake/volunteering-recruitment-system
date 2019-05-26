@@ -176,11 +176,6 @@ router.post("/checkgoing", (req, res, next) => {
   SelectEvent.getEventByIdUid(eventid, userid, (err, event) => {
     if (err) throw err;
     if (!event) {
-      return res.json({ success: false, msg: "event not found" });
-    }else{
-      return res.json({ success: true, msg: "event found" });
+      return res.json({ success: false, msg: " not found" });
     }
-  });
-});
-
 module.exports = router;

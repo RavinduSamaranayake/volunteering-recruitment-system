@@ -165,6 +165,7 @@ export class ProjectsComponent implements AfterViewInit {
          this.router.navigate(['/view-event/'+eventid]);
     } else {
       alert('Sorry! You are already going for this event');
+      
     }
   });
   }

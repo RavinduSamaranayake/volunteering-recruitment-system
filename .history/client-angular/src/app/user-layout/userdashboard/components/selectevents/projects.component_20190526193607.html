@@ -67,16 +67,15 @@
                     </mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <a
-                        routerLink="/"
+                        routerLink="/admin/events/edit/{{ row.id }}"
                         [routerLinkActive]="['router-link-active']"
                       >
                         <button
                           type="submit"
-                          style="width:100px; height:30px; font-size:12px;"
+                          style="width:80px; height:30px; font-size:12px;"
                           class="btn btn-outline-warning"
-                          (click)="notGoing(row.id)"
                         >
-                          NOT GOING
+                          NO
                         </button>
                       </a>
                     </mat-cell>

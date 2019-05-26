@@ -100,8 +100,7 @@ module.exports.getEventsHistory = function(userid, callback) {
 };
 
 // get the selected event by user id and and event id
-module.exports.getEventByIdUid = function(eventid, userid, callback) {
-  const query = { eventid: eventid,
-                  userid: userid };
+module.exports.getEventByIdUid = function(eventname, callback) {
+  const query = { eventname: eventname };
   SelectEvent.findOne(query, callback);
 };

@@ -65,9 +65,7 @@ export class ProjectsComponent implements AfterViewInit {
     this.dataSource.filter = filterValue;
   }
 
-  notGoing(eventid){
-    console.log('not going......',eventid);
-  }
+  notGoing(eventid)
 
 }
 

@@ -169,18 +169,5 @@ router.get("/geteventbyid/:id", (req, res) => {
 });
 
 // check the user event select or not
-router.post("/checkgoing", (req, res, next) => {
-  const eventid = req.body.eventid;
-  const userid = req.body.userid;
-
-  SelectEvent.getEventByIdUid(eventid, userid, (err, event) => {
-    if (err) throw err;
-    if (!event) {
-      return res.json({ success: false, msg: "event not found" });
-    }else{
-      return res.json({ success: true, msg: "event found" });
-    }
-  });
-});
 
 module.exports = router;
