@@ -171,25 +171,7 @@ export class ProjectsComponent implements AfterViewInit {
   }
 
   // check user is already going or not event
-  checkGoingEvent(eventid){
-    const dataval = localStorage.getItem('user');
-    const value = JSON.parse(dataval);
-    const userid = value.id;
-
-    const userevent = {
-        eventid: eventid,
-        userid: userid,
-    }
-    this.eventservice.checkUserGoing(userevent).subscribe(data => {
-      if (data['success']) {
-        console.log('.......sucesss true...',data['msg']);
-          return true;
-      } else {
-        console.log('.......sucesss false...',data['msg']);
-          return false;
-      }
-    });
-  }
+  goingEvent
 }
 
 export interface Event {

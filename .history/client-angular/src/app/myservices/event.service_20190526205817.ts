@@ -81,7 +81,7 @@ export class EventService {
     );
   }
 
-  getEventByID(eventID) {
+  getEventByID(eventID){
     return this.http.get(
       'http://localhost:3000/events/geteventbyid/' + eventID
     );
@@ -91,6 +91,8 @@ export class EventService {
   checkUserGoing(goingevent) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
+    // tslint:disable-next-line:max-line-length
+    // post the user data to the server in json object and the authenticate function which is in server check the username and password in server
     return this.http.post('http://localhost:3000/events/checkgoing', goingevent , {headers: headers});
   }
 }

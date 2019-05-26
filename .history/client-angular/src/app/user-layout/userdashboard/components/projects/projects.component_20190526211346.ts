@@ -181,14 +181,16 @@ export class ProjectsComponent implements AfterViewInit {
         userid: userid,
     }
     this.eventservice.checkUserGoing(userevent).subscribe(data => {
+      console.log('...............', data['msg'], '.........', data, '..........');
       if (data['success']) {
-        console.log('.......sucesss true...',data['msg']);
-          return true;
+        alert('Thank You for join with this event....');
+           this.router.navigate(['/view-event/'+eventid]);
       } else {
-        console.log('.......sucesss false...',data['msg']);
-          return false;
+        alert('Sorry! You are already going for this event');
       }
     });
+  
+   
   }
 }
 

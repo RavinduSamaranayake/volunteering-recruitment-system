@@ -81,7 +81,7 @@ export class EventService {
     );
   }
 
-  getEventByID(eventID) {
+  getEventByID(eventID){
     return this.http.get(
       'http://localhost:3000/events/geteventbyid/' + eventID
     );

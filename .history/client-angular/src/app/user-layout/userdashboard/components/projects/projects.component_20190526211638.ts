@@ -189,6 +189,8 @@ export class ProjectsComponent implements AfterViewInit {
           return false;
       }
     });
+  
+   
   }
 }
 

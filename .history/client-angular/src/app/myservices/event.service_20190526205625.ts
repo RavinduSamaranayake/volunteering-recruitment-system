@@ -81,16 +81,12 @@ export class EventService {
     );
   }
 
-  getEventByID(eventID) {
+  getEventByID(eventID){
     return this.http.get(
       'http://localhost:3000/events/geteventbyid/' + eventID
     );
   }
 
-  // check going events for user
-  checkUserGoing(goingevent) {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/events/checkgoing', goingevent , {headers: headers});
-  }
+  // check going events
+  
 }

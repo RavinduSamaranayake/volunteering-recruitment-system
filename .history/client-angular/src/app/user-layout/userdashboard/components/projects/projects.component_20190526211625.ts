@@ -185,10 +185,12 @@ export class ProjectsComponent implements AfterViewInit {
         console.log('.......sucesss true...',data['msg']);
           return true;
       } else {
-        console.log('.......sucesss false...',data['msg']);
-          return false;
+        console.log('.......sucesss true...',data['msg']);
+          return true;
       }
     });
+  
+   
   }
 }
 

@@ -180,15 +180,8 @@ export class ProjectsComponent implements AfterViewInit {
         eventid: eventid,
         userid: userid,
     }
-    this.eventservice.checkUserGoing(userevent).subscribe(data => {
-      if (data['success']) {
-        console.log('.......sucesss true...',data['msg']);
-          return true;
-      } else {
-        console.log('.......sucesss false...',data['msg']);
-          return false;
-      }
-    });
+
+
   }
 }
 
