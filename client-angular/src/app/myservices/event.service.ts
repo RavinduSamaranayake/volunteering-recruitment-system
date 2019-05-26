@@ -10,6 +10,7 @@ export class EventService {
   $eventdetails = new EventEmitter(); // this is like value saving varible
   eventId: String;
   slctevent: any;
+  
 
   constructor(private http: HttpClient) {}
 

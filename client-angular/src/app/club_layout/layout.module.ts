@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
@@ -32,7 +33,8 @@ import { AlertModule } from 'ngx-bootstrap/alert';
         TimepickerModule.forRoot(),
         BsDatepickerModule.forRoot(),
         PopoverModule.forRoot(),
-        AlertModule.forRoot()
+        AlertModule.forRoot(),
+        ModalModule.forRoot()
 
     ],
     declarations: [LayoutComponent, SidebarComponent , NewProjectComponent, HeaderComponent, ViewProjectsComponent, CurrentVolunteersComponent, AllVolunteersComponent,ProjectCardComponent],
