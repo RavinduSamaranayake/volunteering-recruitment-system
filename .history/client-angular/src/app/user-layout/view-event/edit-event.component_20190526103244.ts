@@ -49,10 +49,10 @@ export class EditEventComponent implements AfterViewInit {
         organization: data['organization'],
         description: data['description'],
         date:  data['date'],
-        time:  data['time'],
-        type:  data['type'],
-        rating: parseFloat(data['rating']),
-        id:  data['_id']
+        time:  data['t'],
+        type:  data['title'],
+        rating: parseFloat(data['title']),
+        id:  data['title']
      };
     });
 }

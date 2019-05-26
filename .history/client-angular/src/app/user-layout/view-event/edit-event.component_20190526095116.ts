@@ -41,19 +41,18 @@ export class EditEventComponent implements AfterViewInit {
     this.eventId = this.route.snapshot.paramMap.get('id');
     this.eventService.getEventByID(this.eventId).subscribe(data => {
      // const title = data.title;
-    // const entries = Object.entries(data);
-     console.log('the output data is ', data['title']);
-    //  const titleid = entries[1]
-      this.eventInstance = {
-        title: data['title'],
-        organization: data['organization'],
-        description: data['description'],
-        date:  data['date'],
-        time:  data['time'],
-        type:  data['type'],
-        rating: parseFloat(data['rating']),
-        id:  data['_id']
-     };
+     console.log('the output data is ', JSON.strngify(data).title);
+    //  const entries = Object.entries(data);
+    //   this.eventInstance = {
+    //     title: data.title,
+    //     organization: data.organization,
+    //     description: data.description,
+    //     date: data.date,
+    //     time: data.time,
+    //     type: data.type,
+    //     rating: parseFloat(data.rating),
+    //     id: data._id
+    //  };
     });
 }
 

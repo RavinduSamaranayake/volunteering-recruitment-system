@@ -46,13 +46,13 @@ export class EditEventComponent implements AfterViewInit {
     //  const titleid = entries[1]
       this.eventInstance = {
         title: data['title'],
-        organization: data['organization'],
-        description: data['description'],
-        date:  data['date'],
-        time:  data['time'],
-        type:  data['type'],
-        rating: parseFloat(data['rating']),
-        id:  data['_id']
+        organization: data['title'],
+        description: data['title'],
+        date:  data['title'],
+        time:  data['title'],
+        type:  data['title'],
+        rating: parseFloat(),
+        id:  data['title']
      };
     });
 }

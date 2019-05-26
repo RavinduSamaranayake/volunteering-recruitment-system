@@ -52,7 +52,7 @@ export class EditEventComponent implements AfterViewInit {
         time:  data['time'],
         type:  data['type'],
         rating: parseFloat(data['rating']),
-        id:  data['_id']
+        id:  data['']
      };
     });
 }
