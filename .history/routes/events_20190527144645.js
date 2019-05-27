@@ -49,7 +49,7 @@ router.get("/alleventcount", (req, res) => {
        $gte: Date.now() //for get the dates which are upcomming from today
      }
    };
-  Event.find(query).count().then(eventscount => res.json(eventscount));
+  Event.find().count().then(eventscount => res.json(eventscount));
 });
 
 

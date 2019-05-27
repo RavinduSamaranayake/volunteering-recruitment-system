@@ -39,17 +39,12 @@ router.get("/allevents", (req, res) => {
       $gte: Date.now() //for get the dates which are upcomming from today
     }
   };
-  Event.find(query).then(events => res.json(events));
+  Event.find().then(events => res.json(events));
 });
 
-//get available events count
+//get events count
 router.get("/alleventcount", (req, res) => {
-  const query = {
-    date: {
-       $gte: Date.now() //for get the dates which are upcomming from today
-     }
-   };
-  Event.find(query).count().then(eventscount => res.json(eventscount));
+  Event.find().count().then(eventscount => res.json(eventscount));
 });
 
 

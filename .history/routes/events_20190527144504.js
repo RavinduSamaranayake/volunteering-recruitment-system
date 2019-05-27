@@ -35,21 +35,19 @@ router.post("/addevent", (req, res, next) => {
 // get all available events filter by current data
 router.get("/allevents", (req, res) => {
   const query = {
-   date: {
+    
+    date: {
       $gte: Date.now() //for get the dates which are upcomming from today
+      // $lt: Date.now()
+      // $gte: new Date(2019,05,28)
     }
   };
-  Event.find(query).then(events => res.json(events));
+  Event.find().then(events => res.json(events));
 });
 
-//get available events count
+//get events count
 router.get("/alleventcount", (req, res) => {
-  const query = {
-    date: {
-       $gte: Date.now() //for get the dates which are upcomming from today
-     }
-   };
-  Event.find(query).count().then(eventscount => res.json(eventscount));
+  Event.find().count().then(eventscount => res.json(eventscount));
 });
 
 

@@ -2,7 +2,6 @@ import { Component, OnInit,  Output, EventEmitter, AfterViewInit, ViewChild } fr
 import { routerTransition } from '../../../../router.animations';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import {EventService} from '../../../../myservices/event.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -26,7 +25,7 @@ export class ProjectsComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private eventservice: EventService,
-              private router: Router) {
+              private router) {
     // Create Events
     let eventInstance: Event;
     const dataval = localStorage.getItem('user');
@@ -73,7 +72,6 @@ export class ProjectsComponent implements AfterViewInit {
     this.eventservice.removeSelectEvent(eventid).subscribe(data => {
       if (data['sucess']){
         alert('Now you are not going for this event....');
-        this.router.navigate(['/userdashboard/upcomming']);
 
       }else {
         alert('Some thing went wrong....');
