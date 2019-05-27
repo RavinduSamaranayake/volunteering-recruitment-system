@@ -82,6 +82,12 @@ getEventbyOrganization(orgid){
 
 
 
+  getAllEventCount() {
+    // let headers = new HttpHeaders();
+    return this.http.get('http://localhost:3000/events/alleventcount');
+  }
+
+  // after the user select a event.......................
 
   setEvent(sevent) {
     this.slctevent = sevent;
@@ -111,6 +117,13 @@ getEventbyOrganization(orgid){
     );
   }
 
+  getAllUpcommingEventCount(userid) {
+    // let headers = new HttpHeaders();
+    return this.http.get(
+      'http://localhost:3000/events/allselect/upcommingcount/' + userid
+    );
+  }
+
   getAllEventHistory(userid) {
     // let headers = new HttpHeaders();
     return this.http.get(
@@ -118,11 +131,24 @@ getEventbyOrganization(orgid){
     );
   }
 
-  getEventByID(eventID){
+  getAllEventHistoryCount(userid) {
+    // let headers = new HttpHeaders();
+    return this.http.get(
+      'http://localhost:3000/events/allselect/historycount/' + userid
+    );
+  }
+
+  getEventByID(eventID) {
     return this.http.get(
       'http://localhost:3000/events/geteventbyid/' + eventID
     );
   }
 
+  // check going events for user
+  checkUserGoing(goingevent) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/events/checkgoing', goingevent , {headers: headers});
+  }
 }
 
