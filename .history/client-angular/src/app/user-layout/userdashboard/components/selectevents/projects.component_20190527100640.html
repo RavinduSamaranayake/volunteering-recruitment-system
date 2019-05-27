@@ -29,7 +29,7 @@
                     </mat-header-cell>
                     <mat-cell *matCellDef="let row"> 
                         <a
-                        routerLink="/view-event/{{ row.eventid }}"
+                        routerLink="/view-event/{{ row. }}"
                         [routerLinkActive]="['router-link-active']"
                       > {{ row.title }} 
                       </a>
@@ -67,14 +67,14 @@
                     </mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <a
-                        routerLink="/userdashboard/upcomming"
+                        routerLink="/"
                         [routerLinkActive]="['router-link-active']"
                       >
                         <button
                           type="submit"
                           style="width:100px; height:30px; font-size:12px;"
                           class="btn btn-outline-warning"
-                          (click)="notGoing(row.slctid)"
+                          (click)="notGoing(row.id)"
                         >
                           NOT GOING
                         </button>

@@ -40,7 +40,7 @@ export class ProjectsComponent implements AfterViewInit {
           organization: instance[1].organization,
           description: instance[1].description,
           date: instance[1].date,
-          slctid: instance[1]._id,
+          slctid: instance[1]._id
           eventid: instance[1].eventid
         };
         // this.events.push(eventInstance);
