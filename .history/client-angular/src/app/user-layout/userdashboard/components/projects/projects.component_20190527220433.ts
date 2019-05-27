@@ -178,9 +178,7 @@ export class ProjectsComponent implements AfterViewInit {
     const dataval = localStorage.getItem('user');
     const value = JSON.parse(dataval);
     const userid = value.id;
-
-    // have to fix the issues of this
-    let status;
+   
 
     const userevent = {
         eventid: eventid,
@@ -189,14 +187,15 @@ export class ProjectsComponent implements AfterViewInit {
     this.eventservice.checkUserGoing(userevent).subscribe(data => {
       if (data['success']) {
         console.log('.......sucesss true...',data['msg']);
-          status = true;
+          this.msg = data['msg'];
+         // return true;
       } else {
         console.log('.......sucesss false...',data['msg']);
-          status = false;
 
       }
     });
-    return status;
+    return true;
+   
   }
   checkit(check){
     if(check){

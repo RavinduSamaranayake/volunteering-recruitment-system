@@ -178,9 +178,10 @@ export class ProjectsComponent implements AfterViewInit {
     const dataval = localStorage.getItem('user');
     const value = JSON.parse(dataval);
     const userid = value.id;
+   // let stat = true;
+// tslint:disable-next-line: prefer-const
 
-    // have to fix the issues of this
-    let status;
+  
 
     const userevent = {
         eventid: eventid,
@@ -189,14 +190,16 @@ export class ProjectsComponent implements AfterViewInit {
     this.eventservice.checkUserGoing(userevent).subscribe(data => {
       if (data['success']) {
         console.log('.......sucesss true...',data['msg']);
-          status = true;
+          this.msg = 
+         // return true;
       } else {
         console.log('.......sucesss false...',data['msg']);
-          status = false;
-
+          
       }
     });
-    return status;
+    console.log("test it .........", arr_names[0]);
+    return true;
+   // return stat;
   }
   checkit(check){
     if(check){

@@ -179,7 +179,7 @@ export class ProjectsComponent implements AfterViewInit {
     const value = JSON.parse(dataval);
     const userid = value.id;
 
-    // have to fix the issues of this
+    //
     let status;
 
     const userevent = {

@@ -19,8 +19,8 @@ const routes: Routes = [
             { path: 'profile-page', loadChildren: './change-profile/blank-page.module#BlankPageModule' },
             { path: 'view-event/:id', loadChildren: './view-event/view-event.module#ViewEventModule' },
             { path: 'view-organize/:id', loadChildren: './view-organization/view-organization.module#ViewOrganizationModule' },
-            { path: 'notify-going/:id', loadChildren: './notify-going/notify-going.module#NotifyGoingModule' },
-            { path: 'notify-delete/:id', loadChildren: './notify-delete/notify-delete.module#NotifyDeleteModule' },
+            { path: 'view-event/:id', loadChildren: './view-event/view-event.module#ViewEventModule' },
+            { path: 'view-event/:id', loadChildren: './view-event/view-event.module#ViewEventModule' },
         ]
     }
 ];

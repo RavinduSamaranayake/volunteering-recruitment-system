@@ -178,8 +178,7 @@ export class ProjectsComponent implements AfterViewInit {
     const dataval = localStorage.getItem('user');
     const value = JSON.parse(dataval);
     const userid = value.id;
-
-    // have to fix the issues of this
+   
     let status;
 
     const userevent = {
@@ -196,7 +195,8 @@ export class ProjectsComponent implements AfterViewInit {
 
       }
     });
-    return status;
+    return s;
+   
   }
   checkit(check){
     if(check){

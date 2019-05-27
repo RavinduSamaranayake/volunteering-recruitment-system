@@ -178,8 +178,7 @@ export class ProjectsComponent implements AfterViewInit {
     const dataval = localStorage.getItem('user');
     const value = JSON.parse(dataval);
     const userid = value.id;
-
-    // have to fix the issues of this
+   
     let status;
 
     const userevent = {
