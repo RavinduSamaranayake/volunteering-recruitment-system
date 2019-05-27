@@ -157,7 +157,7 @@ router.get("/getvolunteerbyid/:id", (req, res) => {
 });
 
 router.put("/editaccess", function(req, res, next) {
-  User.findByIdAndUpdate(req.body.id, { status: false }, function(
+  User.findByIdAndUpdate(req.body.id, { : !req.body.blocked }, function(
     err,
     post
   ) {
