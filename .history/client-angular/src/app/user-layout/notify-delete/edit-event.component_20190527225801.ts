@@ -1,4 +1,6 @@
-import { Component, AfterViewInit} from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MatPaginator, MatSort, 
 import { routerTransition } from '../../router.animations';
 @Component({
   selector: 'app-edit-event',

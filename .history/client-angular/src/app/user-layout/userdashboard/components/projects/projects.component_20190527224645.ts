@@ -166,9 +166,9 @@ export class ProjectsComponent implements AfterViewInit {
     console.log('...............', data['msg'], '.........', data, '..........');
     if (data['success']) {
      // alert('Thank You for join with this event....');
-         this.router.navigate(['/notify-going/'+eventid]);
+         this.router.navigate(['/notify-event/'+eventid]);
     } else {
-      alert('Sorry! Try again...');
+      alert('Sorry! You are already going for this event');
     }
   });
   }

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit} from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 @Component({
   selector: 'app-edit-event',

@@ -72,7 +72,7 @@ export class ProjectsComponent implements AfterViewInit {
     console.log('not going......',eventid);
     this.eventservice.removeSelectEvent(eventid).subscribe(data => {
       if (data['sucess']){
-        this.router.navigate(['/notify-delete']);
+        this.router.navigate(['/notify-delete]);
 
       }else {
         alert('Some thing went wrong....');
