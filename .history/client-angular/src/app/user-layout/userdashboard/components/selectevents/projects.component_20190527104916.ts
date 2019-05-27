@@ -72,12 +72,12 @@ export class ProjectsComponent implements AfterViewInit {
       if(data['sucess']){
         alert('Now you are not going for this event....');
       }else{
-        alert('Some thing went wrong....');
+        alert('S....');
       }
-  });
+  }
 
 }
-}
+
 export interface Event {
   title: string;
   organization: string;

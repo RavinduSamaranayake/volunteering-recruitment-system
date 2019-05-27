@@ -95,8 +95,8 @@ export class EventService {
   }
   // remove the selected event
   removeSelectEvent(eventID) {
-    return this.http.delete(
-      'http://localhost:3000/events/delslctevent/' + eventID
+    return this.http.(
+      'http://localhost:3000/events/geteventbyid/' + eventID
     );
   }
 }

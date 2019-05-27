@@ -93,10 +93,6 @@ export class EventService {
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/events/checkgoing', goingevent , {headers: headers});
   }
-  // remove the selected event
-  removeSelectEvent(eventID) {
-    return this.http.delete(
-      'http://localhost:3000/events/delslctevent/' + eventID
-    );
-  }
+
+  
 }

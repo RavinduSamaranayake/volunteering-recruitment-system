@@ -78,6 +78,7 @@ export class ProjectsComponent implements AfterViewInit {
 
 }
 }
+
 export interface Event {
   title: string;
   organization: string;

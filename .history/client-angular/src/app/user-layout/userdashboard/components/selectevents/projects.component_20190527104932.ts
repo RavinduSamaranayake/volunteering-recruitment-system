@@ -74,10 +74,10 @@ export class ProjectsComponent implements AfterViewInit {
       }else{
         alert('Some thing went wrong....');
       }
-  });
+  }
 
 }
-}
+
 export interface Event {
   title: string;
   organization: string;

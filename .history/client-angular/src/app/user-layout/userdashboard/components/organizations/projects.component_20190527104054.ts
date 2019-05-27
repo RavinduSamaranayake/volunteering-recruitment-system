@@ -43,8 +43,7 @@ import { OrganizationService } from '../../../../myservices/organization.service
       });
       // Assign the data to the data source for the table to render
       this.dataSource = new MatTableDataSource(this.organizations);
-    }
-
+    
     /**
      * Set the paginator and sort after the view init since this component will
      * be able to query its view for the initialized paginator and sort.

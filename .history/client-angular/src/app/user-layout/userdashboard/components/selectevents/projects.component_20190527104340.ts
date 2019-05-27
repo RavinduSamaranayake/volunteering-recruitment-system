@@ -68,16 +68,11 @@ export class ProjectsComponent implements AfterViewInit {
 
   notGoing(eventid){
     console.log('not going......',eventid);
-    this.eventservice.removeSelectEvent(eventid).subscribe(data => {
-      if(data['sucess']){
-        alert('Now you are not going for this event....');
-      }else{
-        alert('Some thing went wrong....');
-      }
-  });
+    this.eventservice.getAllUpcommingEvent(userid).subscribe(data => {
+  }
 
 }
-}
+
 export interface Event {
   title: string;
   organization: string;
