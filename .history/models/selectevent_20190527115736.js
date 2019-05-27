@@ -49,9 +49,7 @@ const SelectEventSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  participation: {
-    type: Boolean,
-  }
+  
 });
 
 SelectEventSchema.index({ _id: 1, userid: 1 }, { unique: true }); //set the composite primary key

@@ -50,9 +50,7 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  status: {
-    type: Boolean,
-  }
+  status
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
@@ -62,8 +60,7 @@ module.exports.getUserById = function(id, callback){
 }
 
 module.exports.getUserByUsername = function(username, callback){
-  const query = {username: username,
-                 status: true}
+  const query = {username: username}
   User.findOne(query, callback);
 }
 

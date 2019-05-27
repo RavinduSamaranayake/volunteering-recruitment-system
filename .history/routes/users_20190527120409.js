@@ -19,8 +19,8 @@ router.post("/register", (req, res, next) => {
     cntctfix: req.body.cntctfix,
     age: req.body.age,
     gender: req.body.gender,
-    ulevel: "user",
-    status: true
+    ulevel: "user"
+    s
   });
 
   User.addUser(newUser, (err, user) => {
@@ -41,7 +41,7 @@ router.post("/authenticate", (req, res, next) => {
   User.getUserByUsername(username, (err, user) => {
     if (err) throw err;
     if (!user) {
-      return res.json({ success: false, msg: "Invalid User" });
+      return res.json({ success: false, msg: "User not found" });
     }
     console.log(
       "User is found..................................................."

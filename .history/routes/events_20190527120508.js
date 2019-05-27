@@ -69,8 +69,8 @@ router.post("/addselected", (req, res, next) => {
     rating: req.body.rating,
     image: req.body.image,
     organization: req.body.organization,
-    status: req.body.status,
-    participation: false
+    status: req.body.status
+    p
   });
 
   newSelectEvent

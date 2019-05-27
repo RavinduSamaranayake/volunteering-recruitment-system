@@ -70,7 +70,7 @@ router.post("/addselected", (req, res, next) => {
     image: req.body.image,
     organization: req.body.organization,
     status: req.body.status,
-    participation: false
+    participation: 
   });
 
   newSelectEvent

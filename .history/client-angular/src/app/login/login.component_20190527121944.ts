@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
         // alert('login sucess');
       } else {
         this.router.navigate(['login']);
-        alert('login fail ,'+ data['msg']);
+        alert('login fail , username or password is incorrect');
       }
     });
   }

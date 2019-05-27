@@ -63,7 +63,7 @@ module.exports.getUserById = function(id, callback){
 
 module.exports.getUserByUsername = function(username, callback){
   const query = {username: username,
-                 status: true}
+                 status: tr}
   User.findOne(query, callback);
 }
 

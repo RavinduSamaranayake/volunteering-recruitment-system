@@ -50,7 +50,7 @@ const SelectEventSchema = mongoose.Schema({
     required: true
   },
   participation: {
-    type: Boolean,
+    type: Str,
   }
 });
 
