@@ -36,6 +36,20 @@ const Organization = (module.exports = mongoose.model(
   OrganizationSchema
 ));
 
+module.exports.getOrganizationById = function(id, callback){
+  Organization.findById(id, callback);
+}
+
+module.exports.getOrganizationByOrganizationname = function(Organizationname, callback){
+  const query = {Organizationname: Organizationname}
+  Organization.findOne(query, callback);
+}
+
+module.exports.getOrganizationByEmail = function(email, callback){
+  const query = {email: email}
+  Organization.findOne(query, callback);
+}
+
 module.exports.addOrg = function(newOrg, callback){
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(newOrg.password, salt, (err, hash) => {
@@ -45,3 +59,12 @@ module.exports.addOrg = function(newOrg, callback){
     });
   });
 }
+
+
+module.exports.comparePassword = function(OrganizationPassword, hash, callback){
+  bcrypt.compare(OrganizationPassword, hash, (err, isMatch) => {
+    if(err) throw err;
+    callback(null, isMatch);
+  });
+}
+

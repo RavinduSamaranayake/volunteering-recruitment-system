@@ -156,4 +156,17 @@ router.get("/getvolunteerbyid/:id", (req, res) => {
   });
 });
 
+router.put("/editaccess", function(req, res, next) {
+  User.findByIdAndUpdate(req.body.id, { blocked: !req.body.blocked }, function(
+    err,
+    post
+  ) {
+    if (err) {
+      res.json({ success: false });
+    } else {
+      res.json({ success: true });
+    }
+  });
+});
+
 module.exports = router;

@@ -116,6 +116,12 @@ router.get("/allevents", (req, res) => {
   Event.find().then(events => res.json(events));
 });
 
+//get events count
+router.get("/alleventcount", (req, res) => {
+  Event.find().count().then(eventscount => res.json(eventscount));
+});
+
+
 //@route DELETE events/delevent/id
 //@desc Delete a Item
 //@access public
@@ -133,8 +139,9 @@ router.delete("/delevent/:id", (req, res) => {
 //@access public
 router.post("/addselected", (req, res, next) => {
   let newSelectEvent = new SelectEvent({
-    _id: req.body._id,
-    userid: req.body.userid, //req.body mean the value is post using text field or other
+    _id: req.body.id,
+    eventid: req.body.eventid, //req.body mean the value is post using text field or other
+    userid: req.body.userid,
     title: req.body.title,
     description: req.body.description,
     date: req.body.date,
@@ -142,7 +149,7 @@ router.post("/addselected", (req, res, next) => {
     rating: req.body.rating,
     image: req.body.image,
     organization: req.body.organization,
-    status: "selected"
+    status: req.body.status
   });
 
   newSelectEvent
@@ -176,13 +183,12 @@ router.delete("/delslctevent/:id", (req, res) => {
     .catch(err => res.status(404).json({ sucess: false }));
 });
 
-//@route GET events/allselectevents
+//@route GET events/upcommingevents
 //@desc Get All items
 //@access public
 
 router.get("/allselect/upcomming/:userid", (req, res) => {
   const userid = req.params.userid;
-  //const query = {userid: userid}
   SelectEvent.getUpcommingevents(userid, (err, slctevents) => {
     if (err) {
       res.json({ success: false, msg: err });
@@ -192,9 +198,26 @@ router.get("/allselect/upcomming/:userid", (req, res) => {
   });
 });
 
+//get upcomming events count
+router.get("/allselect/upcommingcount/:userid", (req, res) => {
+  const userid = req.params.userid;
+  const query = {
+    userid: userid,
+    date: {
+      $gte: Date.now() //for get the dates which are upcomming from today
+       
+    }
+  };
+
+  SelectEvent.find(query).count().then(eventscount => res.json(eventscount));
+});
+
+//@route GET events/history
+//@desc Get All items
+//@access public
+
 router.get("/allselect/history/:userid", (req, res) => {
   const userid = req.params.userid;
-  //const query = {userid: userid}
   SelectEvent.getEventsHistory(userid, (err, slctevents) => {
     if (err) {
       res.json({ success: false, msg: err });
@@ -204,7 +227,22 @@ router.get("/allselect/history/:userid", (req, res) => {
   });
 });
 
-router.get("/selecteventbyorg/:id",orgAuth, (req, res) => {
+
+//get event history count
+router.get("/allselect/historycount/:userid", (req, res) => {
+  const userid = req.params.userid;
+  const query = {
+    userid: userid,
+    date: {
+      $lt: Date.now() //for get the dates which are past from today
+    }
+  };
+
+  SelectEvent.find(query).count().then(eventscount => res.json(eventscount));
+  
+});
+
+router.get("/selecteventbyorg/:id", (req, res) => {
   const query = {organization: req.params.id}
   Event.find(query)
   .populate("organization","username")
@@ -218,5 +256,21 @@ router.get("/selecteventbyorg/:id",orgAuth, (req, res) => {
 router.get("/geteventbyid/:id", (req, res) => {
   Event.findById(req.params.id).then(events => res.json(events));
 });
+
+// check the user event select or not
+router.post("/checkgoing", (req, res, next) => {
+  const eventid = req.body.eventid;
+  const userid = req.body.userid;
+
+  SelectEvent.getEventByIdUid(eventid, userid, (err, event) => {
+    if (err) throw err;
+    if (!event) {
+      return res.json({ success: false, msg: "event not found" });
+    }else{
+      return res.json({ success: true, msg: "event found" });
+    }
+  });
+});
+
 module.exports = router;
 

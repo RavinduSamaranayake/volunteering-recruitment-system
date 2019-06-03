@@ -6,6 +6,7 @@
 @import "responsive";
 @import "../../node_modules/angular-calendar/css/angular-calendar.css";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~ngx-bar-rating/themes/br-default-theme' ;
 
 @media print {
     .breadcrumb {
