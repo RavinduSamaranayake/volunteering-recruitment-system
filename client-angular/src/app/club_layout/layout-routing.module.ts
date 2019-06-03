@@ -7,7 +7,6 @@ import { CurrentVolunteersComponent } from '../club_layout/volunteers/current-vo
 import { AllVolunteersComponent } from '../club_layout/volunteers/all-volunteers/all-volunteers.component';
 
 
-
 const routes: Routes = [
     {
         path: '',

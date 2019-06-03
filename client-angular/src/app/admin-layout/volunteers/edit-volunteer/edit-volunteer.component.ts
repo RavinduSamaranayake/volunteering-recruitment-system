@@ -22,7 +22,8 @@ export class EditVolunteerComponent implements AfterViewInit {
     address: '',
     age: '',
     id: '',
-    events: []
+    events: [],
+    blocked: false
   };
 
   displayedColumns = ['organization', 'title', 'description', 'date', 'options'];
@@ -49,13 +50,13 @@ export class EditVolunteerComponent implements AfterViewInit {
         address: entries[5][1],
         age: entries[7][1],
         id: entries[0][1],
-        events: entries[11][1]
+        events: entries[11][1],
+        blocked: false
       };
 
       this.volunteerInstance.events.forEach(eventID => {
         eventService.getEventByID(eventID).subscribe(data => {
           const entries = Object.entries(data);
-          console.log(entries)
           eventInstance = {
             title: entries[1][1],
             organization: entries[9][1],
@@ -80,6 +81,13 @@ export class EditVolunteerComponent implements AfterViewInit {
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
+
+  editAccess(){
+    this.volunteerInstance.blocked = !this.volunteerInstance.blocked;
+    this.volunteerService.editAccessVolunteer(this.volunteerInstance).subscribe(data => {
+      console.log(data)
+    })
+  }
 }
 
 export interface Event {
@@ -98,4 +106,5 @@ export interface Volunteer {
   address: string;
   id: string;
   events: any;
+  blocked: boolean;
 }
