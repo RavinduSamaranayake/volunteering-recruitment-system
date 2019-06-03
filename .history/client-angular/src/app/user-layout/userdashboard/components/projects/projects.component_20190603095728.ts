@@ -142,7 +142,7 @@ export class ProjectsComponent implements AfterViewInit {
      this.selectTheEvent(eventid);
   }
 
-  selectTheEvent(eventid) {
+  selectTheEvent(eventid){
 
     // add the selected event to collection
     const event = {
@@ -165,7 +165,7 @@ export class ProjectsComponent implements AfterViewInit {
     console.log('...............', data['msg'], '.........', data, '..........');
     if (data['success']) {
      // alert('Thank You for join with this event....');
-      this.router.navigate(['/notify-going/' + eventid]);
+         this.router.navigate(['/notify-going/'+eventid]);
     } else {
       alert('Sorry! Try again...');
     }
@@ -184,24 +184,24 @@ export class ProjectsComponent implements AfterViewInit {
     const userevent = {
         eventid: eventid,
         userid: userid,
-    };
+    }
    this.eventservice.checkUserGoing(userevent).subscribe(data => {
       if (data['success']) {
-        console.log('.......sucesss true...', data['msg']);
+        console.log('.......sucesss true...',data['msg']);
           return true;
       } else {
-        console.log('.......sucesss false...', data['msg']);
+        console.log('.......sucesss false...',data['msg']);
           return false;
 
       }
     });
 
   }
-  checkit(check) {
-    if (check) {
-      console.log('...................already going...........');
-    } else {
-      console.log('.................you have to going..........');
+  checkit(check){
+    if(check){
+      console.log("...................already going...........");
+    }else{
+      console.log("...................you have to going...........");
     }
   }
 }

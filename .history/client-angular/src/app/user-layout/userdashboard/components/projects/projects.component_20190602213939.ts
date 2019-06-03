@@ -142,7 +142,7 @@ export class ProjectsComponent implements AfterViewInit {
      this.selectTheEvent(eventid);
   }
 
-  selectTheEvent(eventid) {
+  selectTheEvent(eventid){
 
     // add the selected event to collection
     const event = {
@@ -159,13 +159,13 @@ export class ProjectsComponent implements AfterViewInit {
     };
    // get the responce json object from server using subscribe method. the data isa responce json
 
-   console.log('event id is .....----', event.id);
-   console.log('event title is .....----', event.title);
+   console.log('event id is .....----',event.id);
+   console.log('event title is .....----',event.title);
   this.eventservice.addSelectEvent(event).subscribe(data => {
     console.log('...............', data['msg'], '.........', data, '..........');
     if (data['success']) {
      // alert('Thank You for join with this event....');
-      this.router.navigate(['/notify-going/' + eventid]);
+         this.router.navigate(['/notify-going/'+eventid]);
     } else {
       alert('Sorry! Try again...');
     }
@@ -173,35 +173,35 @@ export class ProjectsComponent implements AfterViewInit {
   }
 
   // check user is already going or not event
-  checkGoingEvent(eventid) {
+  checkGoingEvent(eventid):boolean {
     const dataval = localStorage.getItem('user');
     const value = JSON.parse(dataval);
     const userid = value.id;
 
     // have to fix the issues of this
-   // let status;
+    let status;
 
     const userevent = {
         eventid: eventid,
         userid: userid,
-    };
-   this.eventservice.checkUserGoing(userevent).subscribe(data => {
+    }
+    this.eventservice.checkUserGoing(userevent).subscribe(data => {
       if (data['success']) {
-        console.log('.......sucesss true...', data['msg']);
-          return true;
+        console.log('.......sucesss true...',data['msg']);
+          status = true;
       } else {
-        console.log('.......sucesss false...', data['msg']);
-          return false;
+        console.log('.......sucesss false...',data['msg']);
+          status = false;
 
       }
-    });
-
+    }).then;
+    return status;
   }
-  checkit(check) {
-    if (check) {
-      console.log('...................already going...........');
-    } else {
-      console.log('.................you have to going..........');
+  checkit(check){
+    if(check){
+      console.log("...................already going...........");
+    }else{
+      console.log("...................you have to going...........");
     }
   }
 }
