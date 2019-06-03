@@ -40,7 +40,7 @@ const storage=multer.diskStorage({
 //@desc create a Event
 //@access public
 
-router.post('/addevent',multer({storage:storage}).single("image"),(req, res, next) => {
+router.post('/addevent',orgAuth,multer({storage:storage}).single("image"),(req, res, next) => {
   const url=req.protocol+'://'+req.get("host");
 
   console.log(res.user)
@@ -55,7 +55,7 @@ router.post('/addevent',multer({storage:storage}).single("image"),(req, res, nex
     attendees: req.body.attendees,
     rating: req.body.rating,
     image: url+"/images/"+req.file.filename,
-    organization: req.body.organization
+    organization: req.userData.OrgId
   });
 
 
@@ -74,7 +74,7 @@ router.post('/addevent',multer({storage:storage}).single("image"),(req, res, nex
 
 });
 
-router.put("/updateEvent/:id",multer({storage:storage}).single("image"),(req,res)=>{
+router.put("/updateEvent/:id",orgAuth,multer({storage:storage}).single("image"),(req,res)=>{
   let imagePath=req.body.image
   console.log(req.file); 
 
@@ -126,7 +126,7 @@ router.get("/alleventcount", (req, res) => {
 //@desc Delete a Item
 //@access public
 
-router.delete("/delevent/:id", (req, res) => {
+router.delete("/delevent/:id",orgAuth, (req, res) => {
   Event.findById(req.params.id)
     .then(event => event.remove().then(() => res.json({ sucess: true })))
     .catch(err => res.status(404).json({ sucess: false }));

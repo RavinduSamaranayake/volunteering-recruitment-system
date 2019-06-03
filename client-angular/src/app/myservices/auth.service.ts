@@ -71,6 +71,10 @@ export class AuthService {
     this.authToken = token;
   }
 
+  gettoken(){
+    return localStorage.getItem('id_token');
+  }
+
   loggedIn() {
     // to check the user is login or not using token..
     const helper = new JwtHelperService();

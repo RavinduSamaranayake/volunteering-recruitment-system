@@ -19,6 +19,13 @@ mongoose
 
 const app = express();
 
+app.use((req,res,next)=>{
+  res.setHeader('Access-Control-Allow-Origin',"*");
+  res.setHeader("Access-Control-Allow-Headers",
+  "Origin,X-Requested-With,Content-Type,Accept,Authorization");
+  res.setHeader("Access-Control-Allow-Methods","GET,POST,PUT,PATCH,DELETE,OPTIONS")
+  next();
+});
 //routing paths
 const users = require("./routes/users");
 const events = require("./routes/events");

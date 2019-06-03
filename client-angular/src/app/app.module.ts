@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AlertsModule } from 'angular-alert-module';
@@ -22,6 +22,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 
 
 import { ToastrModule } from 'ngx-toastr';
+import { AuthInterceptor } from './myservices/auth-interceptor';
 
 
 
@@ -56,7 +57,7 @@ import { ToastrModule } from 'ngx-toastr';
     ],
 
     declarations: [AppComponent],
-    providers: [AuthGuard, ValidateService, AuthService, EventService],
+    providers: [AuthGuard, ValidateService, AuthService, EventService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
 
     bootstrap: [AppComponent]
 })
