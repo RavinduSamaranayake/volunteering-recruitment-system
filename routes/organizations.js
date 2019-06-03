@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const randomstring = require("randomstring");
 const nodemailer = require("nodemailer");
 const bcrypt=require("bcryptjs")
+const config = require("../config/keys");
 
 
 
@@ -40,8 +41,7 @@ router.post('/loginOrg',(req,res,next)=>{
             })
           })
         });
-     
-const config = require("../config/keys");
+
 
 // Authenticate
 router.post("/authOrg", (req, res, next) => {
@@ -64,26 +64,21 @@ router.post("/authOrg", (req, res, next) => {
           "Organization is found.............password match......................................"
         );
 
-        //genare the token and pass it with responce json
-        const token = jwt.sign(organization.toJSON(), config.secret, {
-          //jwt.sign(payload, secretOrPrivateKey, [options, callback])
-          //payload could be an object literal, buffer or string representing valid JSON.
-          //payload cannot be a plain string but it can
-          expiresIn: 604800 //this token is expires after 1 week
-        });
-
-        res.json({
-          success: true,
-          token: "JWT " + token,
-          organization: {
-            id: Organization._id,
-            name: Organization.name,
-            email: Organization.email,
-            password: Organization.password,
-            address: Organization.address,
-            contact: Organization.contact,
-            regNo: Organization.regNo
-          }
+        const token=jwt.sign({id:organization.id},'this_is_a_secret_string',{expiresIn:"1h"})
+        res.send({
+          successOrg:true,
+        token:token,
+        expiresIn:3600,
+        userId:organization._id,
+        organization: {
+          id: organization._id,
+          name: organization.name,
+          email: organization.email,
+          password: organization.password,
+          address: organization.address,
+          contact: organization.contact,
+          regNo: organization.regNo
+        }
         });
       } else {
         return res.json({ success: false, msg: "Wrong password" });

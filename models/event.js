@@ -43,7 +43,7 @@ const EventSchema = mongoose.Schema({
   },
   organization: {
     type:mongoose.Schema.Types.ObjectId,
-    ref:'User'
+    ref:"Organization"
   }
 });
 

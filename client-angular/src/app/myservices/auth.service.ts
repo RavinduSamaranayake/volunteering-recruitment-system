@@ -34,6 +34,8 @@ export class AuthService {
   }
   // store user data in local storage
   storeUserData(token, user) {
+    console.log(token)
+    console.log(user);
     localStorage.setItem('id_token', token); // the data has to be a string.Convert a JavaScript object into a string with JSON.stringify().
     localStorage.setItem('user', JSON.stringify(user)); // local storage can store only styings. can't store json objects
     this.authToken = token;                             // see this local storage in application console in chrome

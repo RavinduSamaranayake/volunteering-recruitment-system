@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       } else if(!data['success']) {
         this.authService.authenticateOrg(user).subscribe(data => {
           console.log('.......................', data, '..........................');
-          if (data['success']) {
+          if (data['successOrg']) {
             this.authService.storeUserData(data['token'], data['organization']);
             this.router.navigate(['/club']);
             // alert('login sucess');

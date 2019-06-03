@@ -53,7 +53,7 @@ export class NewProjectComponent implements OnInit {
     const data = localStorage.getItem('user');
     const value = JSON.parse(data);
     this.id = value.id
-    // console.log(this.id);
+     console.log(value);
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('eventId')) {
