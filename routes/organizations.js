@@ -1,9 +1,46 @@
 const express = require("express");
 const router = express.Router();
 const Organization = require("../models/organization");
-
+const jwt = require("jsonwebtoken");
 const randomstring = require("randomstring");
 const nodemailer = require("nodemailer");
+const bcrypt=require("bcryptjs")
+
+
+
+router.post('/loginOrg',(req,res,next)=>{
+    password=req.body.password;
+    Orgname=req.body.orgname;
+
+    let fetchedOrganization;
+
+    Organization.findOne({name:Orgname})
+          .then(org=>{
+            if(!org){
+            return  res.status(401).json({message:'Auth Failed'})
+            }
+            fetchedOrganization=org
+            console.log(fetchedOrganization);0
+            return bcrypt.compare(password,fetchedOrganization.password)})
+          .then(result=>{
+            if(!result){
+              return res.status(401).json({
+                message:"Auth Failed"
+              })
+            }
+            const token=jwt.sign({id:fetchedOrganization.id},'this_is_a_secret_string',{expiresIn:"1h"})
+              res.send({
+              token:token,
+              expiresIn:3600,
+              userId:fetchedOrganization._id
+          })
+          }).then(err=>{
+            return res.status(401).json({
+              message:"Auth Failed"
+            })
+          })
+        });
+     
 
 router.get("/getallorganizations", (req, res) => {
   Organization.find().then(organizations => {
@@ -55,6 +92,6 @@ router.post("/addorganization", (req, res) => {
       });
     }
   });
-});
+})
 
-module.exports = router;
+module.exports = router

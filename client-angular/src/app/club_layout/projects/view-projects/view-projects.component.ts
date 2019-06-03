@@ -1,11 +1,12 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { EventService } from 'src/app/myservices/event.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { routerTransition } from 'src/app/router.animations';
 
 @Component({
   selector: 'app-view-projects',
   templateUrl: './view-projects.component.html',
-  styleUrls: ['./view-projects.component.scss']
+  styleUrls: ['./view-projects.component.scss'],
 })
 export class ViewProjectsComponent implements OnInit {
   id: string;

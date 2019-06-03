@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { EventService } from 'src/app/myservices/event.service';
 
 @Component({
   selector: 'app-club-dashbord',
@@ -11,8 +12,12 @@ import { routerTransition } from '../../router.animations';
 export class ClubDashbordComponent implements OnInit {
   public alerts: Array<any> = [];
     public sliders: Array<any> = [];
+    id:any;
+    noOfEvents:any;
+    events: any = [];
+    eventsUnchanged: any = [];
 
-    constructor() {
+    constructor(private eventservice:EventService) {
         this.sliders.push(
             {
                 imagePath: 'assets/images/slider1.jpg',
@@ -53,7 +58,27 @@ export class ClubDashbordComponent implements OnInit {
         );
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        const data = localStorage.getItem('user');
+        const value = JSON.parse(data);
+        this.id = value.id
+        this.eventservice.getEventbyOrganization(this.id).subscribe(data => {
+          this.eventsUnchanged = data;
+          this.events = this.eventsUnchanged.map(item => ({
+            _id: item._id,
+            title: item.title,
+            description: item.description,
+            image: item.image,
+            date: (item.date).substring(0, 10),
+            time: (item.time).replace(/:\d{2}\s/, ' '),
+            type: item.type,
+            organization: item.organization
+          }))
+        this.noOfEvents=Object.keys(data).length;
+    
+        });
+      
+    }
 
     public closeAlert(alert: any) {
         const index: number = this.alerts.indexOf(alert);

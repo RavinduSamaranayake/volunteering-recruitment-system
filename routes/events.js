@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const orgAuth=require("../middleware/orgAuth");
 
 
 const config = require('../config/keys');
@@ -203,9 +204,15 @@ router.get("/allselect/history/:userid", (req, res) => {
   });
 });
 
-router.get("/selecteventbyorg/:id", (req, res) => {
+router.get("/selecteventbyorg/:id",orgAuth, (req, res) => {
   const query = {organization: req.params.id}
-  Event.find(query).then(events => res.json(events));
+  Event.find(query)
+  .populate("organization","username")
+  .then(events =>{
+     res.json(events)
+     console.log(events)
+  }
+     );
 });
 
 router.get("/geteventbyid/:id", (req, res) => {
