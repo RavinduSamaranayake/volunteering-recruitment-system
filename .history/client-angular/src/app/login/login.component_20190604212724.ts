@@ -10,7 +10,7 @@ import {AuthService} from '../myservices/auth.service';
     animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
-    username: String;
+  username: String;
   password: String;
 
   constructor(
@@ -33,17 +33,16 @@ export class LoginComponent implements OnInit {
      this.router.navigate(['/admin/dashboard']);
     }
     else if (this.username === 'club') {
-      //the user is club
+      // the user is club
       this.authService.authenticateUser(user).subscribe(data => {
         console.log('.......................', data, '..........................');
         if (data['success']) {
           this.authService.storeUserData(data['token'], data['user']);
           console.log('.......................success login.........................');
           this.router.navigate(['/club/clubdashboard']);
-          // alert('login sucess');
         } else {
           this.router.navigate(['login']);
-          alert('login fail , username or password is incorrect');
+          alert('login fail ,'+ data['msg']);
         }
       });
     } else {
@@ -56,7 +55,7 @@ export class LoginComponent implements OnInit {
         // alert('login sucess');
       } else {
         this.router.navigate(['login']);
-        alert('login fail , username or password is incorrect');
+        alert('login fail ,'+ data['msg']);
       }
     });
   }
