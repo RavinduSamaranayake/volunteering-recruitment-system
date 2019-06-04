@@ -177,7 +177,7 @@ export class NewProjectComponent implements OnInit {
       console.log(eventupdate)
       this.eventService.updateEvent(id, eventupdate);
       this.addalert("info", "you have successfully updated");
-      //  this.form.reset();
+        this.form.reset();
       //  this.router.navigate(['/club/']);
 
     }

@@ -5,6 +5,7 @@ import { NewProjectComponent } from '../club_layout/projects/new-project/new-pro
 import { ViewProjectsComponent } from '../club_layout/projects/view-projects/view-projects.component';
 import { CurrentVolunteersComponent } from '../club_layout/volunteers/current-volunteers/current-volunteers.component';
 import { AllVolunteersComponent } from '../club_layout/volunteers/all-volunteers/all-volunteers.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
             { path: 'viewProject', component : ViewProjectsComponent },
             { path: 'currentVolunteers', component : CurrentVolunteersComponent },
             { path: 'allVolunteers', component : AllVolunteersComponent },
+            { path: 'profile', component : ProfileComponent },
             {path:  'edit/:eventId',component:NewProjectComponent},
         ]
     }

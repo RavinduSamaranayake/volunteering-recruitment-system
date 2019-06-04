@@ -10,7 +10,6 @@ module.exports=(req,res,next)=>{
 
     const decodedtoken=jwt.verify(token,"this_is_a_secret_string");
     req.userData={OrgId:decodedtoken.id}
-    console.log(token);
     next();
     }
     catch(error){

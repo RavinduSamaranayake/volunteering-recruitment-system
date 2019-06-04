@@ -35,14 +35,14 @@
                   style="color:white"
                 >
                   <img
-                    src="../../../../assets/images/admin.png"
+                    [src]=imagepreview
                     class="adminThumbnail"
                   />
-                 Organization
+                 {{fullname}}
                   <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu-right" ngbDropdownMenu>
-                  <a class="dropdown-item" href="javascript:void(0)">
+                  <a class="dropdown-item" [routerLink]="['/club/profile']">
                     <i class="fa fa-fw fa-user"></i> {{ "Profile" | translate }}
                   </a>
                   <a class="dropdown-item" (click)="onLoggedout()">

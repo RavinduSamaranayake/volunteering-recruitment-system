@@ -6,41 +6,32 @@ const randomstring = require("randomstring");
 const nodemailer = require("nodemailer");
 const bcrypt=require("bcryptjs")
 const config = require("../config/keys");
+const multer=require("multer");
+const orgAuth=require("../middleware/orgAuth");
+
+// Image validation
+const MIME_TYPE_MAP ={
+  'image/png':'png',
+  'image/jpeg':'jpg',
+  'image/jpg':'jpg'
+}
 
 
-
-router.post('/loginOrg',(req,res,next)=>{
-    password=req.body.password;
-    Orgname=req.body.orgname;
-
-    let fetchedOrganization;
-
-    Organization.findOne({name:Orgname})
-          .then(org=>{
-            if(!org){
-            return  res.status(401).json({message:'Auth Failed'})
-            }
-            fetchedOrganization=org
-            console.log(fetchedOrganization);0
-            return bcrypt.compare(password,fetchedOrganization.password)})
-          .then(result=>{
-            if(!result){
-              return res.status(401).json({
-                message:"Auth Failed"
-              })
-            }
-            const token=jwt.sign({id:fetchedOrganization.id},'this_is_a_secret_string',{expiresIn:"1h"})
-              res.send({
-              token:token,
-              expiresIn:3600,
-              userId:fetchedOrganization._id
-          })
-          }).then(err=>{
-            return res.status(401).json({
-              message:"Auth Failed"
-            })
-          })
-        });
+const storage=multer.diskStorage({
+  destination:(req,file,cb)=>{
+      const isValid=MIME_TYPE_MAP[file.mimetype];
+      let error=new Error("Inavalid mime type");
+      if(isValid){
+          error=null;
+      }
+      cb(error,"images")
+  },
+  filename:(req,file,cb)=>{
+      const name=file.originalname.toLowerCase().split(' ').join('-');
+      const ext=MIME_TYPE_MAP[file.mimetype];
+      cb(null,name + '-' +Date.now() + '.' +ext);
+  }
+})
 
 
 // Authenticate
@@ -160,5 +151,48 @@ router.put("/editaccess", function(req, res, next) {
     }
   });
 });
+
+router.get("/getmyOrganization",orgAuth,async (req,res,next)=>{
+  try{
+    const org=await Organization.findById(req.userData.OrgId)
+    res.json(org)
+  }
+  catch(e){
+    res.status(401).send(e);
+  }
+
+router.put("/updateMyOrganization",orgAuth,multer({storage:storage}).single("image"),async (req,res,next)=>{
+  let imagePath=req.body.image
+
+
+  if(req.file){
+
+      const url=req.protocol+'://'+req.get("host");  
+      imagePath=url+"/images/"+ req.file.filename 
+ 
+  }
+
+  let updatedOrg=({
+    //req.body mean the value is post using text field or other
+      name: req.body.name,
+      about: req.body.about,
+      email: req.body.email,
+      address:req.body.address,
+      contact:req.body.contact,
+      image: imagePath,
+    });
+
+    // Event.findById(req.params.id)
+    // .then(event => console.log(event).then(() => res.json({ sucess: true })))
+    // .catch(err => res.status(404).json({ sucess: false }));
+    
+    Organization.updateOne({_id:req.userData.OrgId},updatedOrg).then(result=>{
+      if(result.nModified>0){
+          res.status(200).json({message:'Update Successful!'})
+      }
+  }).catch(err => res.status(404).json({ sucess: false }));
+})
+  
+})
 
 module.exports = router;
