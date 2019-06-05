@@ -6,6 +6,7 @@ import { ViewProjectsComponent } from '../club_layout/projects/view-projects/vie
 import { CurrentVolunteersComponent } from '../club_layout/volunteers/current-volunteers/current-volunteers.component';
 import { AllVolunteersComponent } from '../club_layout/volunteers/all-volunteers/all-volunteers.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProjectTableComponent } from './projects/project-table/project-table.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
             { path: 'currentVolunteers', component : CurrentVolunteersComponent },
             { path: 'allVolunteers', component : AllVolunteersComponent },
             { path: 'profile', component : ProfileComponent },
+            { path: 'eventTable', component : ProjectTableComponent },
             {path:  'edit/:eventId',component:NewProjectComponent},
         ]
     }

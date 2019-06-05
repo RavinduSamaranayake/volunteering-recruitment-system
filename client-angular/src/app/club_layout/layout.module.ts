@@ -19,6 +19,7 @@ import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { ProjectTableComponent } from './projects/project-table/project-table.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 
 
@@ -39,6 +40,6 @@ import { AlertModule } from 'ngx-bootstrap/alert';
         ModalModule.forRoot()
 
     ],
-    declarations: [LayoutComponent, SidebarComponent , NewProjectComponent,ProfileComponent, HeaderComponent, ViewProjectsComponent, CurrentVolunteersComponent, AllVolunteersComponent,ProjectCardComponent],
+    declarations: [LayoutComponent, SidebarComponent , ProjectTableComponent,NewProjectComponent,ProfileComponent, HeaderComponent, ViewProjectsComponent, CurrentVolunteersComponent, AllVolunteersComponent,ProjectCardComponent],
 })
 export class LayoutModule {}
