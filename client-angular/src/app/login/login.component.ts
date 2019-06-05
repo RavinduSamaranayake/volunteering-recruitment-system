@@ -10,8 +10,8 @@ import {AuthService} from '../myservices/auth.service';
     animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
-    username: String;
-    password: String;
+  username: String;
+  password: String;
 
   constructor(
     private authService: AuthService,
@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
       username: this.username,
       password: this.password,
     };
+
+
 
     this.authService.authenticateUser(user).subscribe(data => {
       console.log('.......................', data, '..........................');
