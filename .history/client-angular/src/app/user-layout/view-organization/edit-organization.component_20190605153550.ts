@@ -68,13 +68,13 @@ export class EditOrganizationComponent implements AfterViewInit {
             let org:any=data;
             console.log(entries)
             this.organizationInstance = {
-              name: org.name,
-              email: org.email,
-              contact: org.contact,
-              address: org.address,
-              regNo: org.regNo,
-              id: org._id,
-              about: org.about,
+              name: data.name,
+              email: data.email,
+              contact: data.contact,
+              address: data.address,
+              regNo: data.regNo,
+              id: data._id,
+              about: data.about,
               blocked: true
             };
           });

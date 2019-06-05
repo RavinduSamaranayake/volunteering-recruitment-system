@@ -104,9 +104,7 @@ module.exports.getEventsHistory = function(userid, callback) {
   };
 
   SelectEvent.find(query, callback)
-  .populate("organization","name")
-  .then(events => 
-    res.json(events));;
+  ;
 };
 
 // get the selected event by user id and and event id

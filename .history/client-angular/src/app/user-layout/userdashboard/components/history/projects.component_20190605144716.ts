@@ -2,7 +2,6 @@ import { Component, OnInit,  Output, EventEmitter, AfterViewInit, ViewChild } fr
 import { routerTransition } from '../../../../router.animations';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import {EventService} from '../../../../myservices/event.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -11,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class ProjectsComponent implements AfterViewInit {
   public orgName = '';
-  public user_id = '';
   displayedColumns = [
     'title',
     'organization',
@@ -25,25 +23,22 @@ export class ProjectsComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private eventservice: EventService,
-              private router: Router) {
+  constructor(private eventservice: EventService) {
     // Create Events
     let eventInstance: Event;
     const dataval = localStorage.getItem('user');
     const value = JSON.parse(dataval);
     const userid = value.id;
-    this.user_id = userid;
 
-    this.eventservice.getAllUpcommingEvent(userid).subscribe(data => {
+    this.eventservice.getAllEventHistory(userid).subscribe(data => {
       const entries = Object.entries(data);
       entries.forEach(instance => {
         eventInstance = {
           title: instance[1].title,
-          organization: instance[1].organization.name,
+          organization: instance[1].organization.n,
           description: instance[1].description,
           date: instance[1].date,
-          slctid: instance[1]._id,
-          eventid: instance[1].eventid
+          id: instance[1].eventid
         };
         // this.events.push(eventInstance);
         this.dataSource.data = [...this.dataSource.data, eventInstance];
@@ -67,25 +62,12 @@ export class ProjectsComponent implements AfterViewInit {
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-
-  notGoing(eventid){
-    console.log('not going......',eventid);
-    this.eventservice.removeSelectEvent(eventid).subscribe(data => {
-      if (data['sucess']){
-        this.router.navigate(['/notify-delete']);
-
-      }else {
-        alert('Some thing went wrong....');
-      }
-  });
-
 }
-}
+
 export interface Event {
   title: string;
   organization: string;
   description: string;
   date: string;
-  slctid: string;
-  eventid: string;
+  id: string;
 }

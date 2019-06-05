@@ -39,7 +39,7 @@ export class ProjectsComponent implements AfterViewInit {
       entries.forEach(instance => {
         eventInstance = {
           title: instance[1].title,
-          organization: instance[1].organization.name,
+          organization: instance[1].organization.nam,
           description: instance[1].description,
           date: instance[1].date,
           slctid: instance[1]._id,

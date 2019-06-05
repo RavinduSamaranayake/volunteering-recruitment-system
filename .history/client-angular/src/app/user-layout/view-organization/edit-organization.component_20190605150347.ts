@@ -65,16 +65,15 @@ export class EditOrganizationComponent implements AfterViewInit {
           .subscribe(data => {
             console.log('ddddddddddddddddddddddddddddddddd...',data)
             const entries = Object.entries(data);
-            let org:any=data;
             console.log(entries)
             this.organizationInstance = {
-              name: org.name,
-              email: org.email,
-              contact: org.contact,
-              address: org.address,
-              regNo: org.regNo,
-              id: org._id,
-              about: org.about,
+              name: data.name,
+              email: data.email,
+              contact: data.contact,
+              address: data.address,
+              regNo: data.regNo,
+              id: data._id,
+              about: data.a,
               blocked: true
             };
           });
