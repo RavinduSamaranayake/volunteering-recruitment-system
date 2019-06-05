@@ -1,0 +1,121 @@
+<!-- <div class="card mb-3">
+  <div class="card-header">Available Events</div>
+  <div class="card-body table-responsive">
+      <table class="table table-hover table-striped">
+          <thead>
+          <tr>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Organization</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let event of allevents" (click)="cellClicked(event)">
+              <td>{{event.title}}</td>
+              <td>{{event.date}}</td>
+              <td>{{event.organization}}</td>
+               
+          </tr>
+      
+          </tbody>
+      </table>
+  </div>
+</div> -->
+
+<div [@routerTransition]>
+    <!-- <app-page-header
+      [heading]="'View Events'"
+      [icon]="'fa fa-university'"
+      [image]="'https://assets.nst.com.my/images/articles/29_seas_1527437746.jpg'"
+      [desc]="
+        'Select the event that needs to be suspended or restricted from taking place'
+      "
+    ></app-page-header> -->
+    <div class="row" style="margin-top:-15px;">
+      <div class="col-lg-12">
+        <div class="card mb-3">
+          <div class="card-header">Available Events</div>
+          <div class="example-header">
+            <mat-form-field>
+              <input
+                matInput
+                (keyup)="applyFilter($event.target.value)"
+                placeholder="Filter"
+              />
+            </mat-form-field>
+          </div>
+  
+          <div class="example-container mat-elevation-z8">
+            <mat-table [dataSource]="dataSource" matSort>
+              <ng-container matColumnDef="title">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Title
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row"> 
+                <a
+                  routerLink="/view-event/{{ row.id }}"
+                  [routerLinkActive]="['router-link-active']"
+                > {{ row.title }} 
+                </a>
+              </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="organization">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Organization
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  {{ row.organization }}
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Description
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{ row.description }} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Date
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  {{ row.date.substring(0, 10) }}
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="options">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Options
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <a 
+                    [routerLink]="['/userdashboard']"
+                    [routerLinkActive]="['router-link-active']"
+                  >
+                    <button
+                      type="submit"
+                      style="width:80px; height:30px; font-size:12px;"
+                      class="btn btn-outline-warning"
+                      (click)= "CheckFoingEvent(row.id)"
+                    >
+                      GOING
+                    </button>
+                  </a>
+                </mat-cell>
+              </ng-container>
+  
+              <mat-header-row
+                *matHeaderRowDef="displayedColumns"
+              ></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+            </mat-table>
+  
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
