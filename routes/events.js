@@ -119,7 +119,11 @@ router.get("/allevents", (req, res) => {
       $gte: Date.now() //for get the dates which are upcomming from today
     }
   };
-  Event.find(query).then(events => res.json(events));
+  Event.find(query)
+  .populate("organization","name")
+  .then(events => 
+    res.json(events));
+  
 });
 
 //get available events count
@@ -266,7 +270,9 @@ router.get("/selecteventbyorg/:id", (req, res) => {
 });
 
 router.get("/geteventbyid/:id", (req, res) => {
-  Event.findById(req.params.id).then(events => res.json(events));
+  Event.findById(req.params.id).
+  populate("organization","name")
+  .then(events => res.json(events));
 });
 
 // check the user event select or not

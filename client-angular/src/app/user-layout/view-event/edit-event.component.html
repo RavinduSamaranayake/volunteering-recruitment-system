@@ -20,7 +20,7 @@
               alt=""
             /> -->
             <img
-              src="../../../../assets/images/events/5ccb1199e3112b041cf31426.png"
+              [src]=eventInstance.image
               alt=""
             />
           </div>
@@ -30,7 +30,7 @@
             <div>
               <h5>Organization</h5>
               <p class="detials" style="margin-bottom:40px">
-                - {{ eventInstance.organization }}
+                - {{ eventInstance.organization.name }}
               </p>
 
               <h5>Description</h5>
