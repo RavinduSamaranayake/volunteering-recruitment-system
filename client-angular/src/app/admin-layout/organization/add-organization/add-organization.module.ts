@@ -17,7 +17,7 @@ import { PageHeaderModule } from '../../../shared';
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
 })
 export class AddOrganizationModule {}

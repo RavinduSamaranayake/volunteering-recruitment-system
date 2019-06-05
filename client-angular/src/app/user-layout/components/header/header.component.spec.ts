@@ -3,7 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { HeaderComponent } from './header.component';
-import { LayoutModule } from '../../layout.module';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -12,7 +11,6 @@ describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        LayoutModule,
         RouterTestingModule,
         TranslateModule.forRoot(),
       ],
