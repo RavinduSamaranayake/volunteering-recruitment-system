@@ -1,33 +1,113 @@
 const express = require("express");
 const router = express.Router();
+const orgAuth=require("../middleware/orgAuth");
+
+
+const config = require('../config/keys');
+const multer=require("multer");
+const passport = require('passport');
+const User = require('../models/user');
+
+
+
 const Event = require("../models/event");
 const SelectEvent = require("../models/selectevent");
+
+
+const MIME_TYPE_MAP ={
+  'image/png':'png',
+  'image/jpeg':'jpg',
+  'image/jpg':'jpg'
+}
+
+const storage=multer.diskStorage({
+  destination:(req,file,cb)=>{
+      const isValid=MIME_TYPE_MAP[file.mimetype];
+      let error=new Error("Inavalid mime type");
+      if(isValid){
+          error=null;
+      }
+      cb(error,"images")
+  },
+  filename:(req,file,cb)=>{
+      const name=file.originalname.toLowerCase().split(' ').join('-');
+      const ext=MIME_TYPE_MAP[file.mimetype];
+      cb(null,name + '-' +Date.now() + '.' +ext);
+  }
+})
 
 //@route POST events/addevent
 //@desc create a Event
 //@access public
-router.post("/addevent", (req, res, next) => {
+
+router.post('/addevent',orgAuth,multer({storage:storage}).single("image"),(req, res, next) => {
+  const url=req.protocol+'://'+req.get("host");
+
+  console.log(res.user)
   let newEvent = new Event({
-    name: req.body.name, //req.body mean the value is post using text field or other
+  //req.body mean the value is post using text field or other
+
     title: req.body.title,
     description: req.body.description,
     date: req.body.date,
+    time:req.body.time,
+    type:req.body.type,
     attendees: req.body.attendees,
     rating: req.body.rating,
-    image: req.body.image,
-    organization: req.body.organization
+    image: url+"/images/"+req.file.filename,
+    organization: req.userData.OrgId
   });
 
-  newEvent
-    .save()
-    .then(event =>
-      res.json({ success: true, msg: "Event added", event: event })
-    )
-    .catch(err =>
-      res.status(404).json({ success: false, msg: "Add event fail" })
-    );
+
+  console.log(newEvent);
+  //  newEvent.save().then(event => res.json({success: true, msg:'Event added' ,event: event}))
+  //                 .catch(err => res.status(404).json({success: false, msg:'Add event fail'}));
+  newEvent.save().then(createdEvent=>{
+        res.status(201).json({
+            message:'Event added Successfully',
+            event:{
+                ...createdEvent,
+                id:createdEvent._id,
+            }
+        })
+    });
+
 });
 
+router.put("/updateEvent/:id",orgAuth,multer({storage:storage}).single("image"),(req,res)=>{
+  let imagePath=req.body.image
+  console.log(req.file); 
+
+  if(req.file){
+    console.log("empty")
+      const url=req.protocol+'://'+req.get("host");  
+      imagePath=url+"/images/"+ req.file.filename 
+ 
+  }
+
+  let updatedEvent=({
+    //req.body mean the value is post using text field or other
+      title: req.body.title,
+      description: req.body.description,
+      date: req.body.date,
+      time:req.body.time,
+      type:req.body.type,
+      attendees: req.body.attendees,
+      rating: req.body.rating,
+      image: imagePath,
+      organization: req.body.organization
+    });
+    console.log(req.params.id);
+    // Event.findById(req.params.id)
+    // .then(event => console.log(event).then(() => res.json({ sucess: true })))
+    // .catch(err => res.status(404).json({ sucess: false }));
+    
+    Event.updateOne({_id:req.params.id},updatedEvent).then(result=>{
+      if(result.nModified>0){
+          res.status(200).json({message:'Update Successful!'})
+      }
+  }).catch(err => res.status(404).json({ sucess: false }));
+})
 //@route GET events/allevents
 //@desc Get All items
 //@access public
@@ -39,14 +119,18 @@ router.get("/allevents", (req, res) => {
       $gte: Date.now() //for get the dates which are upcomming from today
     }
   };
-  Event.find(query).then(events => res.json(events));
+  Event.find(query)
+  .populate("organization","name")
+  .then(events => 
+    res.json(events));
+  
 });
 
 //get available events count
 router.get("/alleventcount", (req, res) => {
   const query = {
     date: {
-       $gte: Date.now() //for get the dates which are upcomming from today
+       $gte: Date.now() //for get the dates whigch are upcomming from today
      }
    };
   Event.find(query).count().then(eventscount => res.json(eventscount));
@@ -57,7 +141,7 @@ router.get("/alleventcount", (req, res) => {
 //@desc Delete a Item
 //@access public
 
-router.delete("/delevent/:id", (req, res) => {
+router.delete("/delevent/:id",orgAuth, (req, res) => {
   Event.findById(req.params.id)
     .then(event => event.remove().then(() => res.json({ sucess: true })))
     .catch(err => res.status(404).json({ sucess: false }));
@@ -91,6 +175,9 @@ router.post("/addselected", (req, res, next) => {
     )
     .catch(err => res.json({ success: false, msg: "Add event fail" }));
 });
+
+
+
 
 //@route GET events/allselectevents
 //@desc Get All items
@@ -172,12 +259,20 @@ router.get("/allselect/historycount/:userid", (req, res) => {
 });
 
 router.get("/selecteventbyorg/:id", (req, res) => {
-  const query = {orgID: req.params.id}
-  Event.find(query).then(events => res.json(events));
+  const query = {organization: req.params.id}
+  Event.find(query)
+  .populate("organization","username")
+  .then(events =>{
+     res.json(events)
+     console.log(events)
+  }
+     );
 });
 
 router.get("/geteventbyid/:id", (req, res) => {
-  Event.findById(req.params.id).then(events => res.json(events));
+  Event.findById(req.params.id).
+  populate("organization","name")
+  .then(events => res.json(events));
 });
 
 // check the user event select or not
@@ -196,3 +291,4 @@ router.post("/checkgoing", (req, res, next) => {
 });
 
 module.exports = router;
+

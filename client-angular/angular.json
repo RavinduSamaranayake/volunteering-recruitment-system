@@ -21,6 +21,8 @@
               "src/favicon.ico"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "node_modules/font-awesome/css/font-awesome.css",
               "src/styles/app.scss",
               "node_modules/ngx-toastr/toastr.css"
@@ -84,6 +86,8 @@
               "node_modules/chart.js/dist/Chart.js"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "node_modules/font-awesome/css/font-awesome.css",
               "src/styles/app.scss"
             ],

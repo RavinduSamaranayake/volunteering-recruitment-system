@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AlertsModule } from 'angular-alert-module';
@@ -15,8 +15,19 @@ import {ValidateService} from './myservices/validate.service';
 import {AuthService} from './myservices/auth.service';
 import {EventService} from './myservices/event.service';
 import {CalendarLocalModule} from './admin-layout/calendar/calendar.module';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { AlertModule } from 'ngx-bootstrap/alert';
+
 
 import { ToastrModule } from 'ngx-toastr';
+import { AuthInterceptor } from './myservices/auth-interceptor';
+
+
+
+
+
 
 // import { HeaderComponent } from './layout/components/header/header.component';
 
@@ -34,14 +45,23 @@ import { ToastrModule } from 'ngx-toastr';
         FormsModule,
         CalendarLocalModule,
         AlertsModule.forRoot(),
+
+        BsDatepickerModule.forRoot(),
+        TimepickerModule.forRoot(),
+        PopoverModule.forRoot(),
+        AlertModule.forRoot(),
+
         ToastrModule.forRoot({
           timeOut: 4000,
           positionClass: 'toast-bottom-right',
           preventDuplicates: true,
         })
+
     ],
-    declarations: [AppComponent ],
-    providers: [AuthGuard, ValidateService, AuthService, EventService],
+
+    declarations: [AppComponent],
+    providers: [AuthGuard, ValidateService, AuthService, EventService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
+
     bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -21,11 +21,12 @@ export class EditEventComponent implements AfterViewInit {
 
   eventId: String;
 
-  public eventInstance: Event = {
+  public eventInstance: any = {
     title: '',
     organization: '',
     description: '',
     date: '',
+    image:'',
     time: '',
     type: '',
     rating: 0,
@@ -41,7 +42,8 @@ export class EditEventComponent implements AfterViewInit {
     this.eventId = this.route.snapshot.paramMap.get('id');
     this.eventService.getEventByID(this.eventId).subscribe(data => {
      // const title = data.title;
-    // const entries = Object.entries(data);
+    // const entries = Object.entries(data);\
+    console.log(data);
      console.log('the output data is ', data['title']);
     //  const titleid = entries[1]
       this.eventInstance = {
@@ -49,12 +51,14 @@ export class EditEventComponent implements AfterViewInit {
         organization: data['organization'],
         description: data['description'],
         date:  data['date'],
+        image: data['image'],
         time:  data['time'],
         type:  data['type'],
         rating: parseFloat(data['rating']),
         id:  data['_id']
      };
     });
+    console.log(this.eventInstance.image)
 }
 
 }

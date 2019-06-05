@@ -85,10 +85,12 @@ export class ProjectsComponent implements AfterViewInit {
     this.eventservice.getAllEvent().subscribe(data => {
       const entries = Object.entries(data);
 
+      console.log(data);
+
       entries.forEach(instance => {
         eventInstance = {
           title: instance[1].title,
-          organization: instance[1].organization,
+          organization: instance[1].organization.name,
           description: instance[1].description,
           date: instance[1].date,
           id: instance[1]._id,

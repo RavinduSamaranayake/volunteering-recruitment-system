@@ -31,6 +31,11 @@ export class OrganizationService {
     return this.http.get('http://localhost:3000/organizations/getorganizationbyid/' + id);
   }
 
+  getmyOrganization() {
+    // let headers = new HttpHeaders();
+    return this.http.get('http://localhost:3000/organizations/getmyOrganization');
+  }
+
   getOrganizationEvents(id: string) {
     // let headers = new HttpHeaders();
     return this.http.get('http://localhost:3000/events/selecteventbyorg/' + id);
@@ -38,6 +43,29 @@ export class OrganizationService {
 
   editAccessOrganization(org: any) {
     return this.http.put('http://localhost:3000/organizations/editaccess/', org);
+  }
+
+  updateMyOrganization(updatedOrgData){
+
+    let updatedFormOrgData:any|FormData;
+  
+    if(typeof(updatedOrgData.image)=="object"){
+      updatedFormOrgData=new FormData();
+      updatedFormOrgData.append("name",updatedOrgData.name);
+      updatedFormOrgData.append("about",updatedOrgData.about);
+      updatedFormOrgData.append("contact",updatedOrgData.date);
+      updatedFormOrgData.append("address",updatedOrgData.address);
+      updatedFormOrgData.append("email",updatedOrgData.email);
+      updatedFormOrgData.append("image",updatedOrgData.image,updatedOrgData.name);
+    }
+    else{
+      updatedFormOrgData=updatedOrgData;
+  
+    }
+
+    return this.http.put('http://localhost:3000/organizations/updateMyOrganization/' ,updatedFormOrgData).subscribe(response=>{
+  
+     });
   }
 
   // // after the user select a event.......................

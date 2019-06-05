@@ -17,6 +17,18 @@ const EventSchema = mongoose.Schema({
     type: Date,
     required: true
   },
+
+  time: {
+    type: String,
+    required: true
+  },
+
+  type: {
+    type: String,
+    required: true
+  },
+
+  
   attendees: {
     type: String
     //required: true
@@ -30,8 +42,8 @@ const EventSchema = mongoose.Schema({
     //required: true
   },
   organization: {
-    type: String,
-    required: true
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Organization"
   }
 });
 

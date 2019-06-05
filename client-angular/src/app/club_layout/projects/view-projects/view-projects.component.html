@@ -1,0 +1,18 @@
+
+<div *ngFor="let alert of alerts">
+    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+</div>
+
+
+<section id="blog" class="px-1">
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <div class="card-columns">
+                    <project-card *ngFor="let event of events" [event]="event" (eventchange)="eventChange($event)">
+                    </project-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

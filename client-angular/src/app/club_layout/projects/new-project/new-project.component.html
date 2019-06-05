@@ -1,0 +1,135 @@
+<div class="row">
+  <div *ngIf="mode=='create'">
+    <h1>Add Events</h1>
+  </div>
+  <div *ngIf="mode=='edit'">
+    <h1>Update Event</h1>
+  </div>
+
+  <form [formGroup]="form" class="was-validated">
+    <div class="col-lg-12">
+      <fieldset class="form-group">
+        <label>Title</label>
+        <input class="form-control " placeholder="Title" formControlName="title" required>
+        <div class="invalid-feedback">Please Enter a title</div>
+      </fieldset>
+    </div>
+
+
+    <!-- <fieldset class="form-group col-md-6" >
+                <label>Date</label>
+                <input class="form-control" formControlName="date" placeholder="Date" required>
+                <div class="invalid-feedback">Please Enter a Date</div>
+            </fieldset> -->
+  </form>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <form [formGroup]="form" (submit)="OnSaveEvent()" class="was-validated">
+        <fieldset class="form-group">
+
+          <input type="file" class="form-control-file" #filePicker (change)="onImagepicked($event)"
+            id="exampleInputFile">
+          <div class="invalid-feedback">Choose a picture</div>
+        </fieldset>
+
+        <div>
+          <label for="Datepicker">Date and Time</label>
+          <input type="text" placeholder="Datepicker" formControlName="date" class="form-control" [minDate]="minDate"
+            [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" required bsDatepicker>
+        </div>
+      </form>
+      <div class="timecontainer">
+        <!-- <input [(ngModel)]="mytime" [popover]="popTemplate" [outsideClick]="true" placement="bottom" /> -->
+        <timepicker [(ngModel)]="mytime" (isValid)="isValid = $event" [ngModelOptions]="{standalone: true}">
+        </timepicker>
+
+      </div>
+
+      <form [formGroup]="form" (submit)="OnSaveEvent()" class="was-validated">
+        <label>Event Type</label>
+        <select class="form-control custom-select" formControlName="type" required>
+          <option>Donation</option>
+          <option>Cleanup</option>
+          <option>Informing</option>
+        </select>
+      </form>
+
+    </div>
+
+    <div class="form-group col-md-5" id="imagepreview">
+      <div class="image-preview" *ngIf="imagepreview !==''">
+        <img [src]="imagepreview" class="img-fluid" width="500px" height="300px" [alt]="form.value.title">
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <form [formGroup]="form" (submit)="OnSaveEvent()" class="was-validated">
+    <div class="form-group col-md-6">
+
+    </div>
+
+
+    <div *ngFor="let alert of alerts">
+      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    </div>
+
+
+    <div class="col-lg-12">
+      <fieldset class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" rows="3" formControlName="description" required></textarea>
+        <div class="invalid-feedback">Please Enter a Description</div>
+      </fieldset>
+    </div>
+
+
+
+  </form>
+
+  <div class="col-lg-12" *ngIf="mode=='create'">
+    <button [disabled]="!form.valid" (click)="openModal(template)" class="btn btn-primary">Add Event</button>
+  </div>
+
+  <div class="col-lg-12" *ngIf="mode=='edit'">
+    <button [disabled]="!form.valid" (click)="openModal(template)" class="btn btn-primary">Update Event</button>
+  </div>
+
+
+
+
+  <!-- <pre class="card card-block card-header">{{message}}</pre> -->
+  <ng-template #template>
+
+    <form [formGroup]="form" (submit)="OnSaveEvent()" class="was-validated">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+          <button type="button" class="close" (click)="modalRef.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div *ngIf="mode=='create'" class="modal-body">
+          A new Event will be created
+        </div>
+        <div *ngIf="mode=='edit'" class="modal-body">
+          Are you sure you want to update the current event?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Cancel</button>
+          <button type="button" (click)="OnSaveEvent()" class="btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+
+
+
+
+
+  <!-- /.row -->
