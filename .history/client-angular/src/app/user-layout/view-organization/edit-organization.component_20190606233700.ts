@@ -63,7 +63,7 @@ export class EditOrganizationComponent implements AfterViewInit {
         this.organizationService
           .getOrganizationById(this.organizationId)
           .subscribe(data => {
-           // console.log('ddddddddddddddddddddddddddddddddd...',data)
+            console.log('ddddddddddddddddddddddddddddddddd...',data)
             const entries = Object.entries(data);
             let org:any=data;
             console.log(entries)
