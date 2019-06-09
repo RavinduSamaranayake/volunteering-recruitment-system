@@ -34,7 +34,7 @@ export class EditEventsComponent implements AfterViewInit {
       entries.forEach(instance => {
         eventInstance = {
           title: instance[1].title,
-          organization: instance[1].organization,
+          organization: instance[1].organization.name,
           description: instance[1].description,
           date: instance[1].date,
           id: instance[1]._id

@@ -22,11 +22,16 @@ export class EditVolunteerComponent implements AfterViewInit {
     address: '',
     age: '',
     id: '',
-    events: [],
     blocked: false
   };
 
-  displayedColumns = ['organization', 'title', 'description', 'date', 'options'];
+  displayedColumns = [
+    'organization',
+    'title',
+    'description',
+    'date',
+    'options'
+  ];
   dataSource: MatTableDataSource<Event>;
   events: Event[] = [];
 
@@ -50,19 +55,21 @@ export class EditVolunteerComponent implements AfterViewInit {
         address: entries[5][1],
         age: entries[7][1],
         id: entries[0][1],
-        events: entries[11][1],
         blocked: false
       };
+    });
 
-      this.volunteerInstance.events.forEach(eventID => {
-        eventService.getEventByID(eventID).subscribe(data => {
-          const entries = Object.entries(data);
+    this.eventService.getUserEvents(this.volunteerId).subscribe(data => {
+      const entries = Object.entries(data);
+      entries.forEach(entry => {
+        eventService.getEventByID(entry[1].eventid).subscribe(data2 => {
+          const entries2 = Object.entries(data2);
           eventInstance = {
-            title: entries[1][1],
-            organization: entries[9][1],
-            description: entries[2][1],
-            date: entries[3][1],
-            id: entries[0][1],
+            title: entries2[1][1],
+            organization: entries2[9][1].name,
+            description: entries2[2][1],
+            date: entries2[3][1],
+            id: entries2[0][1],
           };
           this.dataSource.data = [...this.dataSource.data, eventInstance];
         });
@@ -82,11 +89,13 @@ export class EditVolunteerComponent implements AfterViewInit {
     this.dataSource.filter = filterValue;
   }
 
-  editAccess(){
+  editAccess() {
     this.volunteerInstance.blocked = !this.volunteerInstance.blocked;
-    this.volunteerService.editAccessVolunteer(this.volunteerInstance).subscribe(data => {
-      console.log(data)
-    })
+    this.volunteerService
+      .editAccessVolunteer(this.volunteerInstance)
+      .subscribe(data => {
+        console.log(data);
+      });
   }
 }
 
@@ -105,6 +114,5 @@ export interface Volunteer {
   age: string;
   address: string;
   id: string;
-  events: any;
   blocked: boolean;
 }

@@ -63,7 +63,7 @@ export class ProjectsComponent implements AfterViewInit {
   organize: String;
   status: String;
   flag: any;
-   msg: String;
+  msg: String;
   displayedColumns = [
     'title',
     'organization',
@@ -77,8 +77,7 @@ export class ProjectsComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private eventservice: EventService,
-              private router: Router) {
+  constructor(private eventservice: EventService, private router: Router) {
     // Create Events
     let eventInstance: Event;
 
@@ -94,7 +93,7 @@ export class ProjectsComponent implements AfterViewInit {
           description: instance[1].description,
           date: instance[1].date,
           id: instance[1]._id,
-          checkgoing: this.checkGoingEvent(instance[1]._id),
+          checkgoing: this.checkGoingEvent(instance[1]._id)
         };
 
         // this.events.push(eventInstance);
@@ -120,7 +119,7 @@ export class ProjectsComponent implements AfterViewInit {
     this.dataSource.filter = filterValue;
   }
   // select the events and add it to the selected event collection
-  goingEvent(eventid){
+  goingEvent(eventid) {
     const dataval = localStorage.getItem('user');
     const value = JSON.parse(dataval);
     const userid = value.id;
@@ -129,7 +128,7 @@ export class ProjectsComponent implements AfterViewInit {
 
     // concat the userid and event id and genarate slct event id value
     this.slctevent_id = this.event_id.concat(userid);
-    console.log('the user event id is --->>>>', this.slctevent_id , '>>>>>');
+    console.log('the user event id is --->>>>', this.slctevent_id, '>>>>>');
 
     // fetch the data from api
     this.eventservice.getEventByID(this.event_id).subscribe(data => {
@@ -139,13 +138,12 @@ export class ProjectsComponent implements AfterViewInit {
       this.attendees = data['attendees'];
       this.rating = data['rating'];
       this.organize = data['organization'];
-     });
+    });
 
-     this.selectTheEvent(eventid);
+    this.selectTheEvent(eventid);
   }
 
   selectTheEvent(eventid) {
-
     // add the selected event to collection
     const event = {
       id: this.slctevent_id,
@@ -159,19 +157,25 @@ export class ProjectsComponent implements AfterViewInit {
       organization: this.organize,
       status: 'going'
     };
-   // get the responce json object from server using subscribe method. the data isa responce json
+    // get the responce json object from server using subscribe method. the data isa responce json
 
-   console.log('event id is .....----', event.id);
-   console.log('event title is .....----', event.title);
-  this.eventservice.addSelectEvent(event).subscribe(data => {
-    console.log('...............', data['msg'], '.........', data, '..........');
-    if (data['success']) {
-     // alert('Thank You for join with this event....');
-      this.router.navigate(['/notify-going/' + eventid]);
-    } else {
-      alert('Sorry! Try again...');
-    }
-  });
+    console.log('event id is .....----', event.id);
+    console.log('event title is .....----', event.title);
+    this.eventservice.addSelectEvent(event).subscribe(data => {
+      console.log(
+        '...............',
+        data['msg'],
+        '.........',
+        data,
+        '..........'
+      );
+      if (data['success']) {
+        // alert('Thank You for join with this event....');
+        this.router.navigate(['/notify-going/' + eventid]);
+      } else {
+        alert('Sorry! Try again...');
+      }
+    });
   }
 
   // check user is already going or not event
@@ -181,23 +185,22 @@ export class ProjectsComponent implements AfterViewInit {
     const userid = value.id;
 
     // have to fix the issues of this
-   // let status;
+    // let status;
 
     const userevent = {
-        eventid: eventid,
-        userid: userid,
+      eventid: eventid,
+      userid: userid
     };
-   this.eventservice.checkUserGoing(userevent).subscribe(data => {
+    this.eventservice.checkUserGoing(userevent).subscribe(data => {
+      console.log(data);
       if (data['success']) {
         console.log('.......sucesss true...', data['msg']);
-          return true;
+        return true;
       } else {
         console.log('.......sucesss false...', data['msg']);
-          return false;
-
+        return false;
       }
     });
-
   }
   checkit(check) {
     if (check) {

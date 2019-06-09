@@ -1,27 +1,27 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { Component, AfterViewInit, ViewChild } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 
-import { routerTransition } from '../../../router.animations';
+import { routerTransition } from "../../../router.animations";
 
-import { VolunteerService } from '../../../myservices/volunteer.service';
-import { EventService } from '../../../myservices/event.service';
-import { DecimalPipe } from '@angular/common';
+import { VolunteerService } from "../../../myservices/volunteer.service";
+import { EventService } from "../../../myservices/event.service";
+import { DecimalPipe } from "@angular/common";
 
 @Component({
-  selector: 'app-edit-event',
-  templateUrl: './edit-event.component.html',
-  styleUrls: ['./edit-event.component.scss'],
+  selector: "app-edit-event",
+  templateUrl: "./edit-event.component.html",
+  styleUrls: ["./edit-event.component.scss"],
   animations: [routerTransition()]
 })
 export class EditEventComponent implements AfterViewInit {
   displayedColumns = [
-    'name',
-    'email',
-    'contactNo',
-    'age',
-    'address',
-    'options'
+    "name",
+    "email",
+    "contactNo",
+    "age",
+    "address",
+    "options"
   ];
   dataSource: MatTableDataSource<Volunteer>;
   volunteers: Volunteer[] = [];
@@ -32,15 +32,14 @@ export class EditEventComponent implements AfterViewInit {
   eventId: String;
 
   public eventInstance: Event = {
-    title: '',
-    organization: '',
-    description: '',
-    date: '',
-    time: '',
-    type: '',
+    title: "",
+    organization: "",
+    description: "",
+    date: "",
+    time: "",
+    type: "",
     rating: 0,
-    volunteers: [],
-    id: ''
+    id: ""
   };
 
   constructor(
@@ -48,27 +47,28 @@ export class EditEventComponent implements AfterViewInit {
     private volunteerService: VolunteerService,
     private eventService: EventService
   ) {
-    this.eventId = this.route.snapshot.paramMap.get('id');
+    this.eventId = this.route.snapshot.paramMap.get("id");
     let volunteerInstance: Volunteer;
 
     this.eventService.getEventByID(this.eventId).subscribe(data => {
       const entries = Object.entries(data);
       this.eventInstance = {
         title: entries[1][1],
-        organization: entries[9][1],
+        organization: entries[9][1].name,
         description: entries[2][1],
         date: entries[3][1],
         time: entries[4][1],
         type: entries[5][1],
-        volunteers: entries[6][1],
-        rating: parseFloat(entries[7][1]),
+        rating: 3.4,
         id: entries[0][1]
       };
+    });
 
-      this.eventInstance.volunteers.forEach(volunteerID => {
-        volunteerService.getVolunteerById(volunteerID).subscribe(data => {
+    this.eventService.getEventVolunteers(this.eventId).subscribe(data1 => {
+      const entries1 = Object.entries(data1);
+      entries1.forEach(entry => {
+        volunteerService.getVolunteerById(entry[1].userid).subscribe(data => {
           const entries = Object.entries(data);
-          console.log(entries)
           volunteerInstance = {
             name: entries[1][1],
             email: entries[2][1],
@@ -77,6 +77,7 @@ export class EditEventComponent implements AfterViewInit {
             age: entries[7][1],
             id: entries[0][1]
           };
+          console.log(volunteerInstance);
           this.dataSource.data = [...this.dataSource.data, volunteerInstance];
         });
       });
@@ -104,7 +105,6 @@ export interface Event {
   time: string;
   type: string;
   rating: Number;
-  volunteers: any;
   id: string;
 }
 

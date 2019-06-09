@@ -47,24 +47,24 @@ export class OrganizationService {
 
   updateMyOrganization(updatedOrgData){
 
-    let updatedFormOrgData:any|FormData;
-  
-    if(typeof(updatedOrgData.image)=="object"){
-      updatedFormOrgData=new FormData();
-      updatedFormOrgData.append("name",updatedOrgData.name);
-      updatedFormOrgData.append("about",updatedOrgData.about);
-      updatedFormOrgData.append("contact",updatedOrgData.date);
-      updatedFormOrgData.append("address",updatedOrgData.address);
-      updatedFormOrgData.append("email",updatedOrgData.email);
-      updatedFormOrgData.append("image",updatedOrgData.image,updatedOrgData.name);
+    let updatedFormOrgData: any|FormData;
+
+    if (typeof(updatedOrgData.image) == 'object'){
+      updatedFormOrgData = new FormData();
+      updatedFormOrgData.append('name', updatedOrgData.name);
+      updatedFormOrgData.append('about', updatedOrgData.about);
+      updatedFormOrgData.append('contact', updatedOrgData.date);
+      updatedFormOrgData.append('address', updatedOrgData.address);
+      updatedFormOrgData.append('email', updatedOrgData.email);
+      updatedFormOrgData.append('image', updatedOrgData.image, updatedOrgData.name);
     }
     else{
-      updatedFormOrgData=updatedOrgData;
-  
+      updatedFormOrgData = updatedOrgData;
+
     }
 
-    return this.http.put('http://localhost:3000/organizations/updateMyOrganization/' ,updatedFormOrgData).subscribe(response=>{
-  
+    return this.http.put('http://localhost:3000/organizations/updateMyOrganization/' , updatedFormOrgData).subscribe(response => {
+
      });
   }
 
