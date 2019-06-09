@@ -24,14 +24,12 @@ export class LoginComponent implements OnInit {
   onLoggedin() {
     const user = {
       username: this.username,
-      password: this.password,
+      password: this.password,this.
     };
 
 
 
-    if (this.username === 'admin' && this.password === 'admin'){
-        this.router.navigate(['/admin/dashboard']);
-    } else {
+    if()
 
     this.authService.authenticateUser(user).subscribe(data => {
       console.log('.......................', data, '..........................');
@@ -54,6 +52,5 @@ export class LoginComponent implements OnInit {
       }
     });
 
-}
 }
 }
