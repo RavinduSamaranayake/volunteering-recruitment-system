@@ -1,6 +1,6 @@
 <div [@routerTransition]>
-  <!-- <h2 class="text-muted">User Dashboard <small>We are volunteers</small></h2> -->
-  <!-- <div class="row">
+    <!-- <h2 class="text-muted">User Dashboard <small>We are volunteers</small></h2> -->
+    <!-- <div class="row">
       <div class="col-md-12">
           <ngb-carousel>
               <ng-template ngbSlide *ngFor="let slider of sliders">
@@ -13,38 +13,38 @@
           </ngb-carousel>
       </div>
   </div> -->
-  <hr>
-  <div class="row">
-      <div class="col-xl-3 col-lg-6">
-          <app-stat [bgClass]="'primary'" [icon]="'fa-tasks'" [count]="alleventcount" [label]="'Available!'" (click) = "viewAvailable()"  [link]="'/userdashboard/projects'" ></app-stat>
-      </div>
-      <div class="col-xl-3 col-lg-6">
-          <app-stat [bgClass]="'warning'" [icon]="'fa-tasks'" [count]="upcommingcount" [label]="'Upcomming!'" (click) = "viewUpcomming()" [link]="'/userdashboard/upcomming'"></app-stat>
-      </div>
-      <div class="col-xl-3 col-lg-6">
-          <app-stat [bgClass]="'success'" [icon]="'fa-tasks'" [count]="historycount" [label]="'History!'"  (click) = "viewHistory()" [link]="'/userdashboard/history'" ></app-stat>
-      </div>
-      <div class="col-xl-3 col-lg-6">
-          <app-stat [bgClass]="'danger'" [icon]="'fa-university'" [count]="organizecount" [label]="'Organizations!'" (click) = "viewOrganization()" [link]="'/userdashboard/organizations'"></app-stat>
-      </div>
-  </div>
-  <hr />
-  <!-- <ngb-alert [type]="alert.type" (close)="closeAlert(alert)" *ngFor="let alert of alerts">{{ alert.message }}</ngb-alert> -->
-  <!-- <hr /> -->
-  <div class="row">
-      <div class="col-xl-12 col-lg-12">
-          <div class="card card-default">
-              <!-- <div class="card-header">
+    <hr>
+    <div class="row">
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'primary'" [icon]="'fa-tasks'" [count]="alleventcount" [label]="'Available!'" (click)="viewAvailable()" [link]="'/userdashboard/projects'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'warning'" [icon]="'fa-tasks'" [count]="upcommingcount" [label]="'Upcomming!'" (click)="viewUpcomming()" [link]="'/userdashboard/upcomming'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'success'" [icon]="'fa-tasks'" [count]="historycount" [label]="'History!'" (click)="viewHistory()" [link]="'/userdashboard/history'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'danger'" [icon]="'fa-university'" [count]="organizecount" [label]="'Organizations!'" (click)="viewOrganization()" [link]="'/userdashboard/organizations'"></app-stat>
+        </div>
+    </div>
+    <hr />
+    <!-- <ngb-alert [type]="alert.type" (close)="closeAlert(alert)" *ngFor="let alert of alerts">{{ alert.message }}</ngb-alert> -->
+    <!-- <hr /> -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card card-default">
+                <!-- <div class="card-header">
                   <i class="fa fa-clock-o fa-fw"></i> Events and Projects
               </div> -->
-              <router-outlet></router-outlet>
-              <!-- /.card-header -->
-              <!-- <app-timeline></app-timeline> -->
-              <!-- /.card-body -->
-            
-          </div>
-         
-      <!-- </div>
+                <router-outlet></router-outlet>
+                <!-- /.card-header -->
+                <!-- <app-timeline></app-timeline> -->
+                <!-- /.card-body -->
+
+            </div>
+
+            <!-- </div>
        
       <div class="col-lg-5">
           <div class="card card-default mb-3">
@@ -57,7 +57,6 @@
           </div>
           
       </div> -->
-      
-  </div>
-</div>
 
+        </div>
+    </div>
