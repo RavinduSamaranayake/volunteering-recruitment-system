@@ -1,0 +1,74 @@
+import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class VolunteerService {
+  // this is use to share the selected event data pass to the viewdata component via event service
+  $volunteerDetails = new EventEmitter(); // this is like value saving varible
+  volunteerId: String;
+  volunteerSelected: any;
+
+  constructor(private http: HttpClient) {}
+
+  // addEvent(event) {
+  //   let headers = new HttpHeaders();
+  //   headers.append("Content-Type", "application/json");
+  //   // post the user data to the server in json object
+  //   return this.http.post("http://localhost:3000/events/addevent", event, {
+  //     headers: headers
+  //   });
+  // }
+
+  getAllVolunteers() {
+    // let headers = new HttpHeaders();
+    return this.http.get('http://localhost:3000/users/getallusers');
+  }
+
+  getVolunteerById(id: string) {
+    // let headers = new HttpHeaders();
+    return this.http.get('http://localhost:3000/users/getvolunteerbyid/' + id);
+  }
+
+  editAccessVolunteer(vol: any) {
+    return this.http.put('http://localhost:3000/users/editaccess/', vol);
+  }
+
+  // // after the user select a event.......................
+
+  // setEvent(sevent) {
+  //   this.slctevent = sevent;
+  //   this.$eventdetails.emit(this.slctevent); // save the event value in this variable
+  // }
+
+  // addSelectEvent(event) {
+  //   let headers = new HttpHeaders();
+  //   headers.append("Content-Type", "application/json");
+  //   // post the user data to the server in json object
+  //   return this.http.post("http://localhost:3000/events/addselected", event, {
+  //     headers: headers
+  //   });
+  // }
+
+  // getAllSelectEvent(userid) {
+  //   // let headers = new HttpHeaders();
+  //   return this.http.get(
+  //     "http://localhost:3000/events/allselectevents/" + userid
+  //   );
+  // }
+
+  // getAllUpcommingEvent(userid) {
+  //   // let headers = new HttpHeaders();
+  //   return this.http.get(
+  //     "http://localhost:3000/events/allselect/upcomming/" + userid
+  //   );
+  // }
+
+  // getAllEventHistory(userid) {
+  //   // let headers = new HttpHeaders();
+  //   return this.http.get(
+  //     "http://localhost:3000/events/allselect/history/" + userid
+  //   );
+  // }
+}

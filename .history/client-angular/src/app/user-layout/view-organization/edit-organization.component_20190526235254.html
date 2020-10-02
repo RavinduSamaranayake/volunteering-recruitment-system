@@ -1,0 +1,47 @@
+<div [@routerTransition]>
+  <app-page-header
+    [heading]="'Organization Details'"
+    [icon]="'fa fa-university'"
+    [image]="
+      'https://www.ccwater.org.uk/wp-content/uploads/2017/05/business-meeting-e1509456641596.jpg'
+    "
+    [desc]="'Check the history and details of the selected organization'"
+  ></app-page-header>
+
+  <div class="row" style="margin-top:-15px;">
+    <div class="col-lg-12">
+      <div class="card mb-3">
+        <div class="card-header"><h5>{{ organizationInstance.name }}</h5></div>
+        <div class="row" style="margin-top:20px">
+          <div class="col-lg-3">
+              <img src="../../../../assets/images/organizations/{{ organizationId }}.png" alt="">
+          </div>
+          <div class="col-lg-1"></div>
+          <div class="col-lg-3">
+            <h5>About</h5>
+            <p align="justify">
+                {{ organizationInstance.about }}
+            </p>
+          </div>
+          <div class="col-lg-1"></div>
+          <div class="col-lg-4">
+            <h5>Contact No.</h5>
+            <p class="detials">- {{ organizationInstance.contact }}</p>
+
+            <h5>E-mail</h5>
+            <p class="detials">- {{ organizationInstance.email }}</p>
+
+            <h5>Registration No.</h5>
+            <p class="detials">- {{ organizationInstance.regNo }}</p>
+
+            <h5>Address</h5>
+            <p class="detials">- {{ organizationInstance.address }}</p>
+
+          </div>
+        </div>
+
+        <hr>
+        
+    </div>
+  </div>
+</div>

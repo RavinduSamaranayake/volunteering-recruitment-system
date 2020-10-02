@@ -24,8 +24,18 @@ export class AuthService {
     // post the user data to the server in json object and the authenticate function which is in server check the username and password in server
     return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers});
   }
+
+  authenticateOrg(user) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    // tslint:disable-next-line:max-line-length
+    // post the user data to the server in json object and the authenticate function which is in server check the username and password in server
+    return this.http.post('http://localhost:3000/organizations/authOrg', user, {headers: headers});
+  }
   // store user data in local storage
   storeUserData(token, user) {
+    console.log(token)
+    console.log(user);
     localStorage.setItem('id_token', token); // the data has to be a string.Convert a JavaScript object into a string with JSON.stringify().
     localStorage.setItem('user', JSON.stringify(user)); // local storage can store only styings. can't store json objects
     this.authToken = token;                             // see this local storage in application console in chrome
@@ -40,9 +50,29 @@ export class AuthService {
     return this.http.get('users/profile', {headers: headers});
   }
 
+  // change profile
+  changeProfile(user , userid) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    // post the user data to the server in json object
+    return this.http.put('http://localhost:3000/users/changepro/' + userid, user, {headers: headers});
+  }
+
+  // change profile
+  changePassword(user , userid) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    // post the user data to the server in json object
+    return this.http.put('http://localhost:3000/users/changepass/' + userid, user, {headers: headers});
+  }
+
   loadToken() {
     const token = localStorage.getItem('id_token');
     this.authToken = token;
+  }
+
+  gettoken(){
+    return localStorage.getItem('id_token');
   }
 
   loggedIn() {
@@ -56,5 +86,10 @@ export class AuthService {
     this.authToken = null;
     this.user = null;
     localStorage.clear(); // clear storagedata
+  }
+
+  refreshStore(user){
+    localStorage.removeItem('user');
+    localStorage.setItem('user', JSON.stringify(user));
   }
 }
