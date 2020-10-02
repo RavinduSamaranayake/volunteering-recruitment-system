@@ -1,0 +1,75 @@
+import { Component, OnInit } from '@angular/core';
+import { ValidateService } from '../../myservices/validate.service';
+import { AuthService } from '../../myservices/auth.service';
+import { Router } from '@angular/router';
+
+@Component({
+    selector: 'app-blank-page',
+    templateUrl: './blank-page.component.html',
+    styleUrls: ['./blank-page.component.scss']
+})
+export class BlankPageComponent implements OnInit {
+    userid: any;
+    firstname: String;
+    lastname: String;
+    username: String;
+    email: String;
+    password: String;
+    conpassword: String;
+    address: String;
+    address2: String;
+    cntctmob: String;
+    cntctfix: String;
+    age: String;
+
+    constructor(
+        private validateService: ValidateService,
+        private authService: AuthService,
+        private router: Router,
+    ) {}
+  
+    ngOnInit() {
+        const data = localStorage.getItem('user');
+        console.log('the user is --->>>>', data , '>>>>>');
+        const value = JSON.parse(data); // the data is always a string.Parse the data with JSON.parse(), 
+                                       // and the data becomes a JavaScript object
+        this.us
+        this.firstname = value.firstname;
+        this.lastname = value.lastname;
+        this.username = value.username;
+        this.email = value.email;
+        this.address = value.address;
+        this.address2 = value.address2;
+        this.cntctmob = value.cntctmob;
+        this.cntctfix = value.cntctfix;
+        this.age = value.age;
+    }
+  
+    onRegisterSubmit() {
+        const user = {
+          firstname: this.firstname,
+          lastname: this.lastname,
+          email: this.email,
+          username: this.username,
+          password: this.password,
+          rpassword: this.conpassword,
+          address: this.address,
+          address2: this.address2,
+          cntctmob: this.cntctmob,
+          cntctfix: this.cntctfix,
+          age: this.age,
+        };
+
+        this.authService.changeProfile(user).subscribe(data => {
+            console.log('...............', data['msg'], '.........', data, '..........'); // check the responce json 
+            if (data['success']) { // check the responce json value's success key and navigate login page
+              this.router.navigate(['login']);
+              alert('Registration successfully! now you can login');
+              // this.alerts.setMessage('Registration successfully! now you can login', 'success');
+            } else {
+              this.router.navigate(['signup']);
+              alert('Please signup again');
+              // this.alerts.setMessage('Please signup again', 'warn');
+            }
+    }
+}

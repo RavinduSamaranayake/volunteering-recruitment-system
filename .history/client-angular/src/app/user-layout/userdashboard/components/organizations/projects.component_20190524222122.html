@@ -1,0 +1,101 @@
+<div [@routerTransition]>
+    <app-page-header
+      [heading]="'View Organizations'"
+      [icon]="'fa fa-university'"
+      [image]="
+        'https://www.ccwater.org.uk/wp-content/uploads/2017/05/business-meeting-e1509456641596.jpg'
+      "
+      [desc]="
+        'Select the organization that needs to be suspended or restrict authorization'
+      "
+    ></app-page-header>
+    <div class="row" style="margin-top:-15px;">
+      <div class="col-lg-12">
+        <div class="card mb-3">
+          <div class="card-header">Organizations</div>
+          <div class="example-header">
+            <mat-form-field>
+              <input
+                matInput
+                (keyup)="applyFilter($event.target.value)"
+                placeholder="Filter"
+              />
+            </mat-form-field>
+          </div>
+  
+          <div class="example-container mat-elevation-z8">
+            <mat-table [dataSource]="dataSource" matSort>
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Name
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Email
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  {{ row.email }}
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="contact">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Contact No.
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{ row.contact }} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="address">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Address
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  {{ row.address }}
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="regNo">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Registration No.
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  {{ row.regNo }}
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="options">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Options
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <a
+                    routerLink="/admin/organizations/edit/{{ row.id }}"
+                    [routerLinkActive]="['router-link-active']"
+                  >
+                    <button
+                      type="submit"
+                      style="width:80px; height:30px; font-size:12px;"
+                      class="btn btn-outline-warning"
+                    >
+                      EDIT
+                    </button>
+                  </a>
+                </mat-cell>
+              </ng-container>
+  
+              <mat-header-row
+                *matHeaderRowDef="displayedColumns"
+              ></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+            </mat-table>
+  
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

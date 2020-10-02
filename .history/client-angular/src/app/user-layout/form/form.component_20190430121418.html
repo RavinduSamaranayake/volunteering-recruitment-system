@@ -1,0 +1,59 @@
+<body class="bg-light">
+
+    <div class="container">
+       
+        <div class="row">
+          
+      <div class="container">
+    
+            <h4 class="mb-3">Change Your password</h4>
+            <form (ngSubmit)="onChangePassword()" class="needs-validation" novalidate>
+    
+              <div class="mb-3">
+                  <label for="password">Current Password</label>
+                  <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Password shout be atleast eight characters.
+                  </div>
+                </div>
+    
+              <div class="mb-3">
+                  <label for="password"> password<span class="text-muted">(Password shout be atleast eight characters.)</span></label>
+                  <input type="password" [(ngModel)]="newpaswrd" name="newpaswrd" class="form-control" id="conpassword" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Password shout be atleast eight characters.
+                  </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="password">Confirm password<span class="text-muted">(Password shout be atleast eight characters.)</span></label>
+                    <input type="password" [(ngModel)]="connewpaswrd" name="connewpaswrd" class="form-control" id="conpassword" placeholder="" required>
+                    <div class="invalid-feedback">
+                      Password shout be atleast eight characters.
+                    </div>
+                  </div>
+             
+              
+             
+              <hr class="mb-4">
+              <button class="btn btn-primary btn-lg btn-block" type="submit" id="regbtn">Save changes</button>
+              <!-- <input type="submit" class="btn rounded-btn" value="Register">
+                
+              <a class="btn rounded-btn" [routerLink]="['/main']">{{ 'Cancel' | translate }}</a> -->
+            </form>
+          </div>
+        </div>
+    
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+          <!-- <p class="mb-1">&copy; 2017-2018 Company Name</p> -->
+          <ul class="list-inline">
+            <!-- <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li> -->
+          </ul>
+        </footer>
+      </div>
+    
+    
+    </body>
