@@ -44,7 +44,7 @@
     "ngx-bar-rating": "^1.1.0",
     "ngx-toastr": "^10.0.4",
     "rxjs": "6.3.3",
-    "yarn": "1.12.1",
+    "yarn": "1.22.0",
     "zone.js": "0.8.26"
   },
   "devDependencies": {
